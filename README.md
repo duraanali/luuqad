@@ -2,7 +2,7 @@
 
 ![LUUQAD Logo](/public/luuqad.png)
 
-DEMO LINK: https://luuqad.vercel.app
+**DEMO LINK:** [https://luuqad.vercel.app](https://luuqad.vercel.app)
 
 ## Introduction
 
@@ -11,13 +11,13 @@ Thank you for your interest in contributing to LUUQAD, our open source project a
 ## Table of Contents
 
 - [User and Lessons](#user-and-lessons)
-    - [Reporting Issues](#reporting-issues)
-  - [Community and Communication](#community-and-communication)
-  - [License](#license)
+  - [Reporting Issues](#reporting-issues)
+- [Community and Communication](#community-and-communication)
+- [License](#license)
 
 ## Project Description
 
-LUUQAD is an English Learning Open Source Project that aims to create an interactive platform for users to learn English at their own pace. The platform will offer a wide range of lessons, exercises, quizzes, and tracking features to monitor progress. Our goal is to make language learning an enjoyable experience for learners from all around the world.
+LUUQAD is an English Learning Open Source Project that aims to create an interactive platform for users to learn English at their own pace. The platform offers a wide range of lessons, exercises, quizzes, and tracking features to monitor progress. Our goal is to make language learning an enjoyable experience for learners from all around the world.
 
 ## How to Contribute
 
@@ -29,16 +29,16 @@ We welcome contributions from developers, designers, content creators, and anyon
 
 2. Clone this repository to your local environment:
 
-```bash
-git clone https://github.com/your-username/luuqad.git
-cd luuqad
-```
+   ```bash
+   git clone https://github.com/your-username/luuqad.git
+   cd luuqad
+   ```
 
 3. Install the project dependencies:
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
 4. Set up the database and Prisma:
 
@@ -48,25 +48,25 @@ npm install
 
 ### Submitting Changes
 
-1. Before you start working on a new feature or bug fix, create a new branch from the `main` branch.
+1. Before you start working on a new feature or bug fix, create a new branch from the `main` branch:
 
-```bash
-git checkout -b feature/your-feature-name
-```
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
 
 2. Make your changes and test thoroughly.
 
 3. Commit your changes with a descriptive commit message:
 
-```bash
-git commit -m "Add feature/bug fix - Your detailed description here"
-```
+   ```bash
+   git commit -m "Add feature/bug fix - Your detailed description here"
+   ```
 
 4. Push your branch to the remote repository:
 
-```bash
-git push origin feature/your-feature-name
-```
+   ```bash
+   git push origin feature/your-feature-name
+   ```
 
 5. Open a pull request (PR) from your branch to the `main` branch. Provide a clear and concise description of your changes in the PR.
 
@@ -82,7 +82,7 @@ If you plan to work on a significant new feature, it's a good idea to discuss it
 
 ### Authentication
 
-User: `id`, `name`, `email` and `password`, `type`, `created_at`, `updated_at` (optional = location, age etc)
+User: `id`, `name`, `email`, `password`, `type`, `created_at`, `updated_at` (optional: location, age, etc.)
 
 #### Lessons
 
@@ -104,7 +104,7 @@ Answer: `id`, `question_id`, `answer`, `is_correct`, `status`, `created_at`, `up
 
 user_lessons: `id`, `user_id`, `lesson_id`, `created_at`, `updated_at`
 
-### Reporting Issues
+## Reporting Issues
 
 If you encounter a bug, have a suggestion, or need clarification, please check the existing issues and discussions. If it hasn't been reported yet, create a new issue with a descriptive title and detailed information.
 
@@ -112,8 +112,8 @@ If you encounter a bug, have a suggestion, or need clarification, please check t
 
 Join our community to collaborate, ask questions, and stay up-to-date with the project's progress:
 
-- GitHub Discussions: [link to discussions](https://github.com/your-username/luuqad/discussions)
-- Slack Channel: #english-learners (request an invite in the discussions)
+- **GitHub Discussions:** [link to discussions](https://github.com/your-username/luuqad/discussions)
+- **Slack Channel:** #english-learners (request an invite in the discussions)
 
 ## License
 
