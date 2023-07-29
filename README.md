@@ -8,17 +8,15 @@ Thank you for your interest in contributing to LUUQAD, our open source project a
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Table of Contents](#table-of-contents)
-- [Project Description](#project-description)
-- [How to Contribute](#how-to-contribute)
-  - [Setting Up the Development Environment](#setting-up-the-development-environment)
-  - [Submitting Changes](#submitting-changes)
-  - [Code Style](#code-style)
-  - [Adding New Features](#adding-new-features)
-  - [Reporting Issues](#reporting-issues)
-- [Community and Communication](#community-and-communication)
-- [License](#license)
+- [Authentication](#authentication)
+- [Lessons](#lessons)
+- [Units](#units)
+- [Questions](#questions)
+- [Answers](#answers)
+- [User and Lessons](#user-and-lessons)
+    - [Reporting Issues](#reporting-issues)
+  - [Community and Communication](#community-and-communication)
+  - [License](#license)
 
 ## Project Description
 
@@ -82,6 +80,32 @@ Please follow the coding conventions and code style guidelines outlined in our [
 ### Adding New Features
 
 If you plan to work on a significant new feature, it's a good idea to discuss it with the community first. Open an issue to propose your idea and gather feedback before starting the implementation.
+
+### Schema (not final)
+
+# Authentication
+
+User: `id`, `name`, `email` and `password`, `type`, `created_at`, `updated_at` (optional = location, age etc)
+
+# Lessons
+
+Lesson: `id`, `title`, `description`, `slug`, `level`, `status`, `created_at`, `updated_at`
+
+# Units
+
+Unit: `id`, `lesson_id`, `title`, `description`, `slug`, `status`, `created_at`, `updated_at`
+
+# Questions
+
+Question: `id`, `unit_id`, `title`, `description`, `slug`, `status`, `created_at`, `updated_at`
+
+# Answers
+
+Answer: `id`, `question_id`, `answer`, `is_correct`, `status`, `created_at`, `updated_at`
+
+# User and Lessons
+
+user_lessons: `id`, `user_id`, `lesson_id`, `created_at`, `updated_at`
 
 ### Reporting Issues
 
