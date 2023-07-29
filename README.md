@@ -2,6 +2,8 @@
 
 ![LUUQAD Logo](/public/luuqad.png)
 
+DEMO LINK: https://luuqad.vercel.app
+
 ## Introduction
 
 Thank you for your interest in contributing to LUUQAD, our open source project aimed at providing a user-friendly platform for people to learn English interactively and effectively. LUUQAD is built with Next.js 13, Prisma, and PlanetScale.
