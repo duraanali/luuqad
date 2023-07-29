@@ -1,6 +1,6 @@
 **Welcome to the LUUQAD English Learning Open Source Project**
 
-![LUUQAD Logo](luuqad_logo.png)
+![LUUQAD Logo](/public/luuqad.png)
 
 ## Introduction
 
