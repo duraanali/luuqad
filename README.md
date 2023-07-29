@@ -8,11 +8,6 @@ Thank you for your interest in contributing to LUUQAD, our open source project a
 
 ## Table of Contents
 
-- [Authentication](#authentication)
-- [Lessons](#lessons)
-- [Units](#units)
-- [Questions](#questions)
-- [Answers](#answers)
 - [User and Lessons](#user-and-lessons)
     - [Reporting Issues](#reporting-issues)
   - [Community and Communication](#community-and-communication)
@@ -81,29 +76,29 @@ Please follow the coding conventions and code style guidelines outlined in our [
 
 If you plan to work on a significant new feature, it's a good idea to discuss it with the community first. Open an issue to propose your idea and gather feedback before starting the implementation.
 
-### Schema (not final)
+## Schema (not final)
 
-# Authentication
+### Authentication
 
 User: `id`, `name`, `email` and `password`, `type`, `created_at`, `updated_at` (optional = location, age etc)
 
-# Lessons
+#### Lessons
 
 Lesson: `id`, `title`, `description`, `slug`, `level`, `status`, `created_at`, `updated_at`
 
-# Units
+### Units
 
 Unit: `id`, `lesson_id`, `title`, `description`, `slug`, `status`, `created_at`, `updated_at`
 
-# Questions
+### Questions
 
 Question: `id`, `unit_id`, `title`, `description`, `slug`, `status`, `created_at`, `updated_at`
 
-# Answers
+### Answers
 
 Answer: `id`, `question_id`, `answer`, `is_correct`, `status`, `created_at`, `updated_at`
 
-# User and Lessons
+### User and Lessons
 
 user_lessons: `id`, `user_id`, `lesson_id`, `created_at`, `updated_at`
 
