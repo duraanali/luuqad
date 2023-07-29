@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
    
-        <div className="m-40 flex flex-col items-center justify-center sm:flex-row">
+        <div className="mt-40 flex flex-col items-center justify-center sm:flex-row">
           <div className="mb-12 sm:mb-0 sm:mr-8">
             <Image
               src="/images/home.png"

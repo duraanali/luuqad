@@ -28,7 +28,7 @@ export default function RootLayout({
       <div className="container mx-auto">
         <div className="w-600 flex flex-row items-center justify-between mt-4 mx-36">
          <Link href="/"> <h2 className="text-3xl text-[#58CC02] tracking-widest font-black">LUUQAD</h2></Link>
-         <Link href="/signup" className="w-90 h-10 px-4 py-2 text-sm tracking-widest rounded-xl bg-[#58CC02] text-white font-bold hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-[0px_4px_0px_0px_#38a169]sm:hidden">
+         <Link href="/signup" className="w-90 h-10 px-4 py-3 text-sm tracking-widest rounded-xl bg-[#58CC02] text-white font-bold hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-[0px_4px_0px_0px_#38a169]">
             GET STARTED
          </Link>
         </div>
