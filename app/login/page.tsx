@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from 'next/image'
 export default function Login() {
   return (
-    <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-full flex items-center justify-center  px-4 sm:px-6 lg:px-8">
       <div className="max-w-sm">
         <div>
           <h1 className="mt-6 text-center text-3xl font-extrabold">Log in</h1>
@@ -35,7 +35,7 @@ export default function Login() {
         <div className="w-full flex flex-col items-center text-center justify-center mt-4 space-y-4">
           <Link
             href="/"
-            className="w-96 h-12 px-4 p5-2 rounded-xl text-lg tracking-widest bg-blue-400 text-white font-bold hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-[0px_4px_0px_0px_#4299E1]"
+            className="w-96 h-12 px-4 pt-2 rounded-xl text-lg tracking-widest bg-blue-400 text-white font-bold hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-[0px_4px_0px_0px_#4299E1]"
           >
             SIGN IN
           </Link>
@@ -62,6 +62,12 @@ export default function Login() {
       <span className="pl-3 text-center font-bold text-blue-800">GOOGLE</span>
     </div>
   </button>
+</div>
+<div className="mt-5 text-gray-400 text-center">
+  <p>By signing in to Duolingo, you agree to our <Link href="/terms" className="font-bold">Terms</Link> and <Link href="/privacy" className="font-bold">Privacy Policy</Link></p>
+</div>
+<div className="mt-5 text-gray-400 text-center">
+  <p>his site is protected by reCAPTCHA Enterprise and the Google <Link href="/privacy" className="font-bold">Privacy Policy</Link> and <Link href="Terms" className="font-bold"> Terms of Service apply.</Link></p>
 </div>
       </div>
     </div>
