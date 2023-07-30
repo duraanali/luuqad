@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-function LeftSide() {
+const  LeftSide =() =>{
   return (
     <div>
       <ul className="space-y-2">
