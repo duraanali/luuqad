@@ -30,7 +30,7 @@ We welcome contributions from developers, designers, content creators, and anyon
 2. Clone this repository to your local environment:
 
    ```bash
-   git clone https://github.com/your-username/luuqad.git
+   git clone https://github.com/duraanali/luuqad.git
    cd luuqad
    ```
 
@@ -112,7 +112,7 @@ If you encounter a bug, have a suggestion, or need clarification, please check t
 
 Join our community to collaborate, ask questions, and stay up-to-date with the project's progress:
 
-- **GitHub Discussions:** [link to discussions](https://github.com/your-username/luuqad/discussions)
+- **GitHub Discussions:** [link to discussions](https://github.com/duraanali/luuqad/discussions)
 - **Slack Channel:** #english-learners (request an invite in the discussions)
 
 ## License
