@@ -63,7 +63,7 @@ export default function Login() {
     </div>
   </button>
 </div>
-<div className="mt-5 text-gray-400 text-center">
+<div className="mt-6 text-gray-400 text-center">
   <p>By signing in to Duolingo, you agree to our <Link href="/terms" className="font-bold">Terms</Link> and <Link href="/privacy" className="font-bold">Privacy Policy</Link></p>
 </div>
 <div className="mt-5 text-gray-400 text-center">
