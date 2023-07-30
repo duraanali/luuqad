@@ -10,7 +10,6 @@ export default function Home() {
               alt="Hero area image"
               width={450}
               height={300}
-              // You can adjust width and height as needed for your image
             />
           </div>
           <div className="text-center sm:w-1/2">

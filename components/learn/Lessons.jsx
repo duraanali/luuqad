@@ -1,0 +1,56 @@
+import React from 'react';
+
+const LessonCard = ({ title, subtitle, progress }) => {
+  return (
+    <div className={`bg-[#86cc05] p-4 rounded-lg shadow-[0px_4px_0px_0px_#38a169] cursor-pointer hover:bg-[#86cc05b3] transition-colors duration-200`}>
+      <h3 className={`text-2xl font-black text-white`}>{title}</h3>
+      <p className="text-white">{subtitle}</p>
+      <div className={`bg-yellow-600 mt-4 rounded-full`}>
+        <div
+          className={`h-2 bg-yellow-200 rounded-full`}
+          style={{ width: `${progress}%` }}
+        ></div>
+      </div>
+    </div>
+  );
+};
+
+function Lessons() {
+  const lessonsData = [
+    {
+      title: 'Lesson 1',
+      subtitle: 'Pair letters and sounds, identify names',
+      progress: 75,
+    },
+    {
+      title: 'Lesson 2',
+      subtitle: 'Learn basic greetings and expressions',
+      progress: 45,
+    },
+    {
+      title: 'Lesson 3',
+      subtitle: 'Practice common phrases in everyday situations',
+      progress: 30,
+    },
+    {
+      title: 'Lesson 4',
+      subtitle: 'Practice common phrases in everyday situations',
+      progress: 30,
+    },
+    {
+      title: 'Lesson 5',
+      subtitle: 'Practice common phrases in everyday situations',
+      progress: 30,
+    },
+  ];
+
+  return (
+    <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2">
+      {lessonsData.map((lesson, index) => (
+        <LessonCard key={index} {...lesson} />
+      ))}
+    </div>
+  );
+}
+
+export default Lessons;
