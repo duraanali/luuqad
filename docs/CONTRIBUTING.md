@@ -31,29 +31,22 @@ If you want to contribute code to the project, please follow these steps:
 
 If you have a suggestion for a new feature or enhancement or found a bug, please submit an issue request. To do so, follow these steps:
 
-1. Check the [existing issues](https://github.com/duraanali/luuqad/issues) to see if the issue has already been reported.
-2. If not, create a new issue, a template will be provided and enter as much detail as possible, including steps to reproduce what the issue is and information about your environment.
+- Check the [existing issues](https://github.com/duraanali/luuqad/issues) to see if the issue has already been reported.
+- If not, create a new issue, a template will be provided and enter as much detail as possible, including steps to reproduce what the issue is and information about your environment.
 
 ## Pull Requests
 
 We welcome and appreciate pull requests from contributors. To submit a pull request, please follow these guidelines:
 
-1. When creating a new pull request, a Pull request template will be provided
-1. Make sure your PR addresses an existing issue or clearly explains its purpose.
-1. Include a concise description of your changes in the PR description.
-1. Your code should follow our [style guidelines](#style-guidelines).
-1. Tests (if applicable) should be included and passed successfully.
-
-## Style Guidelines
-
-To maintain a consistent codebase, please adhere to the following style guidelines:
-
-1. Use [indentation type] and [number of spaces] for indentation.
-2. [Other style rules you want contributors to follow.]
+- When creating a new pull request, a Pull request template will be provided
+- Make sure your PR addresses an existing issue or clearly explains its purpose.
+- Include a concise description of your changes in the PR description.
+- Your code should follow our **[Style Guidelines](https://github.com/duraanali/luuqad/blob/main/docs/STYLE_GUIDELINES.md)**.
+- Tests (if applicable) should be included and passed successfully.
 
 ## Code of Conduct
 
-Contributors are expected to follow our Code of Conduct, both in interactions related to the project and within the project's community. The full Code of Conduct can be found in the [CODE_OF_CONDUCT.md](link-to-CODE_OF_CONDUCT.md) file.
+Contributors are expected to follow our Code of Conduct, both in interactions related to the project and within the project's community. The full Code of Conduct can be found in the [CODE OF CONDUCT](link-to-CODE_OF_CONDUCT.md) file.
 
 ## Contributors
 
@@ -69,7 +62,7 @@ Contributors are expected to follow our Code of Conduct, both in interactions re
 
 ## Questions or Need Help?
 
-If you have any questions or need further assistance, feel free to [contact us](mailto:your-email@example.com) or open an issue.
+If you have any questions or need further assistance, feel free to Ask the [Admin](mailto:your-email@example.com) or open an issue.
 
 By contributing to this project, you agree to abide by the terms outlined in this document.
 
