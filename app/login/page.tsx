@@ -1,7 +1,7 @@
 import Link from "next/link";
 export default function Login() {
   return (
-    <div className="min-h-screen">
+    <div className="">
       <div className="container mx-auto">
         <div className="m-40 flex flex-col items-center justify-center sm:flex-row">
           <div className="text-center sm:w-1/2">
