@@ -12,9 +12,9 @@ Luuqad is an educational plattform aimed at enabling Somali speakers to improve 
 ## Table of Contents
 
 - [Installation](#installation)
-- [Code of Conduct](CODE_OF_CONDUCT.md)
-- [Contributing Guidelines](CONTRIBUTING.md)
-- [Style Guidelines](STYLE_GUIDELINES.md)
+- [Code of Conduct](./docs/CODE_OF_CONDUCT.md)
+- [Contributing Guidelines](./docs/CONTRIBUTING.md)
+- [Style Guidelines](./docs/STYLE_GUIDELINES.md)
 - [Community](#community-and-communication)
 - [License](#license)
 
