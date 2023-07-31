@@ -1,3 +1,9 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "eslint:recommended"],
+  "globals": {
+    "React": "readonly" //React will always be defined even if we don't specifically import it,
+  },
+  "rules": {
+    "no-unused-vars": "warn" //warns unused variables
+  }
 }
