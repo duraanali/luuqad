@@ -2,16 +2,33 @@ import Link from "next/link";
 import Image from "next/image";
 const Login = () => {
   return (
-    <div className="min-h-screen">
-      <div className="container mx-auto">
-        <div className="flex flex-col items-center justify-center m-40 sm:flex-row">
-          <div className="text-center sm:w-1/2">
-            <h3 className="text-3xl font-bold">Welcome Back!</h3>
-            <div className="flex flex-col items-center justify-center mt-8 space-y-4">
-            <Link href="/learn" className="w-3/5 h-12 px-4 py-2 rounded-xl text-lg tracking-widest bg-blue-400 text-white font-bold hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-[0px_4px_0px_0px_#4299E1]">
-                SIGN IN{" "}
+     <div className="flex items-center justify-center min-h-full px-4 sm:px-6 lg:px-8">
+      <div className="max-w-sm">
+        <div>
+          <h1 className="mt-6 text-3xl font-extrabold text-center">Log in</h1>
+        </div>
+        <div className="flex flex-col items-center justify-center gap-3 mt-8">
+          <input
+            type="email"
+            autoComplete="none"
+            required
+            className="relative items-center justify-center block px-3 px-4 py-2 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300"
+            placeholder="Email Or Username"
+          />
+          <div className="relative mt-2">
+            <input
+              type="password"
+              autoComplete="none"
+              required
+              className="relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300"
+              placeholder="Password"
+            />
+            {/* forget password link */}
+            <span className="absolute top-2/4 right-2 -translate-y-2/4">
+              <Link href="/learn" className="font-bold text-gray-400">
+                FORGET?
               </Link>
-            </div>
+            </span>
           </div>
         </div>
 
