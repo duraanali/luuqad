@@ -34,7 +34,7 @@ const Login = () => {
 
         <div className="flex flex-col items-center justify-center w-full mt-4 space-y-4 text-center">
           <Link
-            href="/"
+            href="/learn"
             className="w-96 h-12 px-4 pt-2 rounded-xl text-lg tracking-widest bg-blue-400 text-white font-bold hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-[0px_4px_0px_0px_#4299E1]"
           >
             SIGN IN
