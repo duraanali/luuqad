@@ -1,12 +1,11 @@
-"use client";
-import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
+"use client"
+import Link from "next/link"
+import Image from "next/image"
+import { useState } from "react"
 
 const Signup = () => {
-  const [passwordView, setPasswordView] = useState(false);
+  const [passwordView, setPasswordView] = useState(false)
   return (
-
     <div className="flex  justify-center min-h-full px-4 sm:px-6 lg:px-8">
       <div className="max-w-sm">
         <div>
@@ -75,8 +74,7 @@ const Signup = () => {
         <div className="flex flex-col items-center justify-center w-full mt-4 space-y-4 text-center">
           <Link
             href="/learn"
-            className="w-96 h-12 px-4 pt-2 rounded-xl text-lg tracking-widest bg-blue-400 text-white font-bold hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-[0px_4px_0px_0px_#4299E1]"
-          >
+            className="w-96 h-12 px-4 pt-2 rounded-xl text-lg tracking-widest bg-blue-400 text-white font-bold hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-[0px_4px_0px_0px_#4299E1]">
             Create account
           </Link>
         </div>
@@ -92,8 +90,7 @@ const Signup = () => {
         <div className="flex items-center gap-5 mt-5">
           <button
             className="flex gap-2 items-center w-48 h-12  px-5 py-2 rounded-xl text-lg bg-white shadow-[0px_2px_2px_2px_#d1d5db]"
-            type="button"
-          >
+            type="button">
             <div className="flex items-center px-5 ">
               <Image
                 className=""
@@ -109,8 +106,7 @@ const Signup = () => {
           </button>
           <button
             className="flex gap-2 items-center w-48 h-12 px-5 py-2 rounded-xl text-lg bg-white shadow-[0px_2px_2px_2px_#d1d5db]"
-            type="button"
-          >
+            type="button">
             <div className="flex items-center px-5">
               <Image
                 className=""
