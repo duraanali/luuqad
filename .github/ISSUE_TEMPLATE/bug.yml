@@ -36,9 +36,9 @@ body:
 - type: textarea
   attributes:
     label: Screenshots
-		description: add screenshots to help explain your problem
-		validations:
-			required: false
+    description: add screenshots to help explain your problem
+    validations:
+      required: false
 - type: dropdown
   id: browsers
   attributes:
