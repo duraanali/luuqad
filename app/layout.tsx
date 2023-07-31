@@ -21,10 +21,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={dosis.className}>
       <body
         className={
-          dosis.className && "flex flex-col justify-between min-h-screen gap-10"
+           "flex flex-col justify-between min-h-screen gap-10"
         }
       >
         <div className="">
