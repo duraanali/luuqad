@@ -16,4 +16,8 @@ export default function Signup() {
       </div>
     </div>
   );
+<<<<<<< Updated upstream:app/signup/page.tsx
 }
+=======
+}
+>>>>>>> Stashed changes:app/(auth)/signup/page.tsx

@@ -3,6 +3,7 @@ import Lessons from '@/components/learn/Lessons';
 
 export default function Learn() {
   return (
+<<<<<<< Updated upstream
    
         <div className=" flex flex-row p-20 c-xl:p-5 space-18">
             <div className="pr-1 border-r-2 border-blue-100">
@@ -12,5 +13,16 @@ export default function Learn() {
                 <Lessons />
             </div>
         </div>
+=======
+    <div className=" flex flex-row p-20 c-xl:p-5 space-18">
+    <div className="pr-1 border-r-2 border-blue-100">
+        <SideBar />
+    </div>
+    <div className="flex-grow pl-5">
+        <Lessons />
+    </div>
+</div>
+
+>>>>>>> Stashed changes
   );
 }
