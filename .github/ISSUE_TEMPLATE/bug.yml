@@ -1,9 +1,7 @@
 name: "\U0001F41E Bug"
 description: File a bug or an issue
 title: '[BUG] <title>'
-labels:
-  - Bug
-  - Needs Triage
+labels: [Bug, Needs Triage]
 body:
   - type: checkboxes
     attributes:
