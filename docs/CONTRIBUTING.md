@@ -1,4 +1,4 @@
-# Contributing to Luuqad 
+# Contributing to Luuqad
 
 Thank you for considering contributing to **Luuqad!** We appreciate your time and effort in making this project better.
 
@@ -7,9 +7,9 @@ Thank you for considering contributing to **Luuqad!** We appreciate your time an
 1. [How to Contribute](#how-to-contribute)
 2. [Code Contribution](#code-contribution)
 3. [Issue Reports](#issue-reports)
-5. [Pull Requests](#pull-requests)
-6. [Style Guidelines](#style-guidelines)
-7. [Code of Conduct](#code-of-conduct)
+4. [Pull Requests](#pull-requests)
+5. [Style Guidelines](#style-guidelines)
+6. [Code of Conduct](#code-of-conduct)
 
 ## How to Contribute
 
@@ -28,12 +28,11 @@ If you want to contribute code to the project, please follow these steps:
 7. Open a pull request (PR) against the `main` branch, clearly explaining your changes and the problem it solves.
 
 ## Issue Reports
-If you have a suggestion for a new feature or enhancement or found a bug, please submit an issue  request. To do so, follow these steps:
+
+If you have a suggestion for a new feature or enhancement or found a bug, please submit an issue request. To do so, follow these steps:
 
 1. Check the [existing issues](https://github.com/duraanali/luuqad/issues) to see if the issue has already been reported.
-2. If not, create a new issue, a template will be provided and enter as much detail as possible, including steps to reproduce what the issue is  and information about your environment.
-
-
+2. If not, create a new issue, a template will be provided and enter as much detail as possible, including steps to reproduce what the issue is and information about your environment.
 
 ## Pull Requests
 
@@ -41,9 +40,9 @@ We welcome and appreciate pull requests from contributors. To submit a pull requ
 
 1. When creating a new pull request, a Pull request template will be provided
 1. Make sure your PR addresses an existing issue or clearly explains its purpose.
-2. Include a concise description of your changes in the PR description.
-3. Your code should follow our [style guidelines](#style-guidelines).
-4. Tests (if applicable) should be included and passed successfully.
+1. Include a concise description of your changes in the PR description.
+1. Your code should follow our [style guidelines](#style-guidelines).
+1. Tests (if applicable) should be included and passed successfully.
 
 ## Style Guidelines
 
@@ -56,23 +55,17 @@ To maintain a consistent codebase, please adhere to the following style guidelin
 
 Contributors are expected to follow our Code of Conduct, both in interactions related to the project and within the project's community. The full Code of Conduct can be found in the [CODE_OF_CONDUCT.md](link-to-CODE_OF_CONDUCT.md) file.
 
-
 ## Contributors
 
 <!-- add your github username -->
+
 [![Duraan Ali](https://avatars.githubusercontent.com/u/16447314?s=36)](https://github.com/duraanali)
 [![Mahamed Mahad](https://avatars.githubusercontent.com/u/55987068?s=36)](https://github.com/mahamedmahad)
 [![Abdiwali Maxamed](https://avatars.githubusercontent.com/u/85658767?s=36)](https://github.com/abdiwalimohamed2021)
 [![A.shakour Mohammed](https://avatars.githubusercontent.com/u/116094561?s=36)](https://github.com/Ashakour1)
 [![0dayx16](https://avatars.githubusercontent.com/u/91608871?s=36)](https://github.com/ayaanlehashi11)
- [![jamaal mahamed](https://avatars.githubusercontent.com/u/43518055?s=36)](https://github.com/jamaaldev)
-[![maska](https://avatars.githubusercontent.com/u/48212332?s=36)](https://github.com/Mascuud143) 
-
-
-
-
-
-
+[![jamaal mahamed](https://avatars.githubusercontent.com/u/43518055?s=36)](https://github.com/jamaaldev)
+[![maska](https://avatars.githubusercontent.com/u/48212332?s=36)](https://github.com/Mascuud143)
 
 ## Questions or Need Help?
 
