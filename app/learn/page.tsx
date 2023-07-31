@@ -1,4 +1,6 @@
-import { SideBar, Lessons } from "@/components"
+import { Lessons, SideBar } from "@/components"
+import React from 'react'
+
 
 const Learn = () => {
   return (
