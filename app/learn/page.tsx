@@ -1,12 +1,11 @@
-import LeftSide from '@/components/learn/LeftSide';
-import Lessons from '@/components/learn/Lessons';
+import {  SideBar, Lessons} from '@/components'
 
-export default function Learn() {
+const Learn = () => {
   return (
    
-        <div className="min-h-screen flex flex-row p-20 space-18">
-            <div className="pr-6 border-r-2 border-blue-100 w-1/5">
-                <LeftSide />
+        <div className="flex flex-row min-h-screen p-20 space-18">
+            <div className="w-1/5 pr-6 border-r-2 border-blue-100">
+                <SideBar />
             </div>
             <div className="flex-grow pl-10">
                 <Lessons />
@@ -14,3 +13,5 @@ export default function Learn() {
         </div>
   );
 }
+
+export default Learn;
