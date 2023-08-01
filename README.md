@@ -3,6 +3,8 @@
 ![LUUQAD Logo](/public/luuqad.png)
 **DEMO LINK:** [https://luuqad.vercel.app](https://luuqad.vercel.app)
 
+### READ THIS IN SOMALI 👉 [luuqad](/docs/documentation-afsomali.md)
+
 ## Introduction
 
 Luuqad is an educational plattform aimed at enabling Somali speakers to improve and learn English. The software provides various features and resources to enhance language learning, making it accessible and user-friendly.
