@@ -32,7 +32,7 @@ const Button = ({ text }: { text: string }) => {
   return (
     <button
       onClick={() => (window.location.href = "/signup  ")}
-      className="px-4 pt-3 pb-2 font-bold tracking-widest cursor-pointer text-md focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-2 hover:bg-green-500 bg-primary-green-1 text-primary-white-1 rounded-xl ">
+      className="px-4 pt-3 pb-2 font-bold tracking-widest uppercase cursor-pointer text-md focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-2 hover:bg-green-500 bg-primary-green-1 text-primary-white-1 rounded-xl">
       <span>{text}</span>
     </button>
   )

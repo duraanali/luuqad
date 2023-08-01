@@ -1,6 +1,6 @@
 import { Navbar } from "@/components"
 import type { Metadata } from "next"
-import { Dosis, Nunito_Sans } from "next/font/google"
+import { Dosis } from "next/font/google"
 import "./globals.css"
 
 const dosis = Dosis({
@@ -8,15 +8,6 @@ const dosis = Dosis({
   weight: ["400", "500", "600", "700"],
   style: "normal",
   subsets: ["latin-ext"],
-})
-
-//https://design.duolingo.com/identity/typography#substitute-font-nunito
-
-const nunito = Nunito_Sans({
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-  style: "normal",
-  subsets: ["latin"],
 })
 
 export const metadata: Metadata = {
@@ -30,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={nunito.className}>
+    <html lang="en" className={dosis.className}>
       <body className={"flex flex-col justify-between min-h-screen gap-10"}>
         <Navbar />
         {/*<div className="">
