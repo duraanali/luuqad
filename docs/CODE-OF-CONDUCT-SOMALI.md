@@ -37,7 +37,6 @@ Si loo abuuro bulsho togan oo loo wada dhan yahay, dhammaan xubnaha waxaa laga f
 - Ku dhiiri geli ka qaybgalka shakhsiyaadka asal kasta.
 - Ka warbixi dhaqan kasta oo aan la aqbali karin shaqaalaha mashruuca (ku dar faahfaahinta xiriirka halkan).
 
-
 ## Dhaqangelinta
 
 Tusaalooyinka xadgudubka, dhibaataynta, ama dabeecadaha kale ee aan la aqbali karin ayaa laga yaabaa in lagu soo sheego iyada oo lala xiriirinayo hawlwadeenada mashruuca [your-email@example.com]. Dhammaan cabashooyinka dib ayaa loo eegi doonaa waxaana loo baari doonaa si degdeg ah oo cadaalad ah.
