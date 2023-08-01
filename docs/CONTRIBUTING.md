@@ -1,6 +1,6 @@
 # Contributing to Luuqad
 
-### READ THIS IN SOMALI 👉[WAX KU DARIDA](/docs/CONTRIBUTING-Somali.md)
+### READ THIS IN SOMALI LANGUAGE 👉[WAX KU DARIDA](/docs/CONTRIBUTING-Somali.md)
 
 Thank you for considering contributing to **Luuqad!** We appreciate your time and effort in making this project better.
 

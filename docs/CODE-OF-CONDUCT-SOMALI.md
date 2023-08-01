@@ -2,7 +2,7 @@
 
 ## Hordhac
 
-**Luuqad** waxaa ka go'an inay siiso goob saaxiibtinimo, badbaado leh, iyo deegaan loo wada dhan yahay dhammaan wax ku biiriyaasheeda iyo xubnaha bulshada. Waxaan qiimaynaa ka qayb galka shaqsiyaadka waxaana hiigsaneynaa inaan kobcino bulsho furfuran oo soo dhaweyn leh.
+**Luuqad** waxaa ka go'an inay siiso goob saaxiibtinimo, oo badbaado leh, iyo deegaan loo wada dhan yahay dhammaan wax ku biiriyaasheeda iyo xubnaha bulshada. Waxaan qiimaynaa ka qayb galka shaqsiyaadka waxaana hiigsaneynaa inaan kobcino bulsho furfuran oo soo dhaweyn leh.
 
 Xeerkan Anshaxa ayaa qeexaya waxa aan ka fileyno dhammaan ka qaybgalayaasha ku lug leh Luuqad, oo ay ku jiraan laakiin aan ku xaddidnayn ka qaybqaatayaasha, ilaaliyayaasha, isticmaalayaasha, iyo booqdayaasha meelahayada iyo kanaalada isgaarsiinta. Markaad ka qaybqaadato mashruucan, waxaad ogolaatay inaad raacdo Xeerka Anshaxa.
 

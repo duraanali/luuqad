@@ -1,6 +1,6 @@
 # Code of Conduct
 
-#### READ THIS IN SOMALI 👉 [XEERKA ANSHAXA](/docs/CODE-OF-CONDUCT-SOMALI.md)
+#### READ THIS IN SOMALI LANGUAGE 👉 [XEERKA ANSHAXA](/docs/CODE-OF-CONDUCT-SOMALI.md)
 
 ## Introduction
 

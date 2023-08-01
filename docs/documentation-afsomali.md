@@ -22,7 +22,7 @@ Waad Ku mahadsantahay daneyntada aad daneyneyso inaad waxaad ku darto LUUQAD, pr
 - [Kooxdena iyo Wadashaqeynta](#qeybta-wada-hadalka-iyo-kooxda)
 - [License](#license)
 
-## Maxuu yahay Projectigaan.
+## Maxuu yahay Project-gaan.
 
 LUUQAD waa Project Open Source ah kaas oo lagu barto Barashada Ingiriisiga kaas oo ujeedadiisu tahay in la abuuro goob is-dhexgal ah oo isticmaalayaashu ay ku bartaan Ingiriisiga waqti kasta. Madalku waxa uu bixiyaa casharo kala duwan, layliyo, su'aalo, iyo astaamo raadraac si loola socdo isbadalkoda. Hadafkayagu waa inaan ka dhigno barashada luqadda waayo-aragnimo lagu raaxaysto bartayaasha adduunka oo dhan.
 

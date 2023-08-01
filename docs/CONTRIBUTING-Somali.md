@@ -1,7 +1,7 @@
 # Wax ku biirinta Luuqada
 
 Waad ku mahadsan tahay inaad tixgelisay inaad wax ku biiriso **Luuqadda!**
-Waanu ka mahadcelinaynaa wakhtigaaga iyo dadaalkaaga si aad project-gan u wanaajiso.
+Waanu ka mahadcelinaynaa wakhtigaaga iyo dadaalkaaga si aad project-gan u hagaajiso.
 
 ## Qeybaha uu ka koobanyahay
 
