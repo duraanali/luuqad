@@ -6,11 +6,11 @@ Waanu ka mahadcelinaynaa wakhtigaaga iyo dadaalkaaga si aad project-gan u wanaaj
 ## Qeybaha uu ka koobanyahay
 
 1. [Sida Wax Logu Biiriyo](#sida-wax-logu-daro)
-2. [Wax ku biirinta Code-ka ](#code-contribution)
-3. [Soo gudbinta Cilad](#issue-reports)
-4. [Pull Requests](#pull-requests)
-5. [Hagaha Naqshadeynta](#style-guidelines)
-6. [xeerka anshaxa](#code-of-conduct)
+2. [Wax ku biirinta Code-ka ](#wax-ku-biirinta-code-ka)
+3. [Soo gudbinta Warbixin](#soo-gudbinta-warbixin)
+4. [Codsi Wax Ku Darid](#pull-requests-codsi-wax-ku-soo-darid)
+5. [Qaabka Habraaca](#qaabka-habraaca)
+6. [xeerka anshaxa](/docs/CONTRIBUTING-Somali.md)
 
 ## Sida wax logu biiriyo
 

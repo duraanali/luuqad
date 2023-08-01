@@ -1,5 +1,7 @@
 # Code of Conduct
 
+#### READ THIS IN SOMALI 👉 [XEERKA ANSHAXA](/docs/CODE-OF-CONDUCT-SOMALI.md)
+
 ## Introduction
 
 **Luuqad** is committed to providing a friendly, safe, and inclusive environment for all its contributors and community members. We value the involvement of individuals and we aim to foster an open and welcoming community.
