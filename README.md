@@ -55,6 +55,7 @@ Join our community to collaborate, ask questions, and stay up-to-date with the p
 
 - [Discussions](https://github.com/duraanali/luuqad/discussions)
 - [Slack](slack-url)
+- [Whatsapp Group](https://chat.whatsapp.com/GnVXgpBgosUGGIvz4Fw5Bm)
 
 ## License
 
