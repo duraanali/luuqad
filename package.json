@@ -30,5 +30,10 @@
     "devDependencies": {
         "prettier": "^3.0.0",
         "prisma": "^5.0.0"
+    },
+    "engines": {
+        "node": ">=17.0.0",
+        "npm": ">=9.0.0",
+        "yarn": "please-use-npm"
     }
 }
