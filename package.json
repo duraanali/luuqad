@@ -5,7 +5,8 @@
     "author": "Duraan",
     "scripts": {
         "dev": "next dev",
-        "build": "next build && npx prisma generate",
+        "postinstall": "prisma generate",
+        "build": "next build",
         "start": "next start",
         "lint": "next lint",
         "prettier": "prettier --write .",
