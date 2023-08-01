@@ -120,9 +120,10 @@ Join our community to collaborate, ask questions, and stay up-to-date with the p
 
 LUUQAD is licensed under the [MIT License](LICENSE). By contributing to this project, you agree to license your contributions under the same license.
 
-Let's work together to create a fun and effective English learning platform for learners worldwide! Happy contributing! 🚀
+## AFSOOMAALI
 
 ### KU AQRI AF-SOOMAALI
+
 
 **Ku soo dhawow LUUQAD oo ah open source project ah**
 
@@ -242,3 +243,7 @@ Haddii aad la kulanto cilad, ama aad heyso talo, ama aad u baahan tahay sharaxaa
 Ku soo biir bulshadayada si aan is kaashi u sameyno, u waydiiso su'aalo, oo aad ula socoto horumarka project-ga:
 
 ## License
+
+LUUQAD waxa uu heystaa MIT license. haddi wax ku dareysanaysana macnahedu waxay tahay waxaad aqbashay in license la saaro wax ku daristaada
+
+Aan ka wada shaqayno si aan u abuurno madal Ingiriisi xiiso leh oo waxtar leh oo loogu talagalay bartayaasha adduunka oo dhan! Wax ku biirin farxad leh! 🚀
