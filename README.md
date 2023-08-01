@@ -3,6 +3,8 @@
 ![LUUQAD Logo](/public/luuqad.png)
 **DEMO LINK:** [https://luuqad.vercel.app](https://luuqad.vercel.app)
 
+### READ THIS IN SOMALI LANGUAGE 👉 [SOMALI](/docs/documentation-afsomali.md)
+
 ## Introduction
 
 Luuqad is an educational plattform aimed at enabling Somali speakers to improve and learn English. The software provides various features and resources to enhance language learning, making it accessible and user-friendly.
@@ -39,15 +41,15 @@ npm install
 
 ## Code of Conduct
 
-Please read and adhere to our [Code of Conduct](CODE_OF_CONDUCT.md) to ensure a respectful and inclusive community for everyone.
+Please read and adhere to our [Code of Conduct](docs/CODE_OF_CONDUCT.md) to ensure a respectful and inclusive community for everyone.
 
 ## Contributing Guidelines
 
-If you wish to contribute to Luuqad, please review our [Contributing Guidelines](CONTRIBUTING.md) for more information on how to get involved.
+If you wish to contribute to Luuqad, please review our [Contributing Guidelines](docs/CONTRIBUTING.md) for more information on how to get involved.
 
 ## Style Guidelines
 
-To maintain a consistent and organized codebase, please follow our [Style Guidelines](STYLE_GUIDELINES.md) when contributing to the project.
+To maintain a consistent and organized codebase, please follow our [Style Guidelines](docs/STYLE_GUIDELINES.md) when contributing to the project.
 
 ## Community and Communication
 
@@ -55,6 +57,7 @@ Join our community to collaborate, ask questions, and stay up-to-date with the p
 
 - [Discussions](https://github.com/duraanali/luuqad/discussions)
 - [Slack](slack-url)
+- [Whatsapp Group](https://chat.whatsapp.com/GnVXgpBgosUGGIvz4Fw5Bm)
 
 ## License
 
