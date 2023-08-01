@@ -39,15 +39,15 @@ npm install
 
 ## Code of Conduct
 
-Please read and adhere to our [Code of Conduct](CODE_OF_CONDUCT.md) to ensure a respectful and inclusive community for everyone.
+Please read and adhere to our [Code of Conduct](docs/CODE_OF_CONDUCT.md) to ensure a respectful and inclusive community for everyone.
 
 ## Contributing Guidelines
 
-If you wish to contribute to Luuqad, please review our [Contributing Guidelines](CONTRIBUTING.md) for more information on how to get involved.
+If you wish to contribute to Luuqad, please review our [Contributing Guidelines](docs/CONTRIBUTING.md) for more information on how to get involved.
 
 ## Style Guidelines
 
-To maintain a consistent and organized codebase, please follow our [Style Guidelines](STYLE_GUIDELINES.md) when contributing to the project.
+To maintain a consistent and organized codebase, please follow our [Style Guidelines](docs/STYLE_GUIDELINES.md) when contributing to the project.
 
 ## Community and Communication
 
