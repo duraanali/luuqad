@@ -16,9 +16,8 @@ model User {
   name       String
   email      String   @unique
   password   String
-  type       String
+  type       String?
   location   String? // Optional fields
-  age        Int?
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
   lessons    Lesson[] @relation("UserLessons")
@@ -30,10 +29,10 @@ model User {
 model Lesson {
   id          Int           @id @default(autoincrement())
   title       String
-  description String
-  slug        String
-  level       String
-  status      String
+  description String?
+  slug        String?    @unique
+  level       String?
+  status      Int       @default(0) // 0 = draft, 1 = published
   created_at  DateTime      @default(now())
   updated_at  DateTime      @updatedAt
   units       Unit[]
@@ -46,9 +45,9 @@ model Unit {
   id          Int        @id @default(autoincrement())
   lesson_id   Int
   title       String
-  description String
-  slug        String
-  status      String
+  description String?
+  slug        String  @unique
+  status      Int    @default(0) // 0 = draft, 1 = published
   created_at  DateTime   @default(now())
   updated_at  DateTime   @updatedAt
   lesson      Lesson     @relation(fields: [lesson_id], references: [id])
@@ -60,9 +59,9 @@ model Question {
   id          Int      @id @default(autoincrement())
   unit_id     Int
   title       String
-  description String
-  slug        String
-  status      String
+  description String?
+  slug        String  @unique
+  status      Int  @default(0) // 0 = draft, 1 = published
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
   unit        Unit     @relation(fields: [unit_id], references: [id])
@@ -75,7 +74,7 @@ model Answer {
   question_id Int
   answer      String
   is_correct  Boolean
-  status      String
+  status      Int  @default(0) // 0 = draft, 1 = published
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
   question    Question @relation(fields: [question_id], references: [id])
