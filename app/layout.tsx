@@ -1,13 +1,22 @@
-import "./globals.css"
 import type { Metadata } from "next"
-import { Dosis } from "next/font/google"
+import { Dosis, Nunito_Sans } from "next/font/google"
 import Link from "next/link"
+import "./globals.css"
 
 const dosis = Dosis({
   display: "swap",
   weight: ["400", "500", "600", "700"],
   style: "normal",
   subsets: ["latin-ext"],
+})
+
+//https://design.duolingo.com/identity/typography#substitute-font-nunito
+
+const nunito = Nunito_Sans({
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+  style: "normal",
+  subsets: ["latin"],
 })
 
 export const metadata: Metadata = {
@@ -21,12 +30,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={dosis.className}>
+    <html lang="en" className={nunito.className}>
       <body className={"flex flex-col justify-between min-h-screen gap-10"}>
         <div className="">
           <div className="container mx-auto">
             {/* Header start */}
-            <div className="w-600 flex flex-row items-center justify-between p-7">
+            <div className="flex flex-row items-center justify-between w-600 p-7">
               <Link href="/">
                 {" "}
                 <h2 className="text-3xl text-[#58CC02] tracking-widest font-black">
@@ -44,7 +53,7 @@ export default function RootLayout({
         </div>
         {children}
         {/* Footer start */}
-        <div className="flex flex-col items-center justify-center mb-0 p-5 bg-blue-200">
+        <div className="flex flex-col items-center justify-center p-5 mb-0 bg-blue-200">
           <div className="flex flex-row items-center justify-center space-x-4">
             <div className="flex flex-col items-center justify-center">
               <h3 className="text-2xl font-bold">Footer Area</h3>
