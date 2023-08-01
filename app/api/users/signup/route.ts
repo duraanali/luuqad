@@ -4,12 +4,27 @@ import { NextRequest, NextResponse } from "next/server"
 import isEmail from "validator/lib/isEmail"
 import isLength from "validator/lib/isLength"
 
-import {prisma} from "@lib/prisma"
+import { prisma } from "@lib/prisma"
+
+// Define the types for the request body
+interface RequestBody {
+  name: string
+  email: string
+  password: string
+}
+
+// Define the type for the user object
+interface User {
+  id: number
+  name: string
+  email: string
+}
 
 // using next js 13 api routes, send post request to create user with prisma
 export async function POST(req: NextRequest) {
-  const { name, email, password } = await req.json()
   try {
+    const { name, email, password }: RequestBody = await req.json()
+
     // validate name, email, password
     if (!isLength(name, { min: 3, max: 255 })) {
       return NextResponse.json(
@@ -39,7 +54,7 @@ export async function POST(req: NextRequest) {
     }
 
     // check if email already exists
-    const existingUser = await prisma.user.findUnique({
+    const existingUser: User | null = await prisma.user.findUnique({
       where: {
         email,
       },
@@ -55,10 +70,10 @@ export async function POST(req: NextRequest) {
     }
 
     // hash password
-    const hashedPassword = await bcrypt.hash(password, 10)
+    const hashedPassword: string = await bcrypt.hash(password, 10)
 
     // create user
-    const newUser = await prisma.user.create({
+    const newUser: User = await prisma.user.create({
       data: {
         name,
         email,
@@ -67,27 +82,34 @@ export async function POST(req: NextRequest) {
     })
 
     // create token
-    const luuqad_users_token = jwt.sign(
+    const luuqad_users_token: string = jwt.sign(
       {
         id: newUser.id,
         name: newUser.name,
         email: newUser.email,
       },
-      'process.env.JWT_SECRET',
+      process.env.JWT_SECRET, // make sure to define this environment variable
       {
         expiresIn: "7d",
       },
     )
 
     return NextResponse.json({
-        token: luuqad_users_token,
-        user: {
-            id: newUser.id,
-            name: newUser.name,
-            email: newUser.email,
-        }
+      token: luuqad_users_token,
+      user: {
+        id: newUser.id,
+        name: newUser.name,
+        email: newUser.email,
+      },
     })
   } catch (error) {
     console.log(error)
+    // You might want to return a proper response in case of an error
+    return NextResponse.json(
+      {
+        error: "Something went wrong while creating the user.",
+      },
+      { status: 500 },
+    )
   }
 }
