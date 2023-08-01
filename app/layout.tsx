@@ -1,6 +1,6 @@
+import { Navbar } from "@/components"
 import type { Metadata } from "next"
 import { Dosis, Nunito_Sans } from "next/font/google"
-import Link from "next/link"
 import "./globals.css"
 
 const dosis = Dosis({
@@ -32,9 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={nunito.className}>
       <body className={"flex flex-col justify-between min-h-screen gap-10"}>
-        <div className="">
+        <Navbar />
+        {/*<div className="">
           <div className="container mx-auto">
-            {/* Header start */}
+            * Header start *
             <div className="flex flex-row items-center justify-between w-600 p-7">
               <Link href="/">
                 {" "}
@@ -48,9 +49,9 @@ export default function RootLayout({
                 GET STARTED
               </Link>
             </div>
-            {/* Header end  */}
-          </div>
-        </div>
+            * Header end  *
+      </div>
+    </div>*/}
         {children}
         {/* Footer start */}
         <div className="flex flex-col items-center justify-center p-5 mb-0 bg-blue-200">

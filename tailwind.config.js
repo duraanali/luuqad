@@ -15,7 +15,7 @@ module.exports = {
         "primary-black-2": "rgba(75,75,75)",
         "primary-black-3": "rgba(119,119,119)",
         "primary-black-4": "rgba(175, 175, 175)",
-        "primay-green-1": "rgba(88,204,2)",
+        "primary-green-1": "rgba(88,204,2)",
         "primary-green-2": "rgba(137,226,25)",
 
         "secondary-blue-1": "rgba(43, 112, 201)",
@@ -36,6 +36,7 @@ module.exports = {
       },
       boxShadow: {
         1: "rgba(0, 0, 0, 0.2) 0px 0px 18px",
+        2: "rgba(56, 161, 105, 1)0px 4px 0px 0px"
       },
     },
     screens: {
@@ -63,13 +64,13 @@ module.exports = {
       xl: "1280px",
       // => @media (min-width: 1280px) { ... }
     },
-    fontSize: {
-      'large': '25px',
-      'base': '24.7px',
-      'medium': '20px',
-      'small': '18px',
-      'xsmall': '16px',
-    },
+    // fontSize: {
+    //   'large': '25px',
+    //   'base': '24.7px',
+    //   'medium': '20px',
+    //   'small': '18px',
+    //   'xsmall': '16px',
+    // },
     lineHeight: {
       '10': '10px',
       '17': '17px',
