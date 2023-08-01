@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     return NextResponse.json(
       {
-        error: error.message,
+        error: "Something went wrong while logging in.",
       },
       { status: 500 },
     )
