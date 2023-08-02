@@ -1,4 +1,8 @@
-const SideBar = () => {
+"use client"
+import React from 'react'
+
+const SideBar = ({signOut, callbackUrl}) => {
+
   return (
     <div>
       <ul className="inline-block w-auto space-y-2">
@@ -79,7 +83,10 @@ const SideBar = () => {
           </svg>
           <span className="pt-2 pl-3 c-xl:hidden">SETTINGS</span>
         </li>
-        <li className="flex flex-row items-center w-full px-4 py-3 pb-4 text-base font-bold tracking-widest text-green-500 transition-colors duration-200 rounded-lg cursor-pointer hover:bg-green-100 hover:text-green-600 ">
+        <li 
+        onClick={() => signOut({callbackUrl: callbackUrl})}
+        className="flex flex-row items-center w-full px-4 py-3 pb-4 text-base font-bold tracking-widest text-green-500 transition-colors duration-200 rounded-lg cursor-pointer hover:bg-green-100 hover:text-green-600 
+        ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             id="Layer_1 "

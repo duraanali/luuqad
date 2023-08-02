@@ -1,3 +1,4 @@
+import React from "react"
 import { lessonsData } from "./LessonsData"
 
 type LessonCardProps = {

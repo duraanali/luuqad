@@ -1,7 +1,9 @@
+import React from "react"
 import "./globals.css"
 import type { Metadata } from "next"
 import { Dosis } from "next/font/google"
 import Link from "next/link"
+import AuthProvider from '@components/provider/AuthProvider'
 
 const dosis = Dosis({
   display: "swap",
@@ -22,6 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={dosis.className}>
+       <AuthProvider>
       <body className={"flex flex-col justify-between min-h-screen gap-10"}>
         <div className="">
           <div className="container mx-auto">
@@ -53,6 +56,7 @@ export default function RootLayout({
         </div>
         {/* Footer End */}
       </body>
+      </AuthProvider>
     </html>
   )
 }
