@@ -5,7 +5,7 @@
     "author": "Duraan",
     "scripts": {
         "dev": "next dev",
-        "build": "next build",
+        "build": "npx prisma generate && next build",
         "start": "next start",
         "lint": "next lint",
         "prettier": "prettier --write .",
@@ -14,21 +14,35 @@
     },
     "dependencies": {
         "@prisma/client": "^5.0.0",
-        "@types/node": "20.4.5",
+        "@types/node": "^20.4.5",
         "@types/react": "18.2.17",
         "@types/react-dom": "18.2.7",
         "autoprefixer": "10.4.14",
+        "bcrypt": "^5.1.0",
+        "env-cmd": "^10.1.0",
         "eslint": "8.46.0",
         "eslint-config-next": "13.4.12",
+        "jsonwebtoken": "^9.0.1",
         "next": "13.4.12",
+        "normalize.css": "^8.0.1",
         "postcss": "8.4.27",
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "tailwindcss": "3.3.3",
-        "typescript": "5.1.6"
+        "validator": "^13.9.0"
     },
     "devDependencies": {
+        "@types/bcrypt": "^5.0.0",
+        "@types/jsonwebtoken": "^9.0.2",
+        "@types/validator": "^13.9.0",
         "prettier": "^3.0.0",
-        "prisma": "^5.0.0"
+        "prisma": "^5.0.0",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.1.6"
+    },
+    "engines": {
+        "node": ">=14.0.0",
+        "npm": ">=8.0.0",
+        "yarn": "please-use-npm"
     }
 }

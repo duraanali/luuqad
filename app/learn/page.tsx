@@ -1,6 +1,5 @@
 import { Lessons, SideBar } from "@/components"
-import React from 'react'
-
+import React from "react"
 
 const Learn = () => {
   return (
