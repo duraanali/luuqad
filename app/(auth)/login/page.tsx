@@ -83,7 +83,7 @@ const Login = () => {
                 />
                 {/* forget password link */}
                 <span className="absolute top-2/4 right-2 -translate-y-2/4">
-                  <Link href="/learn" className="font-bold text-gray-400">
+                  <Link href="/forget" className="font-bold text-gray-400">
                     FORGET?
                   </Link>
                 </span>
