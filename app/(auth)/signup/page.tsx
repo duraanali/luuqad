@@ -1,11 +1,30 @@
-"use client"
-import React from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { useState } from "react"
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import { useState,FormEvent } from "react";
 
 const Signup = () => {
-  const [passwordView, setPasswordView] = useState(false)
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordView, setPasswordView] = useState(false);
+
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+
+    const response = await fetch("/api/users/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, password }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+    // handle the response data here
+  };
+
   return (
     <div className="flex  justify-center min-h-full px-4 sm:px-6 lg:px-8">
       <div className="max-w-sm">
@@ -15,18 +34,13 @@ const Signup = () => {
           </h1>
         </div>
         <div className="flex flex-col items-center justify-center gap-3 mt-8">
-          <input
-            type="text"
-            autoComplete="none"
-            required
-            className="relative items-center justify-center block px-3 px-4 py-2 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300"
-            placeholder="Age"
-          />
           <div className="relative mt-2">
             <input
               type="text"
               autoComplete="none"
               required
+              value={name}
+              onChange={(event) => setName(event.target.value)}
               className="relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300"
               placeholder="name"
             />
@@ -35,6 +49,8 @@ const Signup = () => {
               type="email"
               autoComplete="none"
               required
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
               className="relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300"
               placeholder="Email"
             />
@@ -43,6 +59,8 @@ const Signup = () => {
                 type={passwordView ? "text" : "password"}
                 autoComplete="none"
                 required
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
                 className="relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300"
                 placeholder="password"
               />
@@ -50,7 +68,7 @@ const Signup = () => {
                 {passwordView ? (
                   <Image
                     className="cursor-pointer"
-                    src="./svg/viewUp.svg"
+                    src="/svg/viewUp.svg"
                     alt=""
                     width={25}
                     height={25}
@@ -59,7 +77,7 @@ const Signup = () => {
                 ) : (
                   <Image
                     className="cursor-pointer"
-                    src="./svg/view.svg"
+                    src="/svg/view.svg"
                     alt=""
                     width={25}
                     height={25}
@@ -73,11 +91,13 @@ const Signup = () => {
         </div>
 
         <div className="flex flex-col items-center justify-center w-full mt-4 space-y-4 text-center">
-          <Link
-            href="/learn"
-            className="w-96 h-12 px-4 pt-2 rounded-xl text-lg tracking-widest bg-blue-400 text-white font-bold hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-[0px_4px_0px_0px_#4299E1]">
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="w-96 h-12 px-4 pt-2 rounded-xl text-lg tracking-widest bg-blue-400 text-white font-bold hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-[0px_4px_0px_0px_#4299E1]"
+          >
             Create account
-          </Link>
+          </button>
         </div>
         {/* or line */}
 
@@ -89,9 +109,10 @@ const Signup = () => {
 
         {/* OAuth Login */}
         <div className="flex items-center gap-5 mt-5">
-          <button
+          <button 
             className="flex gap-2 items-center w-48 h-12  px-5 py-2 rounded-xl text-lg bg-white shadow-[0px_2px_2px_2px_#d1d5db]"
-            type="button">
+            type="button"
+          >
             <div className="flex items-center px-5 ">
               <Image
                 className=""
@@ -107,7 +128,8 @@ const Signup = () => {
           </button>
           <button
             className="flex gap-2 items-center w-48 h-12 px-5 py-2 rounded-xl text-lg bg-white shadow-[0px_2px_2px_2px_#d1d5db]"
-            type="button">
+            type="button"
+          >
             <div className="flex items-center px-5">
               <Image
                 className=""
@@ -136,7 +158,7 @@ const Signup = () => {
         </div>
         <div className="mt-5 text-center text-gray-400">
           <p>
-            his site is protected by reCAPTCHA Enterprise and the Google{" "}
+            This site is protected by reCAPTCHA Enterprise and the Google{" "}
             <Link href="/privacy" className="font-bold">
               Privacy Policy
             </Link>{" "}
@@ -149,7 +171,7 @@ const Signup = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;

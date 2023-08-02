@@ -2,7 +2,7 @@ import React from "react"
 import "./globals.css"
 import type { Metadata } from "next"
 import { Dosis } from "next/font/google"
-import Link from "next/link"
+import { Navbar } from "@/components"
 import AuthProvider from '@components/provider/AuthProvider'
 
 const dosis = Dosis({
@@ -26,10 +26,11 @@ export default function RootLayout({
     <html lang="en" className={dosis.className}>
        <AuthProvider>
       <body className={"flex flex-col justify-between min-h-screen gap-10"}>
-        <div className="">
+        <Navbar />
+        {/*<div className="">
           <div className="container mx-auto">
-            {/* Header start */}
-            <div className="w-600 flex flex-row items-center justify-between p-7">
+            * Header start *
+            <div className="flex flex-row items-center justify-between w-600 p-7">
               <Link href="/">
                 {" "}
                 <h2 className="text-3xl text-[#58CC02] tracking-widest font-black">
@@ -42,12 +43,12 @@ export default function RootLayout({
                 GET STARTED
               </Link>
             </div>
-            {/* Header end  */}
-          </div>
-        </div>
+            * Header end  *
+      </div>
+    </div>*/}
         {children}
         {/* Footer start */}
-        <div className="flex flex-col items-center justify-center mb-0 p-5 bg-blue-200">
+        <div className="flex flex-col items-center justify-center p-5 mb-0 bg-blue-200">
           <div className="flex flex-row items-center justify-center space-x-4">
             <div className="flex flex-col items-center justify-center">
               <h3 className="text-2xl font-bold">Footer Area</h3>
