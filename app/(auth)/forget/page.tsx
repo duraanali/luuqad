@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import Image from 'next/image'
 export default function Forget() {
   return (
     <div className="min-h-full flex items-center justify-center  px-4 sm:px-6 lg:px-8">
