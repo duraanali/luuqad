@@ -14,7 +14,9 @@ model User {
   name       String
   email      String   @unique
   password   String
-  type       String?
+  oauth_id   String?  @unique
+  image      String?  // Optional fields
+  oauth_provider String? // Optional fields
   location   String? // Optional fields
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt

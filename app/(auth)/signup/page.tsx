@@ -1,16 +1,16 @@
-"use client";
-import Link from "next/link";
-import Image from "next/image";
-import { useState,FormEvent } from "react";
+"use client"
+import Link from "next/link"
+import Image from "next/image"
+import { useState, FormEvent } from "react"
 
 const Signup = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordView, setPasswordView] = useState(false);
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [passwordView, setPasswordView] = useState(false)
 
   const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault();
+    event.preventDefault()
 
     const response = await fetch("/api/users/signup", {
       method: "POST",
@@ -18,12 +18,12 @@ const Signup = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name, email, password }),
-    });
+    })
 
-    const data = await response.json();
-    console.log(data);
+    const data = await response.json()
+    console.log(data)
     // handle the response data here
-  };
+  }
 
   return (
     <div className="flex  justify-center min-h-full px-4 sm:px-6 lg:px-8">
@@ -94,8 +94,7 @@ const Signup = () => {
           <button
             type="submit"
             onClick={handleSubmit}
-            className="w-96 h-12 px-4 pt-2 rounded-xl text-lg tracking-widest bg-blue-400 text-white font-bold hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-[0px_4px_0px_0px_#4299E1]"
-          >
+            className="w-96 h-12 px-4 pt-2 rounded-xl text-lg tracking-widest bg-blue-400 text-white font-bold hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 shadow-[0px_4px_0px_0px_#4299E1]">
             Create account
           </button>
         </div>
@@ -109,10 +108,9 @@ const Signup = () => {
 
         {/* OAuth Login */}
         <div className="flex items-center gap-5 mt-5">
-          <button 
+          <button
             className="flex gap-2 items-center w-48 h-12  px-5 py-2 rounded-xl text-lg bg-white shadow-[0px_2px_2px_2px_#d1d5db]"
-            type="button"
-          >
+            type="button">
             <div className="flex items-center px-5 ">
               <Image
                 className=""
@@ -128,8 +126,7 @@ const Signup = () => {
           </button>
           <button
             className="flex gap-2 items-center w-48 h-12 px-5 py-2 rounded-xl text-lg bg-white shadow-[0px_2px_2px_2px_#d1d5db]"
-            type="button"
-          >
+            type="button">
             <div className="flex items-center px-5">
               <Image
                 className=""
@@ -171,7 +168,7 @@ const Signup = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Signup;
+export default Signup
