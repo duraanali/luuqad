@@ -2,9 +2,10 @@ import type { NextAuthOptions } from "next-auth"
 import GitHubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
+
 import { prisma } from "@lib/prisma"
-import { isEmail } from "validator"
-import { compare } from "bcryptjs"
+import isEmail from "validator/lib/isEmail"
+import { compare } from "bcrypt"
 
 export const options: NextAuthOptions = {
   providers: [
@@ -38,7 +39,7 @@ export const options: NextAuthOptions = {
         // const user = { id: "42", name: "Dave", password: "nextauth" }
 
         // check if email is valid
-        if (!isEmail(credentials?.email)) {
+        if (!isEmail(credentials?.email as string)) {
           return {
             error: "Email must be a valid email address",
           }
@@ -58,8 +59,8 @@ export const options: NextAuthOptions = {
         }
 
         // check if password is correct
-        const passwordValid = await compare(
-          credentials?.password,
+        const passwordValid = compare(
+          credentials?.password as string,
           existingUser.password,
         )
 
@@ -76,7 +77,7 @@ export const options: NextAuthOptions = {
             name: existingUser.name,
             email: existingUser.email,
           },
-        }
+        } as any
       },
     }),
   ],

@@ -1,7 +1,12 @@
 "use client"
 import React from "react"
 
-const SideBar = ({ signOut, callbackUrl }) => {
+interface Props {
+  signOut: any
+  callbackUrl: string
+}
+
+const SideBar = ({ signOut, callbackUrl }: Props) => {
   return (
     <div>
       <ul className="inline-block w-auto space-y-2">
