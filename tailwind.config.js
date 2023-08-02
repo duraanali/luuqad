@@ -24,11 +24,11 @@ module.exports = {
         "secondary-orange-1": "rgba(255, 200, 0)",
         "secondary-orange-2": "rgba(255, 150, 0)",
         "secondary-purple-1": "rgba(206, 130, 255)",
-
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       borderRadius: {
         1: "2px",
@@ -36,21 +36,21 @@ module.exports = {
       },
       boxShadow: {
         1: "rgba(0, 0, 0, 0.2) 0px 0px 18px",
-        2: "rgba(56, 161, 105, 1)0px 4px 0px 0px"
+        2: "rgba(56, 161, 105, 1)0px 4px 0px 0px",
       },
     },
     screens: {
       "c-sm": {
-        max: "767px"
+        max: "767px",
       },
       "c-md": {
-        max: "991px"
+        max: "991px",
       },
       "c-lg": {
-        max: "1199px"
+        max: "1199px",
       },
       "c-xl": {
-        max: "1200px"
+        max: "1200px",
       },
       sm: "640px",
       // => @media (min-width: 640px) { ... }
@@ -72,12 +72,11 @@ module.exports = {
     //   'xsmall': '16px',
     // },
     lineHeight: {
-      '10': '10px',
-      '17': '17px',
-      '16': '16px',
-      '15': '15px',
+      10: "10px",
+      17: "17px",
+      16: "16px",
+      15: "15px",
     },
-
   },
   plugins: [],
 }

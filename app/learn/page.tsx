@@ -1,7 +1,7 @@
 "use client"
 import { Lessons, SideBar } from "@/components"
 import React from "react"
-import { signOut } from "next-auth/react";
+import { signOut } from "next-auth/react"
 
 const Learn = () => {
   const callbackUrl = "/login"
