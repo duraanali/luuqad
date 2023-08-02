@@ -1,9 +1,10 @@
-import React from "react"
-import "./globals.css"
+import { Navbar } from "@/components"
+import Footer from "@/components/footer/Footer"
+import AuthProvider from "@components/provider/AuthProvider"
 import type { Metadata } from "next"
 import { Dosis } from "next/font/google"
-import { Navbar } from "@/components"
-import AuthProvider from "@components/provider/AuthProvider"
+import React from "react"
+import "./globals.css"
 
 const dosis = Dosis({
   display: "swap",
@@ -28,15 +29,7 @@ export default function RootLayout({
         <body className={"flex flex-col justify-between min-h-screen gap-10"}>
           <Navbar />
           {children}
-          {/* Footer start */}
-          <div className="flex flex-col items-center justify-center p-5 mb-0 bg-blue-200">
-            <div className="flex flex-row items-center justify-center space-x-4">
-              <div className="flex flex-col items-center justify-center">
-                <h3 className="text-2xl font-bold">Footer Area</h3>
-              </div>
-            </div>
-          </div>
-          {/* Footer End */}
+          <Footer/>
         </body>
       </AuthProvider>
     </html>
