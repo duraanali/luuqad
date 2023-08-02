@@ -1,0 +1,56 @@
+---
+name: 🛠️ Feature Request
+description: Suggest an idea to help us improve 
+title: "[Feature]: "
+labels:
+  - "feature_request"
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Thanks :heart: for taking the time to fill out this feature request report!**
+        We kindly ask that you search to see if an issue [already exists](https://github.com/duraanali/luuqad/issues?q=is%3Aissue+is%3Aopen+sort%3Acreated-desc+) for your feature.
+
+        We are also happy to accept contributions from our users. For more details see [here](https://github.com/duraanali/luuqad/blob/main/docs/CONTRIBUTING.md).
+
+  - type: textarea
+    attributes:
+      label: Description
+      description: |
+        A clear and concise description of the feature you're interested in.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Suggested Solution
+      description: |
+        Describe the solution you'd like. A clear and concise description of what you want to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Alternatives
+      description: |
+        Describe alternatives you've considered.
+        A clear and concise description of any alternative solutions or features you've considered.
+    validations:
+      required: false
+  - type: checkboxes
+    id: code-of-conduct
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct.](https://insightsengineering.github.io/scda/CODE_OF_CONDUCT.html)
+      options:
+        - label: I agree to follow this project's Code of Conduct.
+          required: true
+  - type: checkboxes
+    id: contributor-guidelines
+    attributes:
+      label: Contribution Guidelines
+      description: By submitting this issue, you agree to follow our [Contribution Guidelines.](https://insightsengineering.github.io/scda/CONTRIBUTING.html)
+      options:
+        - label: I agree to follow this project's Contribution Guidelines.
+          required: true
