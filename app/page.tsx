@@ -1,11 +1,10 @@
-import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 export default function Home() {
   return (
     <div>
       {/* Hero start */}
-      <div className="flex flex-col items-center justify-center sm:flex-row">
+      <div className="flex h-screen	 flex-col items-center justify-center sm:flex-row">
         <div className="mb-12 sm:mb-0 sm:mr-8">
           <Image
             src="/images/home.png"
