@@ -1,10 +1,11 @@
-import React from "react"
-import "./globals.css"
-import type { Metadata } from "next"
-import { Dosis } from "next/font/google"
 import { Navbar } from "@/components"
 import Providers from "@/components/Providers"
 import ToastContainerBar from "@/components/ToastContainerBar"
+import Footer from "@/components/footer/Footer"
+import type { Metadata } from "next"
+import { Dosis } from "next/font/google"
+import React from "react"
+import "./globals.css"
 
 const dosis = Dosis({
   display: "swap",
@@ -31,13 +32,7 @@ export default async function RootLayout({
           <Navbar />
           {children}
           {/* Footer start */}
-          <div className="flex flex-col items-center justify-center p-5 mb-0 bg-blue-200">
-            <div className="flex flex-row items-center justify-center space-x-4">
-              <div className="flex flex-col items-center justify-center">
-                <h3 className="text-2xl font-bold">Footer Area</h3>
-              </div>
-            </div>
-          </div>
+          <Footer />
           {/* Footer End */}
         </body>
       </Providers>
