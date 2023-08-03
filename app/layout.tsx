@@ -1,4 +1,6 @@
 import { Navbar } from "@/components"
+import Providers from "@/components/Providers"
+import ToastContainerBar from "@/components/ToastContainerBar"
 import Footer from "@/components/footer/Footer"
 import type { Metadata } from "next"
 import { Dosis } from "next/font/google"
