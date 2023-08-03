@@ -1,10 +1,8 @@
 # Security Policy
-
 instructions for how to report security-related flaws and vulnerabilities
-
 ## Supported Versions
-
 current and upcoming releases
+
 
 ## Reporting a Vulnerability
 

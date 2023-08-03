@@ -4,7 +4,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { useSearchParams, useRouter } from "next/navigation"
 import { Formik, Form, Field } from "formik"
-import { signIn } from "next-auth/react"
 import * as Yup from "yup"
 
 interface Values {
@@ -140,7 +139,6 @@ const Signup = () => {
         {/* OAuth Login */}
         <div className="flex items-center gap-5 mt-5">
           <button
-            onClick={() => signIn("github")}
             className="flex gap-2 items-center w-48 h-12  px-5 py-2 rounded-xl text-lg bg-white shadow-[0px_2px_2px_2px_#d1d5db]"
             type="button">
             <div className="flex items-center px-5 ">
@@ -158,7 +156,6 @@ const Signup = () => {
             </div>
           </button>
           <button
-            onClick={() => signIn("google")}
             className="flex gap-2 items-center w-48 h-12 px-5 py-2 rounded-xl text-lg bg-white shadow-[0px_2px_2px_2px_#d1d5db]"
             type="button">
             <div className="flex items-center px-5">
