@@ -1,6 +1,6 @@
 ---
 name: 🛠️ Feature Request
-description: Suggest an idea to help us improve 
+description: Suggest an idea to help us improve
 title: "[Feature]: "
 labels:
   - "feature_request"
@@ -42,7 +42,7 @@ body:
     id: code-of-conduct
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct.](https://insightsengineering.github.io/scda/CODE_OF_CONDUCT.html)
+      description: By submitting this issue, you agree to follow our [Code of Conduct.](https://github.com/duraanali/luuqad/blob/main/docs/CODE_OF_CONDUCT.md)
       options:
         - label: I agree to follow this project's Code of Conduct.
           required: true
@@ -50,7 +50,7 @@ body:
     id: contributor-guidelines
     attributes:
       label: Contribution Guidelines
-      description: By submitting this issue, you agree to follow our [Contribution Guidelines.](https://insightsengineering.github.io/scda/CONTRIBUTING.html)
+      description: By submitting this issue, you agree to follow our [Contribution Guidelines.](https://github.com/duraanali/luuqad/blob/main/docs/CONTRIBUTING.md)
       options:
         - label: I agree to follow this project's Contribution Guidelines.
           required: true
