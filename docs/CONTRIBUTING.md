@@ -14,6 +14,11 @@ Thank you for considering contributing to **Luuqad!** We appreciate your time an
 ## How to Contribute
 
 Before you start contributing, please take a moment to read and understand this guide. It will help streamline the contribution process and ensure that everyone is on the same page.
+## To New Contributors
+Before starting code contribution first:
+1. Check previous issues and read
+3. Ask to be assign an existing issue or create new issue
+2. After when assigned to you an issue follow the code contribution steps, below this.
 
 ## Code Contribution
 
