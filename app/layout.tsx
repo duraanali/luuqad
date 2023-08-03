@@ -3,7 +3,8 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Dosis } from "next/font/google"
 import { Navbar } from "@/components"
-import AuthProvider from "@components/provider/AuthProvider"
+import Providers from "@/components/Providers"
+import ToastContainerBar from "@/components/ToastContainerBar"
 
 const dosis = Dosis({
   display: "swap",
@@ -17,15 +18,16 @@ export const metadata: Metadata = {
   description: "Next Generation Language Learning Platform",
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
     <html lang="en" className={dosis.className}>
-      <AuthProvider>
+      <Providers>
         <body className={"flex flex-col justify-between min-h-screen gap-10"}>
+          <ToastContainerBar />
           <Navbar />
           {children}
           {/* Footer start */}
@@ -38,7 +40,7 @@ export default function RootLayout({
           </div>
           {/* Footer End */}
         </body>
-      </AuthProvider>
+      </Providers>
     </html>
   )
 }

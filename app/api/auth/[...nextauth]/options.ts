@@ -3,7 +3,7 @@ import GitHubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
 
-import { prisma } from "@lib/prisma"
+import { prisma } from "@/lib/prisma"
 import isEmail from "validator/lib/isEmail"
 import { compare } from "bcrypt"
 
@@ -88,7 +88,6 @@ export const options: NextAuthOptions = {
         user: {
           ...session.user,
           id: token.id,
-          randomKey: token.randomKey,
         },
       }
     },
@@ -98,7 +97,6 @@ export const options: NextAuthOptions = {
         return {
           ...token,
           id: u.id,
-          randomKey: u.randomKey,
         }
       }
       return token

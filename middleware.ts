@@ -1,7 +1,45 @@
-// Without a defined matcher, this one line applies next-auth
-// to the entire project
-export { default } from "next-auth/middleware"
+import { getToken } from "next-auth/jwt"
+import { withAuth } from "next-auth/middleware"
+import { NextFetchEvent, NextRequest, NextResponse } from "next/server"
 
-// Applies next-auth only to matching routes - can be regex
-// Ref: https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
-export const config = { matcher: ["/learn/"] }
+export default async function middleware(
+  req: NextRequest,
+  event: NextFetchEvent,
+) {
+  const { origin } = req.nextUrl
+
+  const token = await getToken({ req })
+  const isAuthenticated = !!token
+
+  if (isAuthenticated) {
+    if (
+      req.nextUrl.pathname.startsWith("/login") ||
+      req.nextUrl.pathname.startsWith("/signup") ||
+      req.nextUrl.pathname.startsWith("/")
+    ) {
+      return NextResponse.rewrite(`${origin}/learn`)
+    }
+  }
+
+  // if user is not authenticated, allow access to login and signup pages and "/" page
+  if (!isAuthenticated) {
+    if (
+      req.nextUrl.pathname.startsWith("/login") ||
+      req.nextUrl.pathname.startsWith("/signup") ||
+      req.nextUrl.pathname.startsWith("/")
+    ) {
+      return NextResponse.next()
+    }
+  }
+
+  const authMiddleware = withAuth({
+    pages: {
+      signIn: `/login`,
+    },
+  })
+
+  // @ts-expect-error
+  return authMiddleware(req, event)
+}
+
+export const config = { matcher: ["/", "/login", "/signup", "/learn"] }
