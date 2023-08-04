@@ -1,4 +1,3 @@
-import React from "react"
 import { lessonsData } from "./LessonsData"
 
 type LessonCardProps = {
@@ -14,6 +13,7 @@ const LessonCard = ({ title, subtitle, progress }: LessonCardProps) => {
       <h3 className={`text-2xl font-black text-white`}>{title}</h3>
       <p className="text-white">{subtitle}</p>
       <div className={`bg-yellow-600 mt-4 rounded-full`}>
+        <link rel="stylesheet" href="index.html" />
         <div
           className={`h-2 bg-yellow-200 rounded-full`}
           style={{ width: `${progress}%` }}></div>

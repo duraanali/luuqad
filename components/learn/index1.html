@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script>
+</head>
+<body class="h-screen overflow-hidden flex items-center justify-center font-dosis" style="background: #edf2f7; font-family: 'Dosis', sans-serif;">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<main class="relative min-h-screen w-full bg-white">
+    <div class="p-6" x-data="app">
+        <!-- header -->
+        <header class=" flex w-full justify-between"></header>
+        <div class=" left-1/2 top-1/2 mx-auto max-w-4xl m-10 transform space-y-4 text-center">
+            <div class=" h-full w-full  bg-gray-200 rounded-full dark:bg-gray-300" >      
+                <div class=" col-span-2 bg-green-500 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full" style="width: 45%"> 45%</div>
+            </div>
+            <br>
+            <header class="mb-3 text-2xl font-bold ">Select the correct  Character(s) for "A"
+                <br><br><br>
+                <div class="container left-1/2 top-1/2 mx-auto max-w-4xl transform space-y-4 text-center flex flex-col items-center   sm:flex-col  w-full justify-between transform space-y-4 text-center">
+                    <div class="grid grid-cols-4 gap- m-auto ">
+                        <button class="ml-4 py-20 box-border h-52 w-32 p-2 rounded-2xl border-b-2 border-b-gray-300  bg-white text-3xl text-black-700 ring-2 ring-gray-300  hover:bg-sky-200 hover:ring-sky-400 active:translate-y-[0.125rem] active:border-b-blue-200 focus:bg-sky-200 focus:ring focus:ring-sky-300"> AA </button>
+                        <button class="ml-4 py-20 box-border h-52 w-32 p-2 rounded-2xl border-b-2 border-b-gray-300  bg-white text-3xl text-black-700 ring-2 ring-gray-300  hover:bg-sky-200 hover:ring-sky-400 active:translate-y-[0.125rem] active:border-b-blue-200 focus:bg-sky-200 focus:ring focus:ring-sky-300"> EE </button>
+                        <button class="ml-4 py-20 box-border h-52 w-32 p-2 rounded-2xl border-b-2 border-b-gray-300  bg-white text-3xl text-black-700 ring-2 ring-gray-300  hover:bg-sky-200 hover:ring-sky-400 active:translate-y-[0.125rem] active:border-b-blue-200 focus:bg-sky-200 focus:ring focus:ring-sky-300"> II </button>
+                        <button class="ml-4 py-20 box-border h-52 w-32 p-2 rounded-2xl border-b-2 border-b-gray-300  bg-white text-3xl text-black-700 ring-2 ring-gray-300  hover:bg-sky-200 hover:ring-sky-400 active:translate-y-[0.125rem] active:border-b-blue-200 focus:bg-sky-200 focus:ring focus:ring-sky-300"> OO </button>
+                    </div>
+                </div>
+                    
+            </header>
+            
+        </div>
+    </div>
+    <br>
+    <hr>
+    <div class="flex flex-col  md:flex-row w-full justify-between m-auto mt-5 transform  text-center">
+        <div dir="rtl">
+            <button class="me-44 rounded-xl border-b-2 border-b-gray-300 bg-white px-12 py-2.5 font-bold text-gray-400 ring-2 ring-gray-300 hover:bg-gray-200 active:translate-y-[0.125rem] active:border-b-gray-200 " >Skip  </button> 
+        </div>
+        <div class="ltr">
+            <button class="me-44  rounded-xl border-b-2 border-b-gray-200 bg-gray-200 px-12 py-2.5 font-bold text-gray-400 ring-2 ring-gray-300 hover:bg-lime-500 hover:border-b-green-600 hover:text-white hover:ring-green-300 active:translate-y-[0.125rem] active:border-b-green-600 focus:bg-lime-600 focus:border-b-green-600 focus:ring-green-600 focus:text-white">Check</button>
+        </div>
+    </div>
+
+        
+    </div>
+
+
+
+</main>
+
+<script>
+    document.addEventListener("alpine:init", () => {
+        Alpine.data("app", () => ({
+            isLoginPage: true,
+        }));
+    });
+</script>
+</body>
+</html>
