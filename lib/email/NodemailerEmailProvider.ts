@@ -23,7 +23,7 @@ export default class NodemailerEmailProvider implements EmailProvider {
       from: email.from,
       to: email.to,
       subject: email.subject,
-      text: email.body,
+      html: email.body,
     };
 
     try {
