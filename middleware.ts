@@ -21,12 +21,11 @@ export default async function middleware(req: NextRequest) {
   if (!isAuthenticated) {
     if (
       req.nextUrl.pathname.startsWith("/login") ||
-      req.nextUrl.pathname.startsWith("/signup")
+      req.nextUrl.pathname.startsWith("/signup") ||
+      req.nextUrl.pathname.startsWith("/")
     ) {
       return NextResponse.next()
-    } else {
-      return NextResponse.rewrite(`${origin}/login`)
-    }
+    } 
   }
 
   // if user is authenticated but not an admin, redirect to "/learn"
@@ -34,5 +33,5 @@ export default async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/login", "/signup", "/learn", "/admin"],
+  matcher: ["/", "/login", "/signup", "/learn", "/admin"],
 }
