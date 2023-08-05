@@ -50,7 +50,7 @@ module.exports = {
         max: "1199px",
       },
       "c-xl": {
-        max: "1200px",
+        max: "1100px",
       },
       sm: "640px",
       // => @media (min-width: 640px) { ... }
