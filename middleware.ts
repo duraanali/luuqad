@@ -44,7 +44,7 @@ export default async function middleware(req: NextRequest) {
 
   // For any other case (e.g., user authenticated as admin but trying to access "/" or "/login" or "/signup"),
   // redirect to "/learn" if logged in, or "/login" if not logged in.
-  return NextResponse.rewrite(`${origin}/learn`);
+  return NextResponse.rewrite(`${origin}/learn`)
 }
 
 export const config = {
