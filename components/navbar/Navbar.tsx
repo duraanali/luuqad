@@ -6,12 +6,13 @@ import { usePathname, useRouter } from "next/navigation"
 const Navbar = () => {
   const path = usePathname()
   const router = useRouter()
-  console.log(path)
 
   const handleButtonClick = () => {
     if (path === "/login") {
       router.push("/signup")
     } else if (path === "/signup") {
+      router.push("/login")
+    } else {
       router.push("/login")
     }
   }
