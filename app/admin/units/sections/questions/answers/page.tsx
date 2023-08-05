@@ -35,7 +35,7 @@ const AllAnswers = () => {
       )
       console.log(res)
       if (res.status == 200) {
-        const newAnswers = answers.filter((answer : any) => answer.id !== id)
+        const newAnswers = answers.filter((answer: any) => answer.id !== id)
         setAnswers(newAnswers)
       }
     } catch (error) {
@@ -44,7 +44,7 @@ const AllAnswers = () => {
   }
 
   return (
-    <div className="flex-grow pl-5">
+    <div className='flex-grow pl-5'>
       <Answers
         answers={answers}
         deleteAnswer={deleteAnswer}

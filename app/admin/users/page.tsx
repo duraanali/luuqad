@@ -19,7 +19,7 @@ const AllUsers = () => {
   }, [])
 
   return (
-    <div className="flex-grow pl-5">
+    <div className='flex-grow pl-5'>
       <Users users={users} />
     </div>
   )

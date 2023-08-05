@@ -32,7 +32,7 @@ const Learn = () => {
   }
 
   return (
-    <div className="flex-grow pl-5">
+    <div className='flex-grow pl-5'>
       <Units units={units} deleteUnit={deleteUnit} />
     </div>
   )

@@ -34,7 +34,9 @@ const AllQuestions = () => {
         `${baseUrl}/api/units/sections/questions/delete/${id}`,
       )
       if (res.status == 200) {
-        const newQuestion = questions.filter((question : any) => question.id !== id)
+        const newQuestion = questions.filter(
+          (question: any) => question.id !== id,
+        )
         setQuestions(newQuestion)
       }
     } catch (error) {
@@ -43,7 +45,7 @@ const AllQuestions = () => {
   }
 
   return (
-    <div className="flex-grow pl-5">
+    <div className='flex-grow pl-5'>
       <Questions
         questions={questions}
         deleteQuestion={deleteQuestion}
