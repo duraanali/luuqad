@@ -21,7 +21,10 @@ const Navbar = () => {
       <div className='container flex flex-row items-center justify-between px-12 mb-12 mx-auto py-6'>
         <Logo />
         {/* Btn */}
-        <Button text={path === "/login" ? "Sign Up" : "Login"} onClick={handleButtonClick} />
+        <Button
+          text={path === "/login" ? "Sign Up" : "Login"}
+          onClick={handleButtonClick}
+        />
       </div>
     </header>
   )
@@ -42,7 +45,7 @@ const Logo = () => {
   )
 }
 
-const Button = ({ text, onClick }: { text: string, onClick: () => void }) => {
+const Button = ({ text, onClick }: { text: string; onClick: () => void }) => {
   return (
     <button
       onClick={onClick}
