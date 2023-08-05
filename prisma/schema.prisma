@@ -10,68 +10,68 @@ generator client {
 
 // Authentication
 model User {
-  id         Int      @id @default(autoincrement())
-  name       String
-  email      String   @unique
-  password   String
-  oauth_id   String?  @unique
-  image      String?  // Optional fields
-  oauth_provider String? // Optional fields
-  location   String? // Optional fields
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  lessons    Lesson[] @relation("UserLessons")
+  id             Int        @id @default(autoincrement())
+  role           Role       @default(user) 
+  name           String
+  email          String     @unique
+  password       String
+  oauth_id       String?    @unique
+  image          String?    // Optional fields
+  oauth_provider String?    // Optional fields
+  location       String?    // Optional fields
+  created_at     DateTime   @default(now())
+  updated_at     DateTime   @updatedAt
 
-  UserLessons UserLessons[]
-  Achievement Achievement[]
+  Achievement    Achievement[]
 }
 
-// Lessons
-model Lesson {
-  id          Int           @id @default(autoincrement())
-  title       String
-  description String?
-  slug        String?    @unique
-  level       String?
-  status      Int       @default(0) // 0 = draft, 1 = published
-  created_at  DateTime      @default(now())
-  updated_at  DateTime      @updatedAt
-  units       Unit[]
-  users       User[]        @relation("UserLessons")
-  UserLessons UserLessons[]
-  Achievement Achievement[]
+// Role enum with @@map attribute
+enum Role {
+  admin
+  user
 }
 
 // Units
 model Unit {
   id          Int        @id @default(autoincrement())
-  lesson_id   Int
   title       String
   description String?
-  slug        String  @unique
   status      Int    @default(0) // 0 = draft, 1 = published
   created_at  DateTime   @default(now())
   updated_at  DateTime   @updatedAt
-  lesson      Lesson     @relation(fields: [lesson_id], references: [id])
-  questions   Question[]
+  achievements Achievement[]
+  sections    Section[]
 
-  @@index([lesson_id])
+}
+
+// Sections
+model Section {
+  id          Int      @id @default(autoincrement())
+  unit_id     Int
+  title       String
+  description String?
+  status      Int  @default(0) // 0 = draft, 1 = published
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  questions   Question[]
+  unit        Unit     @relation(fields: [unit_id], references: [id])
+
+  @@index([unit_id])
 }
 
 // Questions
 model Question {
   id          Int      @id @default(autoincrement())
-  unit_id     Int
+  section_id     Int
   title       String
   description String?
-  slug        String  @unique
   status      Int  @default(0) // 0 = draft, 1 = published
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
-  unit        Unit     @relation(fields: [unit_id], references: [id])
+  section     Section @relation(fields: [section_id], references: [id])
   answers     Answer[]
 
-  @@index([unit_id])
+  @@index([section_id])
 }
 
 // Answers
@@ -84,34 +84,23 @@ model Answer {
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
   question    Question @relation(fields: [question_id], references: [id])
-}
 
-// User and Lessons
-model UserLessons {
-  id         Int      @id @default(autoincrement())
-  user_id    Int
-  lesson_id  Int
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  user       User     @relation(fields: [user_id], references: [id])
-  lesson     Lesson   @relation(fields: [lesson_id], references: [id])
-
-  @@index([user_id])
-  @@index([lesson_id])
+  @@index([question_id])
 }
 
 // Achievements
 model Achievement {
   id           Int        @id @default(autoincrement())
   user_id      Int
-  lesson_id    Int
+  unit_id    Int
   correct      Int        @default(0)
   total        Int        @default(0)
   created_at   DateTime   @default(now())
   updated_at   DateTime   @updatedAt
   user         User       @relation(fields: [user_id], references: [id])
-  lesson       Lesson     @relation(fields: [lesson_id], references: [id])
+  unit       Unit     @relation(fields: [unit_id], references: [id])
 
   @@index([user_id])
-  @@index([lesson_id])
+  @@index([unit_id])
 }
+

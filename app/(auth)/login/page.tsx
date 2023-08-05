@@ -55,7 +55,7 @@ const Login = () => {
           <h1 className="mt-6 text-3xl font-extrabold text-center">Log in</h1>
         </div>
         <Formik
-          initialValues={initialValues}
+          initialValues={initialValues} 
           validationSchema={validationSchema}
           onSubmit={onSubmit}>
           <Form>
