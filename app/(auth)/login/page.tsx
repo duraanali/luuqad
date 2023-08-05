@@ -143,26 +143,13 @@ const Login = () => {
         </div>
         <div className="mt-6 text-center text-gray-400">
           <p>
-            By signing in to Duolingo, you agree to our{" "}
-            <Link href="/terms" className="font-bold">
+            By signing in to LUUQAD, you agree to our{" "}
+            <Link href="/policies/terms_of_use" className="font-bold">
               Terms
             </Link>{" "}
             and{" "}
-            <Link href="/privacy" className="font-bold">
+            <Link href="/policies/privacy_policy" className="font-bold">
               Privacy Policy
-            </Link>
-          </p>
-        </div>
-        <div className="mt-5 text-center text-gray-400">
-          <p>
-            his site is protected by reCAPTCHA Enterprise and the Google{" "}
-            <Link href="/privacy" className="font-bold">
-              Privacy Policy
-            </Link>{" "}
-            and{" "}
-            <Link href="Terms" className="font-bold">
-              {" "}
-              Terms of Service apply.
             </Link>
           </p>
         </div>
