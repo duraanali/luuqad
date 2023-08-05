@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
+import { options } from "@auth/[...nextauth]/options"
+import { getServerSession } from "next-auth/next"
 import { EmailProvider, Email } from '../../../lib/email/EmailProvider';
 import SendgridEmailProvider from '../../../lib/email/SendGridEmailProvider';
 import NodemailerEmailProvider from '../../../lib/email/NodemailerEmailProvider';
@@ -24,42 +26,53 @@ const emailProviders: { [key: string]: EmailProvider } = {
 };
 
 
-export async function POST(req: NextRequest){
-    const { to, from, subject, body }: Email = await req.json();
+export async function POST(req: NextRequest) {
+  const session = await getServerSession(options)
 
-    const emailProvider = emailProviders[DEFAULT_EMAIL_PROVIDER];
+  if (!session) {
+    return NextResponse.json(
+      {
+        error: "You're not authorized",
+      },
+      { status: 401 },
+    )
+  }
 
-    if (!emailProvider) {
-      return NextResponse.json(
-        {
-          error: "Invalid email provider",
-        },
-        { status: 400 },
-      )
-    }
-    const email: Email = {
-      to,
-      from,
-      subject,
-      body,
-    };
+  const { to, from, subject, body }: Email = await req.json();
 
-    try {
-      await emailProvider.sendEmail(email);
-      return NextResponse.json(
-        {
-          error: "Email sent successfully",
-        },
-        { status: 200 },
-      )
-    } catch (error) {
-      console.error('Error sending email:', error);
-      return NextResponse.json(
-        {
-          error: "Failed to send email",
-        },
-        { status: 500 },
-      )
-    }
-  
+  const emailProvider = emailProviders[DEFAULT_EMAIL_PROVIDER];
+
+  if (!emailProvider) {
+    return NextResponse.json(
+      {
+        error: "Invalid email provider",
+      },
+      { status: 400 },
+    )
+  }
+  const email: Email = {
+    to,
+    from,
+    subject,
+    body,
+  };
+
+  try {
+    await emailProvider.sendEmail(email);
+    return NextResponse.json(
+      {
+        error: "Email sent successfully",
+      },
+      { status: 200 },
+    )
+  } catch (error) {
+    console.error('Error sending email:', error);
+    return NextResponse.json(
+      {
+        error: "Failed to send email",
+      },
+      { status: 500 },
+    )
+  }
+
 }
