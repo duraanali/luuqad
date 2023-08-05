@@ -86,8 +86,8 @@ export const options: NextAuthOptions = {
           name: existingUser.name,
           email: existingUser.email,
           role: existingUser.role,
-        } as any;
-      }
+        } as any
+      },
     }),
   ],
   callbacks: {
@@ -163,6 +163,6 @@ export const options: NextAuthOptions = {
       return {
         ...token,
       } as any
-    }
+    },
   },
 }

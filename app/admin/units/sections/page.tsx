@@ -34,7 +34,7 @@ const AllSections = () => {
         `${baseUrl}/api/units/sections/delete/${id}`,
       )
       if (res.status == 200) {
-        const newSection = sections.filter((section : any) => section.id !== id)
+        const newSection = sections.filter((section: any) => section.id !== id)
         setSections(newSection)
       }
     } catch (error) {
@@ -43,7 +43,7 @@ const AllSections = () => {
   }
 
   return (
-    <div className="flex-grow pl-5">
+    <div className='flex-grow pl-5'>
       <Sections
         sections={sections}
         deleteSection={deleteSection}

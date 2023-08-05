@@ -9,14 +9,14 @@ function ToastContainerBar() {
   return (
     <>
       <ToastContainer
-        position="bottom-left"
+        position='bottom-left'
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         pauseOnFocusLoss
         pauseOnHover
-        theme="colored"
+        theme='colored'
       />
     </>
   )
