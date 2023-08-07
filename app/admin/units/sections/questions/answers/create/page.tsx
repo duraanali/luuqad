@@ -25,7 +25,7 @@ const CreateAnswer = () => {
 
   React.useEffect(() => {
     axios
-      .get(`${baseUrl}//api/units/questions`)
+      .get(`${baseUrl}//api/units/sections/questions`)
       .then((res) => {
         setQuestions(res.data.questions)
       })
@@ -49,7 +49,7 @@ const CreateAnswer = () => {
 
   const searchParams = useSearchParams()
   const callbackUrl =
-    searchParams.get("callbackUrl") || "/admin/units/questions/answers"
+    searchParams.get("callbackUrl") || "/admin/units/sections/questions/answers"
 
   const onSubmit = async (values: Values) => {
     try {
@@ -60,7 +60,7 @@ const CreateAnswer = () => {
         question_id: Number(values.question_id),
       }
 
-      const res = await fetch("/api/units/questions/answers/create", {
+      const res = await fetch("/api/units/sections/questions/answers/create", {
         method: "POST",
         body: JSON.stringify(answer),
         headers: {

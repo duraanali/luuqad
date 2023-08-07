@@ -10,7 +10,7 @@ const AllAnswers = () => {
 
   React.useEffect(() => {
     axios
-      .get(`${baseUrl}/api/units/questions/answers`)
+      .get(`${baseUrl}/api/units/sections/questions/answers`)
       .then((res) => {
         setAnswers(res.data.answers)
       })
@@ -19,7 +19,7 @@ const AllAnswers = () => {
       })
 
     axios
-      .get(`${baseUrl}/api/units/questions`)
+      .get(`${baseUrl}/api/units/sections/questions`)
       .then((res) => {
         setQuestions(res.data.questions)
       })

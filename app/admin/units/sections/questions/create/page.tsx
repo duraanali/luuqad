@@ -7,21 +7,20 @@ import * as Yup from "yup"
 import baseUrl from "@/utils/baseUrl"
 
 interface Values {
-  title: string
-  description: string
-  status: number
   section_id: number
-}
-
-interface initialProps {
+  question_type_id: number
   title: string
-  description: string
+  question: string
+  avatar: string
+  points: number
+  audio: string
   status: number
 }
 
 const CreateQuestion = () => {
   const router = useRouter()
   const [sections, setSections] = React.useState([])
+  const [questionTypes, setQuestionTypes] = React.useState([])
 
   React.useEffect(() => {
     axios
@@ -32,19 +31,31 @@ const CreateQuestion = () => {
       .catch((err) => {
         console.log(err)
       })
+
+      axios
+      .get(`${baseUrl}/api/units/sections/questions/question_types`)
+      .then((res) => {
+        setQuestionTypes(res.data.questiontypes)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
   }, [])
 
-  const initialValues: initialProps = {
+  const initialValues = {
     title: "",
-    description: "",
+    question: "",
+    avatar: "",
+    audio: "",
+    points: 0,
     status: 1,
   }
 
   const validationSchema = Yup.object({
     title: Yup.string().required("Title is required"),
-    description: Yup.string().required("Description is required"),
+    question: Yup.string().required("Question is required"),
     status: Yup.number().required("Status is required"),
-    section_id: Yup.number().required("Unit is required"),
   })
 
   const searchParams = useSearchParams()
@@ -55,7 +66,11 @@ const CreateQuestion = () => {
     try {
       const question = {
         title: values.title,
-        description: values.description,
+        question: values.question,
+        question_type_id: Number(values.question_type_id),
+        avatar: values.avatar,
+        audio: values.audio,
+        points: Number(values.points),
         status: Number(values.status),
         section_id: Number(values.section_id),
       }
@@ -104,11 +119,11 @@ const CreateQuestion = () => {
                 <div className='mt-5'></div>
                 <Field
                   type='text'
-                  name='description'
+                  name='question'
                   autoComplete='none'
                   required
                   className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
-                  placeholder='Description'
+                  placeholder='Question'
                 />
                 <div className='mt-5 relative'>
                   <Field
@@ -126,6 +141,47 @@ const CreateQuestion = () => {
                     ))}
                   </Field>
                 </div>
+                <div className='mt-5 relative'>
+                  <Field
+                    as='select'
+                    required
+                    name='question_type_id'
+                    className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'>
+                    <option value='' disabled selected>
+                      Select Question Type
+                    </option>
+                    {questionTypes.map((section: any) => (
+                      <option key={section.id} value={section.id}>
+                        {section.title}
+                      </option>
+                    ))}
+                  </Field>
+                </div>
+                <div className='mt-5'></div>
+                <Field
+                  type='text'
+                  name='avatar'
+                  autoComplete='none'
+                  className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
+                  placeholder='Avatar'
+                />
+                 <div className='mt-5'></div>
+                <Field
+                  type='text'
+                  name='points'
+                  autoComplete='none'
+                  className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
+                  placeholder='Points'
+                />
+                <div className='mt-5'></div>
+                <Field
+                  type='text'
+                  name='audio'
+                  autoComplete='none'
+                  className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
+                  placeholder='Audio'
+                />
+                <div className='mt-5'></div>
                 <div className='mt-5 relative'>
                   <Field
                     as='select'

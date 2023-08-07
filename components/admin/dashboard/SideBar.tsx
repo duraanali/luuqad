@@ -78,6 +78,25 @@ const SideBar = ({ callbackUrl }: Props) => {
             <span className='pt-2 pl-3 c-xl:hidden'>QUESTIONS</span>
           </li>
         </Link>
+        <Link href='/admin/units/sections/questions/question_types'>
+          <li
+            className={`flex flex-row items-center w-full px-4 py-3 pb-4 text-base font-bold tracking-widest ${
+              isCurrentRoute("/admin/units/sections/questions/question_types")
+                ? "text-blue-400 bg-blue-100 border-2 border-blue-200 rounded-lg"
+                : "text-green-500 hover:bg-green-100 hover:text-green-600 rounded-lg"
+            } cursor-pointer`}>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              id='Layer_1'
+              viewBox='0 0 24 24'
+              width='26'
+              height='26'
+              fill='rgb(34 197 94)'>
+              <path d='m22.942 6.837-2.182-2.183.947-.947a1 1 0 1 0 -1.414-1.414l-.947.947-2.183-2.182a3.7 3.7 0 0 0 -5.105 0 3.609 3.609 0 0 0 0 5.106l2.182 2.182-5.894 5.894-2.183-2.182a3.7 3.7 0 0 0 -5.105 0 3.609 3.609 0 0 0 0 5.106l2.182 2.182-.947.947a1 1 0 1 0 1.414 1.414l.947-.947 2.183 2.182a3.609 3.609 0 0 0 5.105 0 3.608 3.608 0 0 0 0-5.105l-2.182-2.182 5.9-5.895 2.182 2.182a3.609 3.609 0 0 0 5.105 0 3.608 3.608 0 0 0 0-5.105z' />
+            </svg>
+            <span className='pt-2 pl-3 c-xl:hidden'>QUESTION TYPES</span>
+          </li>
+        </Link>
         <Link href='/admin/units/sections/questions/answers'>
           <li
             className={`flex flex-row items-center w-full px-4 py-3 pb-4 text-base font-bold tracking-widest ${
