@@ -4,31 +4,12 @@ import { getServerSession } from "next-auth/next"
 
 import { prisma } from "@/lib/prisma"
 
-interface RequestBody {
-  section_id: number
-  question_type_id: number
-  title: string
-  question: string
-  avatar: string
-  points: number
-  audio: string
-  status: number
-}
-// using next js 13 api routes, send post request to create user with prisma
-export async function POST(req: NextRequest) {
+// delete lesson with id in the params from prisma
+export async function DELETE(
+  req: NextRequest,
+  { params: { id } }: { params: { id: string } },
+) {
   try {
-    // use prisma to create a new lesson
-    const {
-      title,
-      status,
-      section_id,
-      question_type_id,
-      question,
-      avatar,
-      points,
-      audio,
-    }: RequestBody = await req.json()
-
     const session = await getServerSession(options)
 
     if (!session) {
@@ -49,22 +30,15 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const newQuestion = await prisma.question.create({
-      data: {
-        title,
-        status,
-        section_id,
-        question_type_id,
-        question,
-        avatar,
-        points,
-        audio,
-      } as any,
+    // Get all lessons
+    await prisma.questionType.delete({
+      where: {
+        id: Number(id),
+      },
     })
 
     return NextResponse.json({
-      message: "Question created successfully",
-      newQuestion,
+      message: "Question Type deleted successfully",
     })
   } catch (error) {
     // You might want to return a proper response in case of an error

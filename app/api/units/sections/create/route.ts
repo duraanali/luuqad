@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma"
 
 interface RequestBody {
   title: string
-  description: string
+  avatar: string
   status: number
   unit_id: number
 }
@@ -14,8 +14,7 @@ interface RequestBody {
 export async function POST(req: NextRequest) {
   try {
     // use prisma to create a new lesson
-    const { title, description, status, unit_id }: RequestBody =
-      await req.json()
+    const { title, avatar, status, unit_id }: RequestBody = await req.json()
 
     const session = await getServerSession(options)
 
@@ -40,7 +39,7 @@ export async function POST(req: NextRequest) {
     const newSection = await prisma.section.create({
       data: {
         title,
-        description,
+        avatar,
         status,
         unit_id,
       } as any,

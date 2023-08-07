@@ -1,10 +1,11 @@
-import React from "react"
 import Link from "next/link"
+import React from "react"
 
 interface QuestionsProps {
   questions: any
   deleteQuestion: any
   sections: any
+  questionTypes: any
 }
 const Questions = (props: QuestionsProps) => {
   // get unit based on question unit_id
@@ -15,6 +16,14 @@ const Questions = (props: QuestionsProps) => {
     return unit?.title
   }
 
+  const getQuestionType = (question_type_id: number) => {
+    const questionType = props.questionTypes.find(
+      (questionType: any) => questionType.id === question_type_id,
+    )
+    return questionType?.title
+  }
+
+  console.log(props)
   return (
     <div className='flex flex-col'>
       <div className='-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
@@ -36,7 +45,7 @@ const Questions = (props: QuestionsProps) => {
                   <th
                     scope='col'
                     className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                    Description
+                    Question
                   </th>
                   <th
                     scope='col'
@@ -46,7 +55,22 @@ const Questions = (props: QuestionsProps) => {
                   <th
                     scope='col'
                     className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                    Status
+                    Type
+                  </th>
+                  <th
+                    scope='col'
+                    className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                    Avatar
+                  </th>
+                  <th
+                    scope='col'
+                    className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                    Points
+                  </th>
+                  <th
+                    scope='col'
+                    className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                    Audio
                   </th>
                   <th
                     scope='col'
@@ -69,7 +93,7 @@ const Questions = (props: QuestionsProps) => {
                     </td>
                     <td className='px-6 py-4 whitespace-nowrap'>
                       <div className='text-sm text-gray-900'>
-                        {question.description}
+                        {question.question}
                       </div>
                     </td>
                     <td className='px-6 py-4 whitespace-nowrap'>
@@ -78,10 +102,27 @@ const Questions = (props: QuestionsProps) => {
                       </div>
                     </td>
                     <td className='px-6 py-4 whitespace-nowrap'>
+                      <div className='text-sm text-gray-900'>
+                        {getQuestionType(question.question_type_id)}
+                      </div>
+                    </td>
+                    <td className='px-6 py-4 whitespace-nowrap'>
+                      <div className='text-sm text-gray-900'>
+                        {question.avatar}
+                      </div>
+                    </td>
+                    <td className='px-6 py-4 whitespace-nowrap'>
                       <span
                         className='px-2 inline-flex text-xs leading-5
                       font-semibold rounded-full bg-green-100 text-green-800'>
-                        {question.status === 1 ? "Active" : "Inactive"}
+                        {question.points}
+                      </span>
+                    </td>
+                    <td className='px-6 py-4 whitespace-nowrap'>
+                      <span
+                        className='px-2 inline-flex text-xs leading-5
+                      font-semibold rounded-full bg-green-100 text-green-800'>
+                        {question.audio}
                       </span>
                     </td>
 

@@ -7,12 +7,22 @@ import baseUrl from "@/utils/baseUrl"
 const AllQuestions = () => {
   const [questions, setQuestions] = React.useState([])
   const [sections, setSections] = React.useState([])
+  const [questionTypes, setQuestionTypes] = React.useState([])
 
   React.useEffect(() => {
     axios
       .get(`${baseUrl}/api/units/sections/questions`)
       .then((res) => {
         setQuestions(res.data.questions)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
+    axios
+      .get(`${baseUrl}/api/units/sections/questions/question_types`)
+      .then((res) => {
+        setQuestionTypes(res.data.questiontypes)
       })
       .catch((err) => {
         console.log(err)
@@ -48,6 +58,7 @@ const AllQuestions = () => {
     <div className='flex-grow pl-5'>
       <Questions
         questions={questions}
+        questionTypes={questionTypes}
         deleteQuestion={deleteQuestion}
         sections={sections}
       />

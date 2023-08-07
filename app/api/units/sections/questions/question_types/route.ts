@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { options } from "../auth/[...nextauth]/options"
+import { options } from "@auth/[...nextauth]/options"
 import { getServerSession } from "next-auth/next"
 
 import { prisma } from "@/lib/prisma"
@@ -19,14 +19,14 @@ export async function GET() {
     }
 
     // Get all lessons
-    const units = await prisma.unit.findMany({
+    const questiontypes = await prisma.questionType.findMany({
       orderBy: {
         id: "asc",
       },
     })
 
     return NextResponse.json({
-      units,
+      questiontypes,
     })
   } catch (error) {
     // You might want to return a proper response in case of an error

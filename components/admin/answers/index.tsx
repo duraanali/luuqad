@@ -21,7 +21,7 @@ const Answers = (props: AnswersProps) => {
         <div className='py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8'>
           <div className='shadow overflow-hidden border-b border-gray-200 sm:rounded-lg'>
             <Link
-              href='/admin/units/questions/answers/create'
+              href='/admin/units/sections/questions/answers/create'
               className='bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded mb-2 w-2/12'>
               Create Answer
             </Link>

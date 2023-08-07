@@ -8,15 +8,9 @@ import baseUrl from "@/utils/baseUrl"
 
 interface Values {
   title: string
-  description: string
+  avatar: string
   status: number
   unit_id: number
-}
-
-interface initialProps {
-  title: string
-  description: string
-  status: number
 }
 
 const CreateSection = () => {
@@ -34,15 +28,14 @@ const CreateSection = () => {
       })
   }, [])
 
-  const initialValues: initialProps = {
+  const initialValues = {
     title: "",
-    description: "",
+    avatar: "",
     status: 1,
   }
 
   const validationSchema = Yup.object({
     title: Yup.string().required("Title is required"),
-    description: Yup.string().required("Description is required"),
     status: Yup.number().required("Status is required"),
     unit_id: Yup.number().required("Unit is required"),
   })
@@ -54,7 +47,7 @@ const CreateSection = () => {
     try {
       const section = {
         title: values.title,
-        description: values.description,
+        avatar: values.avatar,
         status: Number(values.status),
         unit_id: Number(values.unit_id),
       }
@@ -103,11 +96,10 @@ const CreateSection = () => {
                 <div className='mt-5'></div>
                 <Field
                   type='text'
-                  name='description'
+                  name='avatar'
                   autoComplete='none'
-                  required
                   className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
-                  placeholder='Description'
+                  placeholder='Image, Icon, or SVG'
                 />
                 <div className='mt-5 relative'>
                   <Field
