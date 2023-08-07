@@ -19,11 +19,11 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
       "@auth/*": ["./app/api/auth/*"],
-      "@utils/*": ["./utils*"]
+      "@utils/*": ["./utils*"],
+      "@store/*": ["./store/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
