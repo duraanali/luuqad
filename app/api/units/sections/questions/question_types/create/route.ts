@@ -11,8 +11,7 @@ interface RequestBody {
 export async function POST(req: NextRequest) {
   try {
     // use prisma to create a new lesson
-    const { title }: RequestBody =
-      await req.json()
+    const { title }: RequestBody = await req.json()
 
     const session = await getServerSession(options)
 
@@ -34,7 +33,7 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const newType = await prisma.questiontype.create({
+    const newType = await prisma.questionType.create({
       data: {
         title,
       } as any,

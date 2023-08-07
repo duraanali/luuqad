@@ -17,7 +17,6 @@ const AllQuestionTypes = () => {
       .catch((err) => {
         console.log(err)
       })
-
   }, [])
 
   const deleteQuestionTypes = async (id: number) => {

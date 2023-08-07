@@ -1,5 +1,4 @@
 "use client"
-import axios from "axios"
 import { Field, Form, Formik } from "formik"
 import { useRouter, useSearchParams } from "next/navigation"
 import React from "react"
@@ -9,7 +8,6 @@ import baseUrl from "@/utils/baseUrl"
 interface Values {
   title: string
 }
-
 
 const CreateQuestionTypes = () => {
   const router = useRouter()
@@ -32,13 +30,16 @@ const CreateQuestionTypes = () => {
         title: values.title,
       }
 
-      const res = await fetch("/api/units/sections/questions/question_types/create", {
-        method: "POST",
-        body: JSON.stringify(question),
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        `${baseUrl}/api/units/sections/questions/question_types/create`,
+        {
+          method: "POST",
+          body: JSON.stringify(question),
+          headers: {
+            "Content-Type": "application/json",
+          },
         },
-      })
+      )
 
       if (res.status == 200) {
         router.push(callbackUrl)

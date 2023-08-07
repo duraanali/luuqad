@@ -32,7 +32,7 @@ const CreateQuestion = () => {
         console.log(err)
       })
 
-      axios
+    axios
       .get(`${baseUrl}/api/units/sections/questions/question_types`)
       .then((res) => {
         setQuestionTypes(res.data.questiontypes)
@@ -40,7 +40,6 @@ const CreateQuestion = () => {
       .catch((err) => {
         console.log(err)
       })
-
   }, [])
 
   const initialValues = {
@@ -165,7 +164,7 @@ const CreateQuestion = () => {
                   className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
                   placeholder='Avatar'
                 />
-                 <div className='mt-5'></div>
+                <div className='mt-5'></div>
                 <Field
                   type='text'
                   name='points'

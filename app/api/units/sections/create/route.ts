@@ -14,8 +14,7 @@ interface RequestBody {
 export async function POST(req: NextRequest) {
   try {
     // use prisma to create a new lesson
-    const { title, avatar, status, unit_id }: RequestBody =
-      await req.json()
+    const { title, avatar, status, unit_id }: RequestBody = await req.json()
 
     const session = await getServerSession(options)
 

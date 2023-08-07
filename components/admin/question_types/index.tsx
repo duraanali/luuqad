@@ -3,19 +3,10 @@ import Link from "next/link"
 
 interface QuestionTypesProps {
   question_types: any
-  deleteQuestionType: any
-  sections: any
+  deleteQuestionTypes: any
 }
 
 const QuestionTypes = (props: QuestionTypesProps) => {
-  // get unit based on question unit_id
-  const getSections = (section_id: number) => {
-    const unit = props.sections.find(
-      (section: any) => section.id === section_id,
-    )
-    return unit?.title
-  }
-
   return (
     <div className='flex flex-col'>
       <div className='-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8'>
@@ -58,20 +49,21 @@ const QuestionTypes = (props: QuestionTypesProps) => {
                         </div>
                       </div>
                     </td>
-       
+
                     <td className='px-6 py-4 whitespace-nowrap'>
                       <div className='text-sm text-gray-900'>
                         {question_type.created_at}
                       </div>
                     </td>
-              
 
                     <td className='px-6 py-4 whitespace-nowrap text-right text-sm font-medium'>
                       {/* <a href="#" className="text-indigo-600 hover:text-indigo-900">
                         Edit
                       </a> */}
                       <button
-                        onClick={() => props.deleteQuestionType(question_type.id)}
+                        onClick={() =>
+                          props.deleteQuestionTypes(question_type.id)
+                        }
                         className='text-red-600 hover:text-red-900'>
                         Delete
                       </button>

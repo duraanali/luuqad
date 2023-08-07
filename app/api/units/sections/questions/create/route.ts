@@ -13,14 +13,21 @@ interface RequestBody {
   points: number
   audio: string
   status: number
-
 }
 // using next js 13 api routes, send post request to create user with prisma
 export async function POST(req: NextRequest) {
   try {
     // use prisma to create a new lesson
-    const { title, status, section_id, question_type_id,  question, avatar, points, audio}: RequestBody =
-      await req.json()
+    const {
+      title,
+      status,
+      section_id,
+      question_type_id,
+      question,
+      avatar,
+      points,
+      audio,
+    }: RequestBody = await req.json()
 
     const session = await getServerSession(options)
 

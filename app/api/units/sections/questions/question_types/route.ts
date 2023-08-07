@@ -26,13 +26,13 @@ export async function GET() {
     })
 
     return NextResponse.json({
-        questiontypes,
+      questiontypes,
     })
   } catch (error) {
     // You might want to return a proper response in case of an error
     return NextResponse.json(
       {
-        error: error.message,
+        error: "Sorry, something went wrong.",
       },
       { status: 500 },
     )

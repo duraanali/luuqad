@@ -19,7 +19,7 @@ const AllQuestions = () => {
         console.log(err)
       })
 
-      axios
+    axios
       .get(`${baseUrl}/api/units/sections/questions/question_types`)
       .then((res) => {
         setQuestionTypes(res.data.questiontypes)

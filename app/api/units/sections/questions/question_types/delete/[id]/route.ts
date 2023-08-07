@@ -31,7 +31,7 @@ export async function DELETE(
     }
 
     // Get all lessons
-    await prisma.questiontype.delete({
+    await prisma.questionType.delete({
       where: {
         id: Number(id),
       },

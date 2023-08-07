@@ -6,7 +6,6 @@ import React from "react"
 import * as Yup from "yup"
 import baseUrl from "@/utils/baseUrl"
 
-
 interface Values {
   title: string
   avatar: string
