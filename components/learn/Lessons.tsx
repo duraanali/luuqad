@@ -1,6 +1,7 @@
 "use client"
 import React from "react"
 import { lessonsData } from "./LessonsData"
+import Link from "next/link"
 
 type LessonCardProps = {
   title: string
@@ -10,6 +11,7 @@ type LessonCardProps = {
 
 const LessonCard = ({ title, subtitle, progress }: LessonCardProps) => {
   return (
+    <Link href='/learn/quiz'>
     <div
       className={`bg-[#86cc05] p-4 rounded-lg shadow-[0px_4px_0px_0px_#38a169] cursor-pointer hover:bg-[#86cc05b3] transition-colors duration-200`}>
       <h3 className={`text-2xl font-black text-white`}>{title}</h3>
@@ -20,6 +22,7 @@ const LessonCard = ({ title, subtitle, progress }: LessonCardProps) => {
           style={{ width: `${progress}%` }}></div>
       </div>
     </div>
+    </Link>
   )
 }
 
