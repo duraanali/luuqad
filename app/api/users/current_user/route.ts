@@ -12,26 +12,27 @@ export async function GET() {
     if (!session) {
       return NextResponse.json(
         {
-          error: "Hey, you're not authorized, what you doing here? Trying to be a hacker?",
+          error:
+            "Hey, you're not authorized, what you doing here? Trying to be a hacker?",
         },
         { status: 401 },
       )
     }
-    
+
     // Get all lessons
     const users = await prisma.user.findUnique({
-        where: {
-            email: session.user?.email as string
-        },
-        select: {
-            id: true,
-            name: true,
-            email: true,
-            image: true,
-            role: true,
-            created_at: true,
-            updated_at: true,
-        },
+      where: {
+        email: session.user?.email as string,
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        image: true,
+        role: true,
+        created_at: true,
+        updated_at: true,
+      },
     })
 
     return NextResponse.json({

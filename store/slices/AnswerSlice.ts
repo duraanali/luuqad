@@ -29,11 +29,11 @@ export const answers = createApi({
     }
   },
   endpoints: (builder) => ({
-   getAnswersForQuestion: builder.mutation<ANSWER[], number>({
-        query: (question_id) => ({
-            url: `/api/units/sections/questions/answers/${question_id}`,
-            method: "POST",
-        }),
+    getAnswersForQuestion: builder.mutation<ANSWER[], number>({
+      query: (question_id) => ({
+        url: `/api/units/sections/questions/answers/${question_id}`,
+        method: "POST",
+      }),
     }),
   }),
 })

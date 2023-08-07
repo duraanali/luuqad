@@ -5,12 +5,12 @@ import { addTokenToRequest } from "./Token"
 
 interface USER {
   id: number
-    name: string
-    email: string
-    image: string
-    role: string
-    created_at: Date,
-    updated_at: Date,
+  name: string
+  email: string
+  image: string
+  role: string
+  created_at: Date
+  updated_at: Date
 }
 
 export const user = createApi({

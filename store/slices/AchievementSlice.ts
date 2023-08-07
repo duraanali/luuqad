@@ -9,8 +9,8 @@ interface ACHIEVEMENT {
   unit_id: number
   correct: number
   total: number
-  created_at: Date,
-  updated_at: Date,
+  created_at: Date
+  updated_at: Date
 }
 
 export const achievements = createApi({

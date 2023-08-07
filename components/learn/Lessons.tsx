@@ -9,7 +9,6 @@ type LessonCardProps = {
 }
 
 const LessonCard = ({ title, subtitle, progress }: LessonCardProps) => {
-
   return (
     <div
       className={`bg-[#86cc05] p-4 rounded-lg shadow-[0px_4px_0px_0px_#38a169] cursor-pointer hover:bg-[#86cc05b3] transition-colors duration-200`}>

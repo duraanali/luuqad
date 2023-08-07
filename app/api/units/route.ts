@@ -12,7 +12,8 @@ export async function GET() {
     if (!session) {
       return NextResponse.json(
         {
-          error: "Nah, you're not authorized, what you doing here? Trying to be a hacker?",
+          error:
+            "Nah, you're not authorized, what you doing here? Trying to be a hacker?",
         },
         { status: 401 },
       )
