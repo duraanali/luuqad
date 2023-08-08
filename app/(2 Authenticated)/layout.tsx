@@ -1,10 +1,11 @@
 import Providers from "@/components/Providers"
 import ToastContainerBar from "@/components/ToastContainerBar"
+import SideBar from "@/components/sidebar/SideBar"
 import type { Metadata } from "next"
 import { Dosis } from "next/font/google"
+import { redirect } from "next/navigation"
 import React from "react"
 import "./globals.css"
-import { redirect } from "next/navigation"
 
 const dosis = Dosis({
   display: "swap",
@@ -29,9 +30,14 @@ export default async function RootLayout({
   return (
     <html lang='en' className={dosis.className}>
       <Providers>
-        <body className={"flex flex-col justify-between p-6"}>
+        <body className={"flex flex-col justify-between"}>
           <ToastContainerBar />
-          {children}
+          <section className='dashboard-container c-max-lg:flex c-max-md:min-w-max c-max-lg:flex-col  '>
+            <SideBar />
+            <div className='c-max-md:pl-[0px] c-max-md:gap-0 c-min-lg:pl-[256px] c-max-lg:pl-[88px] '>
+              {children}
+            </div>
+          </section>
         </body>
       </Providers>
     </html>
