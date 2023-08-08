@@ -1,9 +1,7 @@
 import React from "react"
-import { Field, Form, Formik } from "formik"
 import Link from "next/link"
 
 const Footer = () => {
-  const onSubscribe = () => {}
 
   return (
     <div className='flex flex-col items-center justify-around pt-8 pb-8 mt-16 bg-[#58CC02]'>
