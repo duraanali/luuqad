@@ -3,47 +3,47 @@ import { NextRequest, NextResponse } from "next/server"
 
 export default async function middleware(req: NextRequest) {
   const { origin } = req.nextUrl
-
   const token = await getToken({ req })
   const role = token?.role
   const isAuthenticated = !!token
 
-  // If the user is authenticated and is an admin, allow access to "/learn" and "/admin"
+  // Check if the token is null (not authenticated)
+  if (!isAuthenticated) {
+    // Allow access to signup and "/" pages
+    if (
+      req.nextUrl.pathname.startsWith("/signup") ||
+      req.nextUrl.pathname === "/"
+    ) {
+      return NextResponse.next()
+    }
+    // Redirect to the login page for other pages
+    return NextResponse.rewrite(`${origin}/login`)
+  }
+
+  // If the user is authenticated and is an admin
   if (isAuthenticated && role === "admin") {
+    // Allow access to "/learn" and "/admin"
     if (
       req.nextUrl.pathname.startsWith("/learn") ||
       req.nextUrl.pathname.startsWith("/admin")
     ) {
       return NextResponse.next()
-    } else {
-      return NextResponse.rewrite(`${origin}/admin`)
     }
+    // Redirect to "/admin" for other pages
+    return NextResponse.rewrite(`${origin}/admin`)
   }
 
-  // If the user is authenticated but not an admin, allow access to "/learn" only
+  // If the user is authenticated but not an admin
   if (isAuthenticated && role !== "admin") {
+    // Allow access to "/learn" only
     if (req.nextUrl.pathname.startsWith("/learn")) {
       return NextResponse.next()
-    } else {
-      return NextResponse.rewrite(`${origin}/learn`)
     }
+    // Redirect to "/learn" for other pages
+    return NextResponse.rewrite(`${origin}/learn`)
   }
 
-  // If the user is not authenticated, allow access to login and signup pages
-  if (!isAuthenticated) {
-    if (
-      req.nextUrl.pathname.startsWith("/login") ||
-      req.nextUrl.pathname.startsWith("/signup") ||
-      req.nextUrl.pathname.startsWith("/")
-    ) {
-      return NextResponse.next()
-    } else {
-      return NextResponse.rewrite(`${origin}/login`)
-    }
-  }
-
-  // For any other case (e.g., user authenticated as admin but trying to access "/" or "/login" or "/signup"),
-  // redirect to "/learn" if logged in, or "/login" if not logged in.
+  // For any other case (e.g., unexpected conditions), redirect to "/learn"
   return NextResponse.rewrite(`${origin}/learn`)
 }
 

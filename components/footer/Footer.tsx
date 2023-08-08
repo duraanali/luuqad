@@ -2,7 +2,6 @@ import React from "react"
 import Link from "next/link"
 
 const Footer = () => {
-
   return (
     <div className='flex flex-col items-center justify-around pt-8 pb-8 mt-16 bg-[#58CC02]'>
       <div className='mx-auto w-full grid grid-cols-2 place-items-center gap-8 px-4 py-6 lg:py-8 md:grid-cols-3'>

@@ -1,9 +1,11 @@
 "use client"
-import { Lessons, SideBar } from "@/components"
+import { Units, SideBar } from "@/components"
 import React from "react"
 import { signOut } from "next-auth/react"
+import { useGetUnitsQuery } from "@/store/slices/UnitSlice"
 
 const Learn = () => {
+  const { data: units } = useGetUnitsQuery()
   const callbackUrl = "/login"
   return (
     <div className=' flex flex-row'>
@@ -11,7 +13,7 @@ const Learn = () => {
         <SideBar signOut={signOut} callbackUrl={callbackUrl} />
       </div>
       <div className='flex-grow pl-5'>
-        <Lessons />
+        <Units units={units} />
       </div>
     </div>
   )

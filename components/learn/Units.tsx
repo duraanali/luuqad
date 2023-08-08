@@ -1,39 +1,45 @@
 "use client"
 import React from "react"
-import { lessonsData } from "./LessonsData"
 import Link from "next/link"
 
-type LessonCardProps = {
+interface UnitProps {
+  id: number
   title: string
-  subtitle: string
-  progress: number
+  description: string
+  status: number
+  created_at: string
+  updated_at: string
 }
 
-const LessonCard = ({ title, subtitle, progress }: LessonCardProps) => {
+const UnitCard = ({ title, description }: UnitProps) => {
   return (
     <Link href='/learn/quiz'>
       <div
         className={`bg-[#86cc05] p-4 rounded-lg shadow-[0px_4px_0px_0px_#38a169] cursor-pointer hover:bg-[#86cc05b3] transition-colors duration-200`}>
         <h3 className={`text-2xl font-black text-white`}>{title}</h3>
-        <p className='text-white'>{subtitle}</p>
+        <p className='text-white'>{description}</p>
         <div className={`bg-yellow-600 mt-4 rounded-full`}>
           <div
             className={`h-2 bg-yellow-200 rounded-full`}
-            style={{ width: `${progress}%` }}></div>
+            style={{ width: `${60}%` }}></div>
         </div>
       </div>
     </Link>
   )
 }
 
-const Lessons = () => {
+type unitsProps = {
+  units: any
+}
+
+const Units = ({ units }: unitsProps) => {
   return (
     <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2'>
-      {lessonsData.map((lesson, index) => (
-        <LessonCard key={index} {...lesson} />
+      {units?.units.map((lesson: any, index: number) => (
+        <UnitCard key={index} {...lesson} />
       ))}
     </div>
   )
 }
 
-export default Lessons
+export default Units
