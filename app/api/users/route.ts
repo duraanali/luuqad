@@ -1,11 +1,11 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 import { options } from "@auth/[...nextauth]/options"
 import { getServerSession } from "next-auth/next"
 
 import { prisma } from "@/lib/prisma"
 
 // using next js 13 api routes, send post request to create user with prisma
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(options)
 
