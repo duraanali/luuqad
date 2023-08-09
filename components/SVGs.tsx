@@ -149,6 +149,33 @@ export const ChevronDownSvg = () => {
   )
 }
 
+export const AmericanFlagSvg = () => {
+  return (
+    <svg width='60' height='40' viewBox='0 0 400 200' fill='none'>
+      {/* Red and white stripes */}
+      <rect width='400' height='40' fill='#B22234' />
+      <rect y='40' width='400' height='40' fill='white' />
+      <rect y='80' width='400' height='40' fill='#B22234' />
+      <rect y='120' width='400' height='40' fill='white' />
+      <rect y='160' width='400' height='40' fill='#B22234' />
+
+      {/* Blue rectangle */}
+      <rect x='0' y='0' width='160' height='120' fill='#3C3B6E' />
+
+      {/* Stars */}
+      <circle cx='30' cy='30' r='10' fill='white' />
+      <circle cx='70' cy='30' r='10' fill='white' />
+      <circle cx='110' cy='30' r='10' fill='white' />
+      <circle cx='30' cy='70' r='10' fill='white' />
+      <circle cx='70' cy='70' r='10' fill='white' />
+      <circle cx='110' cy='70' r='10' fill='white' />
+      <circle cx='30' cy='110' r='10' fill='white' />
+      <circle cx='70' cy='110' r='10' fill='white' />
+      <circle cx='110' cy='110' r='10' fill='white' />
+    </svg>
+  )
+}
+
 export const TreasureProgressSvg = () => {
   return (
     <svg width='38' height='40' viewBox='0 0 38 40' fill='none'>
