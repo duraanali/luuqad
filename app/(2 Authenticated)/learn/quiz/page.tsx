@@ -63,8 +63,14 @@ const Lesson: NextPage = () => {
   const onCheckAnswer = () => {
     setCorrectAnswerShown(true)
     if (isAnswerCorrect) {
+      const correctAnswerSound = "/assets/sounds/correct_answer.mp3"
+      const audio = new Audio(correctAnswerSound)
+      audio.play()
       setCorrectAnswerCount((x) => x + 1)
     } else {
+      const correctAnswerSound = "/assets/sounds/wrong_answer.mp3"
+      const audio = new Audio(correctAnswerSound)
+      audio.play()
       setIncorrectAnswerCount((x) => x + 1)
     }
     setQuestionResults((questionResults) => [
