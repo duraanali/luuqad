@@ -32,12 +32,7 @@ export default async function RootLayout({
       <Providers>
         <body className={"flex flex-col justify-between"}>
           <ToastContainerBar />
-          <section className='dashboard-container c-max-lg:flex c-max-md:min-w-max c-max-lg:flex-col  '>
-            <SideBar />
-            <div className='c-max-md:pl-[0px] c-max-md:gap-0 c-min-lg:pl-[256px] c-max-lg:pl-[88px] '>
-              {children}
-            </div>
-          </section>
+          {children}
         </body>
       </Providers>
     </html>

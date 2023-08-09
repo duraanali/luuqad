@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  mode: "jit",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -73,14 +74,6 @@ module.exports = {
         },
       },
     },
-
-    // fontSize: {
-    //   'large': '25px',
-    //   'base': '24.7px',
-    //   'medium': '20px',
-    //   'small': '18px',
-    //   'xsmall': '16px',
-    // },
     lineHeight: {
       10: "10px",
       17: "17px",
