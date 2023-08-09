@@ -1,9 +1,11 @@
 import React from "react"
-import { WomanSvg } from "@/components/SVGs"
 import { lessonProblem2 } from "./QuestionFakeData"
 import ProgressBar from "./ProgressBar"
 import CheckAnswer from "./CheckAnswer"
 import QuitMessage from "./QuitMessage"
+import womanPng from "../../../public/images/woman.png"
+import Image from "next/image"
+
 const QuestionWordBubble = ({
   problem,
   correctAnswerCount,
@@ -53,7 +55,7 @@ const QuestionWordBubble = ({
 
           <div className='w-full'>
             <div className='flex items-center gap-2 px-2'>
-              <WomanSvg />
+              <Image src={womanPng} alt='' width={92} height={115} />
               <div className='relative ml-2 w-fit rounded-2xl border-2 border-gray-200 p-4'>
                 {question}
                 <div
@@ -70,7 +72,7 @@ const QuestionWordBubble = ({
                 return (
                   <button
                     key={i}
-                    className='rounded-2xl border-2 border-b-4 border-gray-200 p-2 text-gray-700'
+                    className='rounded-xl text-lg	font-medium px-4 py-2 border-2 border-b-4 border-gray-200 p-2 text-gray-700'
                     onClick={() => {
                       setSelectedAnswers((selectedAnswers) => {
                         return selectedAnswers.filter((x) => x !== i)
@@ -89,8 +91,8 @@ const QuestionWordBubble = ({
                   key={i}
                   className={
                     selectedAnswers.includes(i)
-                      ? "rounded-2xl border-2 border-b-4 border-gray-200 bg-gray-200 p-2 text-gray-200"
-                      : "rounded-2xl border-2 border-b-4 border-gray-200 p-2 text-gray-700"
+                      ? "rounded-xl border-2 px-4 py-2 border-b-4 border-gray-200 bg-gray-200 p-2 text-gray-200 text-lg	font-medium"
+                      : "rounded-xl text-lg	font-medium	 border-2 px-4 py-2 border-b-4 border-gray-200 p-2 text-gray-700"
                   }
                   disabled={selectedAnswers.includes(i)}
                   onClick={() =>

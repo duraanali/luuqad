@@ -47,11 +47,11 @@ const CheckAnswer = ({
         className={
           correctAnswerShown
             ? isAnswerCorrect
-              ? "fixed bottom-0 left-0 right-0 bg-yellow-100 font-bold text-green-600 transition-all"
-              : "fixed bottom-0 left-0 right-0 bg-red-100 font-bold text-red-500 transition-all"
+              ? "fixed bottom-0 left-0 right-0 bg-yellow-100 font-bold text-green-600"
+              : "fixed bottom-0 left-0 right-0 bg-red-100 font-bold text-red-500"
             : "fixed -bottom-52 left-0 right-0"
         }>
-        <div className='flex max-w-5xl flex-col gap-4 p-5 sm:mx-auto sm:flex-row sm:items-center sm:justify-between sm:p-10 sm:py-14'>
+        <div className='flex max-w-5xl flex-col gap-4 p-5 sm:mx-auto sm:flex-row sm:items-center sm:justify-between sm:p-5 sm:py-5'>
           <>
             {isAnswerCorrect ? (
               <div className='mb-2 flex flex-col gap-5 sm:flex-row sm:items-center'>
