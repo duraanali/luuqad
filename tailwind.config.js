@@ -63,6 +63,12 @@ module.exports = {
         "c-max-lg": {
           max: "1159.9999px",
         },
+        "c-max-td": {
+          max: "919.9998px",
+        },
+        "c-max-tm": {
+          max: "740.9999px",
+        },
         "c-min-lg": {
           min: "1160.9999px",
         },

@@ -1,5 +1,3 @@
-import type { ComponentProps } from "react"
-import React from "react"
 import {
   EmptyFireSvg,
   EmptyGemSvg,
@@ -8,8 +6,9 @@ import {
   LightningProgressSvg,
   TreasureProgressSvg,
 } from "@/components/SVGs"
-import { Flag } from "./Flag"
 import languages from "@/utils/languages"
+import type { ComponentProps } from "react"
+import { Flag } from "./Flag"
 
 export const RightBar = () => {
   const lingots = 20
@@ -18,7 +17,7 @@ export const RightBar = () => {
 
   return (
     <>
-      <aside className='sticky top-0 hidden w-96 flex-col gap-6 self-start sm:flex'>
+      <aside className='sticky top-0 hidden w-[368px] flex-col gap-6 self-start sm:flex'>
         <article className='flex justify-between gap-4'>
           <div
             className='relative flex cursor-default items-center gap-2 rounded-xl p-3 font-bold uppercase text-gray-500 hover:bg-gray-100'

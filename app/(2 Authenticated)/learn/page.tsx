@@ -1,18 +1,10 @@
 "use client"
-import { type NextPage } from "next"
-import Link from "next/link"
-import React, {
-  Fragment,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react"
 import {
   ActiveBookSvg,
-  LockedBookSvg,
+  ActiveDumbbellSvg,
+  ActiveTreasureSvg,
+  ActiveTrophySvg,
   CheckmarkSvg,
-  LockedDumbbellSvg,
   FastForwardSvg,
   GoldenBookSvg,
   GoldenDumbbellSvg,
@@ -24,23 +16,31 @@ import {
   LessonCompletionSvg2,
   LessonCompletionSvg3,
   LockSvg,
-  StarSvg,
+  LockedBookSvg,
+  LockedDumbbellSvg,
   LockedTreasureSvg,
   LockedTrophySvg,
-  UpArrowSvg,
-  ActiveTreasureSvg,
-  ActiveTrophySvg,
-  ActiveDumbbellSvg,
   PracticeExerciseSvg,
+  StarSvg,
+  UpArrowSvg,
 } from "@/components/SVGs"
-import { TopBar } from "@/components/learn/TopBar"
 import { BottomBar } from "@/components/learn/BottomBar"
-import { RightBar } from "@/components/learn/RightBar"
 import { LeftBar } from "@/components/learn/LeftBar"
-import { useRouter } from "next/navigation"
+import { RightBar } from "@/components/learn/RightBar"
+import { TopBar } from "@/components/learn/TopBar"
+import languages from "@/utils/languages"
 import type { Tile, TileType, Unit } from "@/utils/units"
 import { units } from "@/utils/units"
-import languages from "@/utils/languages"
+import { type NextPage } from "next"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import React, {
+  Fragment,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
 
 type TileStatus = "LOCKED" | "ACTIVE" | "COMPLETE"
 
@@ -465,8 +465,8 @@ const Learn: NextPage = () => {
       <TopBar backgroundColor='bg-[#58cc02]' borderColor='border-[#46a302]' />
       <LeftBar selectedTab='Learn' />
 
-      <div className='flex justify-center gap-3 pt-14 sm:p-6 sm:pt-6 md:ml-24 lg:ml-64 lg:gap-12'>
-        <div className='flex max-w-xl grow flex-col'>
+      <div className=' main-right flex justify-center gap-3 pt-14 sm:p-6 sm:pt-6 md:ml-24 c-max-tm:w-[100%] c-max-td:w-[812px]   c-min-lg:ml-64 c-min-lg:gap-12'>
+        <div className='flex max-w-[592px] grow flex-col'>
           {units.map((unit) => (
             <UnitSection unit={unit} key={unit.unitNumber} />
           ))}
