@@ -51,6 +51,9 @@ module.exports = {
         "c-sm": {
           max: "767px",
         },
+        "c-min-sm": {
+          min: "767px",
+        },
         "c-md": {
           max: "991px",
         },
