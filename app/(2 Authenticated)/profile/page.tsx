@@ -14,7 +14,7 @@ const Profile: NextPage = (props: Props) => {
       <LeftBar selectedTab='Profile' />
 
       <div className='main-right flex justify-center gap-3 pt-14 sm:p-6 sm:pt-6 md:ml-24 c-max-tm:w-[100%] c-max-td:w-[820px]   c-min-lg:ml-64 c-min-lg:gap-12'>
-        <div className='flex max-w-[592px] grow flex-col'>
+        <div className=' main-middle-left flex max-w-[592px] grow flex-col'>
           <ProfileUser />
         </div>
         <RightBar />
