@@ -9,9 +9,9 @@ type Props = {}
 
 const ProfileUser = (props: Props) => {
   return (
-    <div className='user-container flex  justify-between border-b-[2px] mt-2 c-sm:p-4 '>
+    <div className='user-container flex  justify-between border-b-[2px] mt-2  '>
       <div className='user-left-detail flex flex-col flex-auto '>
-        <h1 className='user-name-container c-max-md:text-2xl text-3xl text-cyan-950 font-bold leading-tight mb-4		 '>
+        <h1 className='user-name-container c-sm:text-2xl text-3xl text-cyan-950 font-bold leading-tight mb-4		 '>
           <span className='user-full-name  '>jamaal mahamed</span>
           <div className=' user-user-name text-lg  text-gray-400 font-normal '>
             jamaaldev
@@ -30,10 +30,10 @@ const ProfileUser = (props: Props) => {
             <LuuqadIconFollow className='text-gray-300' width={20} />
           </span>
           <span className='text-lg'>
-            <span className=' c-max-md:hidden text-gray-500 '>0 Following</span>
-            &nbsp;<span className=' c-max-md:hidden '>/</span>&nbsp;
-            <span className=' c-max-md:hidden text-gray-500 '>0 Followers</span>
-            <span className=' c-min-md:hidden text-gray-500 '>0 Friends</span>
+            <span className=' c-sm:hidden text-gray-500 '>0 Following</span>
+            &nbsp;<span className=' c-sm:hidden '>/</span>&nbsp;
+            <span className=' c-sm:hidden text-gray-500 '>0 Followers</span>
+            <span className=' c-min-sm:hidden text-gray-500 '>0 Friends</span>
           </span>
         </div>
         <div className='user-courses py-4'>
@@ -44,7 +44,7 @@ const ProfileUser = (props: Props) => {
       </div>
       <div className='user-right-avatar relative ml-2 '>
         <Image
-          className=' rounded-full max-w-none c-max-md:w-[77px] '
+          className=' profile-avatar object-contain  rounded-full max-w-none c-sm:w-[77px] '
           src='/images/Profile.png'
           width={140}
           height={140}
