@@ -9,17 +9,19 @@ type Props = {}
 
 const ProfileUser = (props: Props) => {
   return (
-    <div className='user-container flex  justify-between border-b-[5px] mt-2 '>
-      <div className='user-left-detail flex flex-col gap-1 flex-auto '>
-        <h1 className='user-full-name c-max-md:text-2xl text-3xl text-cyan-950 font-bold leading-tight		 '>
-          jamaal mahamed
-          <div className=' text-base text-gray-400 font-normal '>jamaaldev</div>
+    <div className='user-container flex  justify-between border-b-[2px] mt-2 c-sm:p-4 '>
+      <div className='user-left-detail flex flex-col flex-auto '>
+        <h1 className='user-name-container c-max-md:text-2xl text-3xl text-cyan-950 font-bold leading-tight mb-4		 '>
+          <span className='user-full-name  '>jamaal mahamed</span>
+          <div className=' user-user-name text-lg  text-gray-400 font-normal '>
+            jamaaldev
+          </div>
         </h1>
         <div className='user-join-date flex items-center gap-2 '>
           <span>
             <LuuqadIconTime className='text-gray-300' width={20} />
           </span>
-          <span className='text-sm'>
+          <span className='text-lg text-gray-500'>
             Joined <span>July 2023</span>
           </span>
         </div>
@@ -27,11 +29,11 @@ const ProfileUser = (props: Props) => {
           <span>
             <LuuqadIconFollow className='text-gray-300' width={20} />
           </span>
-          <span className='text-sm'>
-            <span className=' c-max-md:hidden '>0 Following</span>
+          <span className='text-lg'>
+            <span className=' c-max-md:hidden text-gray-500 '>0 Following</span>
             &nbsp;<span className=' c-max-md:hidden '>/</span>&nbsp;
-            <span className=' c-max-md:hidden '>0 Followers</span>
-            <span className=' c-min-md:hidden '>0 Friends</span>
+            <span className=' c-max-md:hidden text-gray-500 '>0 Followers</span>
+            <span className=' c-min-md:hidden text-gray-500 '>0 Friends</span>
           </span>
         </div>
         <div className='user-courses py-4'>
