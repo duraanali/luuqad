@@ -13,8 +13,8 @@ const Profile: NextPage = (props: Props) => {
       {/* <TopBar backgroundColor='bg-[#58cc02]' borderColor='border-[#46a302]' /> */}
       <LeftBar selectedTab='Profile' />
 
-      <div className='flex justify-center gap-3 px-4 sm:p-6 sm:pt-6 md:ml-24 lg:ml-64 lg:gap-12 '>
-        <div className='flex max-w-xl grow flex-col'>
+      <div className='main-right flex justify-center gap-3 pt-14 sm:p-6 sm:pt-6 md:ml-24 c-max-tm:w-[100%] c-max-td:w-[820px]   c-min-lg:ml-64 c-min-lg:gap-12'>
+        <div className='flex max-w-[592px] grow flex-col'>
           <ProfileUser />
         </div>
         <RightBar />
