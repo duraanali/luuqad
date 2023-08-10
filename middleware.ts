@@ -49,5 +49,12 @@ export default async function middleware(req: NextRequest) {
 
 export const config = {
   // Update the matcher to only include "/learn" and its subpaths
-  matcher: ["/", "/login", "/signup", "/learn", "/learn/:path*", "/admin/:path*"],
+  matcher: [
+    "/",
+    "/login",
+    "/signup",
+    "/learn",
+    "/learn/:path*",
+    "/admin/:path*",
+  ],
 }
