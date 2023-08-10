@@ -1,7 +1,3 @@
-import Link from "next/link"
-import type { ComponentProps } from "react"
-import React, { useState } from "react"
-import { Flag } from "./Flag"
 import {
   FireSvg,
   GemSvg,
@@ -11,6 +7,10 @@ import {
   PodcastIconSvg,
 } from "@/components/SVGs"
 import languages from "@/utils/languages"
+import Link from "next/link"
+import type { ComponentProps } from "react"
+import React, { useState } from "react"
+import { Flag } from "./Flag"
 
 const EmptyFireTopBarSvg = (props: ComponentProps<"svg">) => {
   return (
@@ -77,7 +77,7 @@ export const TopBar = ({
   return (
     <header className='fixed z-20 h-[58px] w-full'>
       <div
-        className={`relative flex h-full w-full items-center justify-between border-b-2 px-[10px] transition duration-500 sm:hidden ${borderColor} ${backgroundColor}`}>
+        className={`relative flex h-full w-full items-center justify-between border-b-2 px-[10px] transition duration-500 md:hidden ${borderColor} ${backgroundColor}`}>
         <button
           onClick={() =>
             setMenu((x) => (x === "LANGUAGES" ? "HIDDEN" : "LANGUAGES"))
