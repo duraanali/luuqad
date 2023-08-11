@@ -19,8 +19,8 @@ export async function GET() {
       )
     }
 
-    // Get all lessons
-    const users = await prisma.user.findUnique({
+    // Get The user
+    const user = await prisma.user.findUnique({
       where: {
         email: session.user?.email as string,
       },
@@ -36,7 +36,7 @@ export async function GET() {
     })
 
     return NextResponse.json({
-      users,
+      user,
     })
   } catch (error) {
     // You might want to return a proper response in case of an error

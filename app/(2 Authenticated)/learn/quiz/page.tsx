@@ -27,7 +27,7 @@ type QuestionResult = {
   correctResponse: string
 }
 
-const Lesson: NextPage = () => {
+const Question: NextPage = () => {
   const searchParams = useSearchParams()
 
   const [lessonProblem, setLessonProblem] = useState(0)
@@ -199,7 +199,7 @@ const Lesson: NextPage = () => {
   }
 }
 
-export default Lesson
+export default Question
 
 const ProblemSelect1Of3 = ({
   problem,

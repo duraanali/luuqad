@@ -4,13 +4,13 @@ export type Unit = {
   backgroundColor: `bg-${string}`
   textColor: `text-${string}`
   borderColor: `border-${string}`
-  tiles: Tile[]
+  sections: Tile[]
 }
 
 export type Tile =
   | {
       type: "star" | "dumbbell" | "book" | "trophy" | "fast-forward"
-      description: string
+      title: string
     }
   | { type: "treasure" }
 
@@ -23,22 +23,22 @@ export const units: readonly Unit[] = [
     backgroundColor: "bg-[#58cc02]",
     textColor: "text-[#58cc02]",
     borderColor: "border-[#46a302]",
-    tiles: [
+    sections: [
       {
         type: "star",
-        description: "Form basic sentences",
+        title: "Form basic sentences",
       },
       {
         type: "book",
-        description: "Good morning",
+        title: "Good morning",
       },
       {
         type: "star",
-        description: "Greet people",
+        title: "Greet people",
       },
       { type: "treasure" },
-      { type: "book", description: "A date" },
-      { type: "trophy", description: "Unit 1 review" },
+      { type: "book", title: "A date" },
+      { type: "trophy", title: "Unit 1 review" },
     ],
   },
   {
@@ -47,18 +47,18 @@ export const units: readonly Unit[] = [
     backgroundColor: "bg-[#58cc02]",
     textColor: "text-[#58cc02]",
     borderColor: "border-[#46a302]",
-    tiles: [
-      { type: "fast-forward", description: "Get around in a city" },
-      { type: "dumbbell", description: "Personalized practice" },
-      { type: "book", description: "One thing" },
+    sections: [
+      { type: "fast-forward", title: "Get around in a city" },
+      { type: "dumbbell", title: "Personalized practice" },
+      { type: "book", title: "One thing" },
       { type: "treasure" },
-      { type: "star", description: "Get around in a city" },
-      { type: "book", description: "A very big family" },
-      { type: "star", description: "Greet people" },
-      { type: "book", description: "The red jacket" },
+      { type: "star", title: "Get around in a city" },
+      { type: "book", title: "A very big family" },
+      { type: "star", title: "Greet people" },
+      { type: "book", title: "The red jacket" },
       { type: "treasure" },
-      { type: "dumbbell", description: "Personalized practice" },
-      { type: "trophy", description: "Unit 2 review" },
+      { type: "dumbbell", title: "Personalized practice" },
+      { type: "trophy", title: "Unit 2 review" },
     ],
   },
   {
@@ -67,17 +67,17 @@ export const units: readonly Unit[] = [
     backgroundColor: "bg-[#58cc02]",
     textColor: "text-[#58cc02]",
     borderColor: "border-[#46a302]",
-    tiles: [
-      { type: "fast-forward", description: "Order food and drink" },
-      { type: "book", description: "The passport" },
-      { type: "star", description: "Order food and drinks" },
+    sections: [
+      { type: "fast-forward", title: "Order food and drink" },
+      { type: "book", title: "The passport" },
+      { type: "star", title: "Order food and drinks" },
       { type: "treasure" },
-      { type: "book", description: "The honeymoon" },
-      { type: "star", description: "Get around in a city" },
+      { type: "book", title: "The honeymoon" },
+      { type: "star", title: "Get around in a city" },
       { type: "treasure" },
-      { type: "dumbbell", description: "Personalized practice" },
-      { type: "book", description: "Doctor Eddy" },
-      { type: "trophy", description: "Unit 2 review" },
+      { type: "dumbbell", title: "Personalized practice" },
+      { type: "book", title: "Doctor Eddy" },
+      { type: "trophy", title: "Unit 2 review" },
     ],
   },
 ]

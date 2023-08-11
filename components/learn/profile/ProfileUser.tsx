@@ -1,30 +1,38 @@
 import Image from "next/image"
 import Link from "next/link"
-import LuuqadIconFollow from "../icons/LuuqadIconFollow"
-import LuuqadIconPen from "../icons/LuuqadIconPen"
-import LuuqadIconTime from "../icons/LuuqadIconTime"
-import LuuqadIconUK from "../icons/LuuqadIconUK"
+import LuuqadIconFollow from "../../icons/LuuqadIconFollow"
+import LuuqadIconPen from "../../icons/LuuqadIconPen"
+import LuuqadIconTime from "../../icons/LuuqadIconTime"
+import LuuqadIconUK from "../../icons/LuuqadIconUK"
 
-type Props = {}
+type Props = {
+  user: any
+}
 
 const ProfileUser = (props: Props) => {
+  const { name, email, image, created_at } = props.user.user
   return (
+
     <div className='user-container flex  justify-between border-b-[2px] mt-2  '>
       <div className='user-left-detail flex flex-col flex-auto '>
         <h1 className='user-name-container c-sm:text-2xl text-3xl text-cyan-950 font-bold leading-tight mb-4		 '>
-          <span className='user-full-name  '>jamaal mahamed</span>
-          <div className=' user-user-name text-lg  text-gray-400 font-normal '>
-            jamaaldev
+          <span className='user-full-name  '>{name}</span>
+
+          <div className=' user-user-email text-lg  text-gray-400 font-normal '>
+            {email}
           </div>
         </h1>
+
         <div className='user-join-date flex items-center gap-2 '>
           <span>
             <LuuqadIconTime className='text-gray-300' width={20} />
           </span>
           <span className='text-lg text-gray-500'>
-            Joined <span>July 2023</span>
+            Joined <span>{created_at}</span>
           </span>
         </div>
+
+
         <div className='user-follow flex items-center gap-2'>
           <span>
             <LuuqadIconFollow className='text-gray-300' width={20} />
@@ -42,14 +50,25 @@ const ProfileUser = (props: Props) => {
           </button>
         </div>
       </div>
+
       <div className='user-right-avatar relative ml-2 '>
-        <Image
-          className=' profile-avatar object-contain  rounded-full max-w-none c-sm:w-[77px] '
-          src='/images/Profile.png'
-          width={140}
-          height={140}
-          alt='Picture of the author'
-        />
+        {image && image !== null ? (
+          <Image
+            className=' profile-avatar object-contain rounded-full max-w-none c-max-md:w-[77px] '
+            src={image}
+            width={140}
+            height={140}
+            alt='Picture of the author'
+          />
+        ) : (
+          <Image
+            className=' profile-avatar object-contain rounded-full max-w-none c-max-md:w-[77px] '
+            src='/images/Profile.png'
+            width={140}
+            height={140}
+            alt='Picture of the author'
+          />
+        )}
         <Link href={"/settings/acount"} className='user-setting'>
           <div className=' absolute bg-sky-400 p-0 rounded-[50%]  top-0  right-0 '>
             <LuuqadIconPen className=' text-primary-white-1 ' width={30} />
