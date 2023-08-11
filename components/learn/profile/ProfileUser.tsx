@@ -12,7 +12,6 @@ type Props = {
 const ProfileUser = (props: Props) => {
   const { name, email, image, created_at } = props.user.user
   return (
-
     <div className='user-container flex  justify-between border-b-[2px] mt-2  '>
       <div className='user-left-detail flex flex-col flex-auto '>
         <h1 className='user-name-container c-sm:text-2xl text-3xl text-cyan-950 font-bold leading-tight mb-4		 '>
@@ -31,7 +30,6 @@ const ProfileUser = (props: Props) => {
             Joined <span>{created_at}</span>
           </span>
         </div>
-
 
         <div className='user-follow flex items-center gap-2'>
           <span>

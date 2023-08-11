@@ -89,8 +89,8 @@ module.exports = {
         15: "15px",
       },
       flex: {
-        'push': '1 0 auto'
-      }
+        push: "1 0 auto",
+      },
     },
   },
   plugins: [],
