@@ -41,13 +41,15 @@ import React, {
   useRef,
   useState,
 } from "react"
+import { useGetUnitsQuery } from "@/store/slices/UnitSlice"
+import { useGetSectionsQuery } from "@/store/slices/SectionSlice"
 
 type TileStatus = "LOCKED" | "ACTIVE" | "COMPLETE"
 
 const tileStatus = (tile: Tile, lessonsCompleted: number): TileStatus => {
   const lessonsPerTile = 4
   const tilesCompleted = Math.floor(lessonsCompleted / lessonsPerTile)
-  const tiles = units.flatMap((unit) => unit.tiles)
+  const tiles = units.flatMap((unit: any) => unit.tiles)
   const tileIndex = tiles.findIndex((t) => t === tile)
 
   if (tileIndex < tilesCompleted) {
@@ -323,7 +325,6 @@ const UnitSection = ({ unit }: { unit: Unit }): React.ReactNode => {
 
   const increaseLessonsCompleted = 7
   const increaseLingots = 8
-
   return (
     <>
       <UnitHeader
@@ -332,8 +333,8 @@ const UnitSection = ({ unit }: { unit: Unit }): React.ReactNode => {
         backgroundColor={unit.backgroundColor}
         borderColor={unit.borderColor}
       />
-      <div className='relative mt-[67px] mb-8 flex max-w-2xl flex-col items-center gap-4'>
-        {unit.tiles.map((tile, i): React.ReactNode => {
+      <div className='relative mt-[20px] mb-8 flex max-w-2xl flex-col items-center gap-4'>
+        {unit.sections.map((tile: any, i: any): React.ReactNode => {
           const status = tileStatus(tile, lessonsCompleted)
           return (
             <Fragment key={i}>
@@ -361,7 +362,7 @@ const UnitSection = ({ unit }: { unit: Unit }): React.ReactNode => {
                           getTileLeftClassName({
                             index: i,
                             unitNumber: unit.unitNumber,
-                            tilesLength: unit.tiles.length,
+                            tilesLength: unit.sections.length,
                           }),
                         ].join(" ")}>
                         {tile.type === "fast-forward" && status === "LOCKED" ? (
@@ -410,7 +411,7 @@ const UnitSection = ({ unit }: { unit: Unit }): React.ReactNode => {
                           getTileLeftClassName({
                             index: i,
                             unitNumber: unit.unitNumber,
-                            tilesLength: unit.tiles.length,
+                            tilesLength: unit.sections.length,
                           }),
                         ].join(" ")}
                         role='button'
@@ -431,17 +432,15 @@ const UnitSection = ({ unit }: { unit: Unit }): React.ReactNode => {
                 selectedTile={selectedTile}
                 index={i}
                 unitNumber={unit.unitNumber}
-                tilesLength={unit.tiles.length}
+                tilesLength={unit.sections.length}
                 description={(() => {
                   switch (tile.type) {
                     case "book":
                     case "dumbbell":
                     case "star":
-                      return tile.description
+                      return tile.title
                     case "fast-forward":
-                      return status === "LOCKED"
-                        ? "Jump here?"
-                        : tile.description
+                      return status === "LOCKED" ? "Jump here?" : tile.title
                     case "trophy":
                       return `Unit ${unit.unitNumber} review`
                     case "treasure":
@@ -460,6 +459,41 @@ const UnitSection = ({ unit }: { unit: Unit }): React.ReactNode => {
 }
 
 const Learn: NextPage = () => {
+  const { data: unitz } = useGetUnitsQuery<any>()
+  const { data: sections } = useGetSectionsQuery<any>()
+
+  const [formattedData, setFormattedData] = useState<any>([])
+
+  useEffect(() => {
+    if (
+      unitz?.units &&
+      unitz.units.length > 0 &&
+      sections?.sections &&
+      sections.sections.length > 0
+    ) {
+      let unitNumber = 0
+      const formattedUnits = unitz?.units.map((unit: any) => {
+        const formattedSections = sections?.sections
+          .filter((section: any) => section.unit_id === unit.id) // Assuming you have a way to link sections to units using an id
+          .map((section: any) => ({
+            type: "star",
+            title: section.title,
+          }))
+
+        return {
+          // there is no unitNumber, just create incrementing number
+          unitNumber: (unitNumber += 1),
+          description: unit.description,
+          backgroundColor: "bg-[#58cc02]",
+          textColor: "text-[#58cc02]",
+          borderColor: "border-[#46a302]",
+          sections: formattedSections,
+        }
+      })
+      setFormattedData(formattedUnits)
+    }
+  }, [unitz, sections])
+
   return (
     <>
       <TopBar backgroundColor='bg-[#58cc02]' borderColor='border-[#46a302]' />
@@ -467,10 +501,11 @@ const Learn: NextPage = () => {
 
       <div className=' main-right flex justify-center gap-3 pt-14 sm:p-6 sm:pt-6 md:ml-24 c-max-tm:w-[100%] c-max-td:w-[812px]   c-min-lg:ml-64 c-min-lg:gap-12'>
         <div className='flex max-w-[592px] grow flex-col'>
-          {units.map((unit) => (
-            <UnitSection unit={unit} key={unit.unitNumber} />
-          ))}
-          <div className='sticky bottom-28 left-0 right-0 flex items-end justify-between'>
+          {formattedData &&
+            formattedData.map((unit: any) => (
+              <UnitSection unit={unit} key={unit.unitNumber} />
+            ))}
+          {/* <div className='sticky bottom-28 left-0 right-0 flex items-end justify-between'>
             <Link
               href='/lesson?practice'
               className='absolute left-4 flex h-16 w-16 items-center justify-center rounded-full border-2 border-b-4 border-gray-200 bg-white transition hover:bg-gray-50 hover:brightness-90 md:left-0'>
@@ -481,7 +516,7 @@ const Learn: NextPage = () => {
               <span className='sr-only'>Jump to top</span>
               <UpArrowSvg />
             </button>
-          </div>
+          </div> */}
         </div>
         <RightBar />
       </div>
