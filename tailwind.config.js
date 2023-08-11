@@ -82,12 +82,15 @@ module.exports = {
           min: "700.9999px",
         },
       },
-    },
-    lineHeight: {
-      10: "10px",
-      17: "17px",
-      16: "16px",
-      15: "15px",
+      lineHeight: {
+        10: "10px",
+        17: "17px",
+        16: "16px",
+        15: "15px",
+      },
+      flex: {
+        'push': '1 0 auto'
+      }
     },
   },
   plugins: [],
