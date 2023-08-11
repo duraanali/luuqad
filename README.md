@@ -48,7 +48,6 @@ npm run dev
 - You also need to create .env.local file in the root directory of the project
 - Go to our Whatsapp group and ask the content for .env.local
 
-
 ## Code of Conduct
 
 Please read and adhere to our [Code of Conduct](docs/CODE_OF_CONDUCT.md) to ensure a respectful and inclusive community for everyone.
