@@ -3,6 +3,7 @@ import { BottomBar } from "@/components/learn/BottomBar"
 import { LeftBar } from "@/components/learn/LeftBar"
 import { RightBar } from "@/components/learn/RightBar"
 import ProfileSettings from "@/components/profile/ProfileSettings"
+import ProfileStatistics from "@/components/profile/ProfileStatistics"
 import ProfileUser from "@/components/profile/ProfileUser"
 import { NextPage } from "next"
 
@@ -24,8 +25,9 @@ const Profile: NextPage = (props: Props) => {
 
       <div className='main-right-middle-container flex justify-center gap-12  sm:p-6 sm:pt-6 md:ml-24 c-max-tm:w-[100%] c-max-td:w-[820px]   c-min-lg:ml-64'>
         {/* Main-middle-Left Scrolling Here Start */}
-        <div className=' main-middle-left flex max-w-[592px] grow flex-col c-sm:p-4 c-sm:mb-20'>
+        <div className=' main-middle-left flex max-w-[592px] grow flex-col gap-8 c-sm:p-4 c-sm:mb-20'>
           <ProfileUser />
+          <ProfileStatistics/>
         </div>
         {/* Main-middle-Left Scrolling Here End */}
 
