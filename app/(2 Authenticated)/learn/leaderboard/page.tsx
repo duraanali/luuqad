@@ -1,10 +1,9 @@
 "use client"
 import type { NextPage } from "next"
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { LeftBar } from "@/components/learn/LeftBar"
 import { BottomBar } from "@/components/learn/BottomBar"
 import { RightBar } from "@/components/learn/RightBar"
-import Profile from "../../../../public/images/Profile.png"
 import Link from "next/link"
 import {
   BronzeLeagueSvg,
@@ -15,17 +14,20 @@ import {
   SecondPlaceSvg,
   ThirdPlaceSvg,
 } from "@/components/SVGs"
-import { useRouter } from "next/navigation"
 import Image from "next/image"
-
+import { useGetLeadersQuery } from "@/store/slices/LeaderBoardSlice"
+import { useGetCurrentUserQuery } from "@/store/slices/UserSlice"
+import NameAvatar from "@/utils/NameAvatar"
 const LeaderboardProfile = ({
   place,
   name,
+  image,
   xp,
   isCurrentUser,
 }: {
   place: number
   name: string
+  image: string
   xp: number
   isCurrentUser: boolean
 }) => {
@@ -47,13 +49,17 @@ const LeaderboardProfile = ({
             {place}
           </div>
         )}
-        <Image
-          width={48}
-          height={48}
-          className='h-12 w-12 rounded-full'
-          src={Profile}
-          alt=''
-        />
+        {image ? (
+          <Image
+            src={image}
+            alt='avatar'
+            width='48'
+            height='48'
+            className='rounded-full'
+          />
+        ) : (
+          <NameAvatar name={name} />
+        )}
       </div>
       <div className='grow overflow-hidden overflow-ellipsis font-bold'>
         {name}
@@ -64,62 +70,74 @@ const LeaderboardProfile = ({
 }
 
 const Leaderboard: NextPage = () => {
-  const router = useRouter()
-  const loggedIn = true
+  const { data: leaders, isLoading } = useGetLeadersQuery<any>()
+  const { data: currentUser } = useGetCurrentUserQuery<any>()
 
-  const lessonsCompleted = 10
+  const [leaderboardUsers, setLeaderboardUsers] = useState([])
+  const [currentUserHasPoints, setCurrentUserHasPoints] = useState(false)
 
   useEffect(() => {
-    if (!loggedIn) {
-      void router.push("/")
+    if (leaders?.usersWithPoints && currentUser?.user && !isLoading) {
+      const mappedLeaderboardUsers = leaders?.usersWithPoints.map(
+        (user: { image: any; name: any; Point: any[] }) => {
+          const isCurrentUser = user.name === currentUser?.user.name
+          const xp = user.Point.reduce(
+            (total: any, point: any) => total + point.points,
+            0,
+          )
+          if (isCurrentUser && xp > 0) {
+            setCurrentUserHasPoints(true)
+          }
+
+          return {
+            image: user.image,
+            name: user.name,
+            xp,
+            isCurrentUser,
+          }
+        },
+      )
+
+      // Filter out users with zero points
+      const nonZeroLeaderboardUsers = mappedLeaderboardUsers.filter(
+        (user: { xp: number }) => user.xp > 0,
+      )
+
+      // Sort the non-zero users based on their xp in descending order
+      const sortedLeaderboardUsers = nonZeroLeaderboardUsers.sort(
+        (a: { xp: number }, b: { xp: number }) => b.xp - a.xp,
+      )
+
+      setLeaderboardUsers(sortedLeaderboardUsers)
     }
-  }, [loggedIn, router])
+  }, [leaders, currentUser, isLoading])
 
-  const lessonsToUnlockLeaderboard = 5
-  const lessonsRemainingToUnlockLeaderboard =
-    lessonsToUnlockLeaderboard - lessonsCompleted
-  const leaderboardIsUnlocked = lessonsCompleted >= lessonsToUnlockLeaderboard
-
+  console.log(leaderboardUsers)
   const leaderboardLeague = "Bronze League"
-
-  const leaderboardUsers = [
-    {
-      name: "John Doe",
-      xp: 100,
-      isCurrentUser: false,
-    },
-    {
-      name: "Jane Doe",
-      xp: 90,
-      isCurrentUser: true,
-    },
-    {
-      name: "John Doe",
-      xp: 80,
-      isCurrentUser: false,
-    },
-    {
-      name: "Jane Doe",
-      xp: 70,
-      isCurrentUser: false,
-    },
-  ]
 
   return (
     <div>
       <LeftBar selectedTab='leaderboard' />
       <div className='flex justify-center gap-3 pt-14 md:ml-24 md:p-6 md:pt-10 lg:ml-64 lg:gap-12'>
         <div className='flex w-full max-w-xl flex-col items-center gap-5 pb-28 md:px-5'>
-          {!leaderboardIsUnlocked && (
+          {!leaders && (
+            <>
+              <LeaderboardBannerSvg />
+
+              <p className='text-center text-lg text-gray-500'>Loading...</p>
+
+              <div className='h-5'></div>
+              <LockedLeaderboardSvg />
+            </>
+          )}
+          {!currentUserHasPoints && (
             <>
               <LeaderboardBannerSvg />
               <h1 className='text-center text-2xl font-bold text-gray-700'>
                 Unlock Leaderboards!
               </h1>
               <p className='text-center text-lg text-gray-500'>
-                Complete {lessonsRemainingToUnlockLeaderboard} more section
-                {lessonsRemainingToUnlockLeaderboard === 1 ? "" : "s"} to start
-                competing
+                Complete at least one section to view the leaderboard!
               </p>
               <Link
                 href='/learn'
@@ -130,7 +148,7 @@ const Leaderboard: NextPage = () => {
               <LockedLeaderboardSvg />
             </>
           )}
-          {leaderboardIsUnlocked && (
+          {currentUserHasPoints && (
             <>
               <div className='sticky top-0 -mt-14 flex w-full flex-col items-center gap-5 bg-white pt-14'>
                 <div className='flex items-center gap-5'>
@@ -147,11 +165,12 @@ const Leaderboard: NextPage = () => {
                 <div className='w-full border-b-2 border-gray-200'></div>
               </div>
               <div className='w-full'>
-                {leaderboardUsers.map((user, i) => {
+                {leaderboardUsers.map((user: any, i: any) => {
                   return (
                     <LeaderboardProfile
                       key={user.name}
                       place={i + 1}
+                      image={user.image}
                       name={user.name}
                       xp={user.xp}
                       isCurrentUser={user.isCurrentUser}
