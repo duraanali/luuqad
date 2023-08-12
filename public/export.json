@@ -1,0 +1,56 @@
+[
+  {
+    "reward": "Wildfire",
+    "tips": "Reach a 3 day streak",
+    "level": 1,
+    "min": 0,
+    "max": 100,
+    "reach": 3,
+    "range": 1
+  },
+  {
+    "reward": "Sage",
+    "tips": "Earn 250 XP",
+    "level": 2,
+    "min": 0,
+    "max": 100,
+    "reach": 250,
+    "range": 100
+  },
+  {
+    "reward": "Scholar",
+    "tips": "Learn 100 new words in a single course",
+    "level": 2,
+    "min": 0,
+    "max": 100,
+    "reach": 100,
+    "range": 30
+  },
+  {
+    "reward": "Champion",
+    "tips": "Unlock Leaderboards by completing 10 lessons",
+    "level": 1,
+    "min": 0,
+    "max": 100,
+    "reach": 1,
+    "range": 0
+  },
+  {
+    "reward": "Sharpshooter",
+    "tips": "Complete 20 lessons with no mistakes",
+    "level": 3,
+    "min": 0,
+    "max": 100,
+    "reach": 20,
+    "range": 15
+  },
+  {
+    "reward": "Winner",
+    "tips": "Complete 20 lessons with no mistakes",
+    "level": 3,
+    "min": 0,
+    "max": 100,
+    "reach": 20,
+    "range": 10
+  }
+]

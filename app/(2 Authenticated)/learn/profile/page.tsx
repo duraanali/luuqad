@@ -2,6 +2,7 @@
 import { BottomBar } from "@/components/learn/BottomBar"
 import { LeftBar } from "@/components/learn/LeftBar"
 import { RightBar } from "@/components/learn/RightBar"
+import ProfileAchievements from "@/components/learn/profile/ProfileAchievements"
 import ProfileSettings from "@/components/learn/profile/ProfileSettings"
 import ProfileStatistics from "@/components/learn/profile/ProfileStatistics"
 import ProfileUser from "@/components/learn/profile/ProfileUser"
@@ -36,6 +37,7 @@ const Profile: NextPage = (props: Props) => {
             </Suspense>
           )}
           <ProfileStatistics />
+          <ProfileAchievements />
         </div>
         {/* Main-middle-Left Scrolling Here End */}
 
