@@ -9,10 +9,15 @@ import {
 import languages from "@/utils/languages"
 import type { ComponentProps } from "react"
 import { Flag } from "./Flag"
+import { useGetPointsQuery } from "@/store/slices/PointSlice"
 
 export const RightBar = () => {
+  const { data: points } = useGetPointsQuery<any>()
+  const totalPoints = points?.points.reduce((accumulator:any, currentValue:any) => {
+    return accumulator + currentValue.points
+  }, 0)
   const lingots = 20
-  const streak = 5
+  const streak = totalPoints || 0
   const language = languages.filter((lang) => lang.code === "en")[0]
 
   return (
@@ -32,7 +37,7 @@ export const RightBar = () => {
               {streak}
             </span>
           </span>
-          <span
+          {/* <span
             className='relative flex items-center gap-2 rounded-xl p-3 font-bold text-red-500 hover:bg-gray-100'
             role='button'
             tabIndex={0}>
@@ -46,7 +51,7 @@ export const RightBar = () => {
                 left: "calc(50% - 150px)",
                 display: "none",
               }}></div>
-          </span>
+          </span> */}
         </article>
         <DailyQuestsSection />
         <XpProgressSection />

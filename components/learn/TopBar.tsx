@@ -70,7 +70,7 @@ export const TopBar = ({
   borderColor?: `border-${string}`
 }) => {
   const [menu, setMenu] = useState<MenuState>("HIDDEN")
-  const streak = 6
+  const streak = 9
   const lingots = 8
   const language = languages.filter((lang) => lang.code === "en")[0]
 

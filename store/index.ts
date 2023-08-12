@@ -2,9 +2,10 @@ import { configureStore } from "@reduxjs/toolkit"
 import { units } from "./slices/UnitSlice"
 import { sections } from "./slices/SectionSlice"
 import { questions } from "./slices/QuestionSlice"
-import { achievements } from "./slices/AchievementSlice"
+import { results } from "./slices/ResultSlice"
 import { user } from "./slices/UserSlice"
 import { answers } from "./slices/AnswerSlice"
+import { points } from "./slices/PointSlice"
 import { setupListeners } from "@reduxjs/toolkit/dist/query"
 
 export const store = configureStore({
@@ -12,9 +13,10 @@ export const store = configureStore({
     [units.reducerPath]: units.reducer,
     [sections.reducerPath]: sections.reducer,
     [questions.reducerPath]: questions.reducer,
-    [achievements.reducerPath]: achievements.reducer,
+    [results.reducerPath]: results.reducer,
     [user.reducerPath]: user.reducer,
     [answers.reducerPath]: answers.reducer,
+    [points.reducerPath]: points.reducer,
   },
   devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) =>
@@ -22,9 +24,10 @@ export const store = configureStore({
       .concat(units.middleware)
       .concat(sections.middleware)
       .concat(questions.middleware)
-      .concat(achievements.middleware)
+      .concat(results.middleware)
       .concat(user.middleware)
-      .concat(answers.middleware),
+      .concat(answers.middleware)
+      .concat(points.middleware),
 })
 
 setupListeners(store.dispatch)

@@ -1,14 +1,21 @@
 import React from "react"
 import Link from "next/link"
 import ReviewLesson from "./ReviewLesson"
+import { useAddPointsMutation } from "@/store/slices/PointSlice"
 
 type QuestionResult = {
+  points(points: any): unknown
+  question_id: number
+  yourResponseAnswerIds: number
+  correctResponseAnswerIds: number
   question: string
   yourResponse: string
   correctResponse: string
 }
 
 const LessonComplete = ({
+  section_id,
+  user_id,
   correctAnswerCount,
   incorrectAnswerCount,
   startTime,
@@ -17,6 +24,8 @@ const LessonComplete = ({
   setReviewLessonShown,
   questionResults,
 }: {
+  section_id: string | string[]
+  user_id: number
   correctAnswerCount: number
   incorrectAnswerCount: number
   startTime: React.MutableRefObject<number>
@@ -38,15 +47,39 @@ const LessonComplete = ({
       .join(":")
   }
 
+  const [addPoints] = useAddPointsMutation()
+
+  const recordResults = async () => {
+    let points = 0
+    for (const questionResult of questionResults) {
+      const res = await fetch("/api/users/results/add_result", {
+        method: "POST",
+        body: JSON.stringify({
+          section_id: Number(section_id),
+          user_id,
+          question_id: questionResult.question_id,
+          answer_id: questionResult.yourResponseAnswerIds,
+        }),
+        headers: {
+          "Content-Type": "application/json", // Specify the content type
+        },
+      })
+
+      addPoints({
+        points: points + Number(questionResult.points),
+      })
+    }
+  }
+
   return (
     <div className='flex min-h-screen flex-col gap-5 px-4 py-5 sm:px-0 sm:py-0'>
       <div className='flex grow flex-col items-center justify-center gap-8 font-bold'>
         <h1 className='text-center text-3xl text-yellow-400'>
-          Lesson Complete!
+          Section Complete
         </h1>
         <div className='flex flex-wrap justify-center gap-5'>
           <div className='min-w-[110px] rounded-xl border-2 border-yellow-400 bg-yellow-400'>
-            <h2 className='py-1 text-center text-white'>Total XP</h2>
+            <h2 className='py-1 text-center text-white'>Corrected</h2>
             <div className='flex justify-center rounded-xl bg-white py-4 text-yellow-400'>
               {correctAnswerCount}
             </div>
@@ -58,7 +91,17 @@ const LessonComplete = ({
             </div>
           </div>
           <div className='min-w-[110px] rounded-xl border-2 border-green-400 bg-green-400'>
-            <h2 className='py-1 text-center text-white'>Amazing</h2>
+            <h2 className='py-1 text-center text-white'>
+              {correctAnswerCount /
+                (correctAnswerCount + incorrectAnswerCount) >
+              0.8
+                ? "Amazing"
+                : correctAnswerCount /
+                    (correctAnswerCount + incorrectAnswerCount) >
+                  0.5
+                ? "Good"
+                : "Try Again"}
+            </h2>
             <div className='flex justify-center rounded-xl bg-white py-4 text-green-400'>
               {Math.round(
                 (correctAnswerCount /
@@ -82,7 +125,7 @@ const LessonComplete = ({
               "flex w-full items-center justify-center rounded-2xl border-b-4 border-green-600 bg-green-500 p-3 font-bold uppercase text-white transition hover:brightness-105 sm:min-w-[150px] sm:max-w-fit"
             }
             href='/learn'
-            // onClick={() => {
+            onClick={recordResults}
             //   increaseXp(correctAnswerCount);
             //   addToday();
             //   increaseLingots(isPractice ? 0 : 1);

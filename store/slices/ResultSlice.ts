@@ -3,18 +3,18 @@ import BASE_URL from "@/utils/baseUrl"
 import { HYDRATE } from "next-redux-wrapper"
 import { addTokenToRequest } from "./Token"
 
-interface ACHIEVEMENT {
+interface RESULT {
   id: number
   user_id: number
-  unit_id: number
-  correct: number
-  total: number
-  created_at: Date
-  updated_at: Date
+  section_id: number
+  question_id: number
+  answer_id: number
+  created_at: string
+  updated_at: string
 }
 
-export const achievements = createApi({
-  reducerPath: "achievementApi",
+export const results = createApi({
+  reducerPath: "resultApi",
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
     prepareHeaders: (headers, { getState }: any) => {
@@ -27,10 +27,18 @@ export const achievements = createApi({
     }
   },
   endpoints: (builder) => ({
-    getAchievements: builder.query<ACHIEVEMENT[], void>({
-      query: () => `/api/users/achievements`,
+    getResults: builder.query<RESULT[], void>({
+      query: () => `/api/users/results`,
+    }),
+
+    addResult: builder.mutation<RESULT, any>({
+      query: (body) => ({
+        url: `/api/users/results/add_result`,
+        method: "POST",
+        body,
+      }),
     }),
   }),
 })
 
-export const { useGetAchievementsQuery } = achievements
+export const { useGetResultsQuery, useAddResultMutation } = results
