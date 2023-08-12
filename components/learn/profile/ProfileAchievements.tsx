@@ -38,8 +38,8 @@ const ProfileAchievements = (props: Props) => {
       <div className='achievements-list-container '>
         <ul className='achievements-list border-2 rounded-2 '>
           {rewardData
-            ?.map((reward: FakeData) => (
-              <li className='border-b-2 last:border-none'>
+            ?.map((reward: FakeData, index) => (
+              <li key={index} className='border-b-2 last:border-none'>
                 <RewardCard
                   reward={reward?.reward}
                   tips={reward?.tips}
