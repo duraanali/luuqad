@@ -9,7 +9,7 @@ type BottomBarItem = {
   icon: React.ReactNode
 }
 
-export type Tab = "Learn" | "Shop" | "Profile" | "Leaderboards"
+export type Tab = "Learn" | "Shop" | "Profile" | "leaderboard"
 
 export const useBottomBarItems = () => {
   const { data: user } = useGetCurrentUserQuery<any>()
@@ -151,8 +151,8 @@ export const useBottomBarItems = () => {
 
   if (loggedIn) {
     bottomBarItems.splice(1, 0, {
-      name: "Leaderboards",
-      href: "/leaderboard",
+      name: "leaderboard",
+      href: "/learn/leaderboard",
       icon: (
         <svg width='46' height='46' viewBox='0 0 46 46' fill='none'>
           <path
