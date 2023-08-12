@@ -23,7 +23,7 @@ export async function GET() {
     // Get all points
     const points = await prisma.point.findMany({
       where: {
-        user_id: userId
+        user_id: userId,
       },
       select: {
         points: true,

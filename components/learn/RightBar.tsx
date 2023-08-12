@@ -13,9 +13,12 @@ import { useGetPointsQuery } from "@/store/slices/PointSlice"
 
 export const RightBar = () => {
   const { data: points } = useGetPointsQuery<any>()
-  const totalPoints = points?.points.reduce((accumulator:any, currentValue:any) => {
-    return accumulator + currentValue.points
-  }, 0)
+  const totalPoints = points?.points.reduce(
+    (accumulator: any, currentValue: any) => {
+      return accumulator + currentValue.points
+    },
+    0,
+  )
   const lingots = 20
   const streak = totalPoints || 0
   const language = languages.filter((lang) => lang.code === "en")[0]

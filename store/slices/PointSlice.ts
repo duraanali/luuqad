@@ -22,7 +22,7 @@ export const points = createApi({
   },
   tagTypes: ["POINT"],
   endpoints: (builder) => ({
-    getPoints: builder.query<any,void>({
+    getPoints: builder.query<any, void>({
       query: () => `/api/users/points`,
       providesTags: ["POINT"],
     }),

@@ -99,7 +99,7 @@ export const useBottomBarItems = () => {
         <>
           {user && user.user?.image ? (
             <Image
-              className='rounded-full max-w-none c-max-md:w-[77px]'
+              className='rounded-full max-w-none c-max-md:w-[45px]'
               src={user.user?.image} // Use user.image instead of image
               width={46}
               height={46}

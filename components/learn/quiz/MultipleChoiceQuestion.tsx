@@ -47,11 +47,11 @@ const MultipleChoiceQuestion = ({
           />
         </div>
         <section className='flex max-w-2xl grow flex-col gap-5 self-center sm:items-center sm:justify-center sm:gap-24 sm:px-5'>
-          <h1 className='self-start text-2xl font-bold sm:text-3xl'>
+          <h1 className='self-start text-2xl font-bold sm:text-3xl px-8'>
             {question}
           </h1>
           <div
-            className='grid grid-cols-2 gap-2 sm:grid-cols-3'
+            className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2'
             role='radiogroup'>
             {answers.map((answer, i) => {
               return (
