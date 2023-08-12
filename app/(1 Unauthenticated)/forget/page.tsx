@@ -1,9 +1,8 @@
-'use client'
+"use client"
 import Link from "next/link"
 import React from "react"
 import baseUrl from "@/utils/baseUrl"
 export default function Forget() {
-
   const send = () => {
     const res = fetch(`${baseUrl}/api/sendEmail`, {
       method: "POST",
@@ -14,10 +13,9 @@ export default function Forget() {
         to: "duraan522@gmail.com",
         from: "Luuqad <info@alifcloud.com>",
         subject: "Forget Password",
-      })
+      }),
     })
   }
-
 
   return (
     <div className='min-h-full flex items-center justify-center  px-4 sm:px-6 lg:px-8'>
