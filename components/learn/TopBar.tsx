@@ -11,6 +11,7 @@ import Link from "next/link"
 import type { ComponentProps } from "react"
 import React, { useState } from "react"
 import { Flag } from "./Flag"
+import { useGetPointsQuery } from "@/store/slices/PointSlice"
 
 const EmptyFireTopBarSvg = (props: ComponentProps<"svg">) => {
   return (
@@ -70,7 +71,14 @@ export const TopBar = ({
   borderColor?: `border-${string}`
 }) => {
   const [menu, setMenu] = useState<MenuState>("HIDDEN")
-  const streak = 9
+  const { data: points } = useGetPointsQuery<any>()
+  const totalPoints = points?.points.reduce(
+    (accumulator: any, currentValue: any) => {
+      return accumulator + currentValue.points
+    },
+    0,
+  )
+  const streak = totalPoints || 0
   const lingots = 8
   const language = languages.filter((lang) => lang.code === "en")[0]
 
@@ -78,24 +86,20 @@ export const TopBar = ({
     <header className='fixed z-20 h-[58px] w-full'>
       <div
         className={`relative flex h-full w-full items-center justify-between border-b-2 px-[10px] transition duration-500 md:hidden ${borderColor} ${backgroundColor}`}>
-        <button
-          onClick={() =>
-            setMenu((x) => (x === "LANGUAGES" ? "HIDDEN" : "LANGUAGES"))
-          }>
+        <button>
           <Flag language={language} width={45} />
           <span className='sr-only'>See languages</span>
         </button>
 
         <button
           className='flex items-center gap-2 font-bold text-white'
-          onClick={() => setMenu((x) => (x === "STREAK" ? "HIDDEN" : "STREAK"))}
           aria-label='Toggle streak menu'>
           {streak > 0 ? <FireSvg /> : <EmptyFireTopBarSvg />}{" "}
           <span className={streak > 0 ? "text-white" : "text-black opacity-20"}>
             {streak}
           </span>
         </button>
-        <button
+        {/* <button
           className='flex items-center gap-2 font-bold'
           onClick={() => setMenu((x) => (x === "GEMS" ? "HIDDEN" : "GEMS"))}
           aria-label='Toggle lingot menu'>
@@ -104,7 +108,7 @@ export const TopBar = ({
             className={lingots > 0 ? "text-white" : "text-black opacity-20"}>
             {lingots}
           </span>
-        </button>
+        </button> */}
         <MoreOptionsSvg
           onClick={() => setMenu((x) => (x === "MORE" ? "HIDDEN" : "MORE"))}
           role='button'
