@@ -6,6 +6,7 @@ import { results } from "./slices/ResultSlice"
 import { user } from "./slices/UserSlice"
 import { answers } from "./slices/AnswerSlice"
 import { points } from "./slices/PointSlice"
+import { leaderboard } from "./slices/LeaderBoardSlice"
 import { setupListeners } from "@reduxjs/toolkit/dist/query"
 
 export const store = configureStore({
@@ -17,6 +18,7 @@ export const store = configureStore({
     [user.reducerPath]: user.reducer,
     [answers.reducerPath]: answers.reducer,
     [points.reducerPath]: points.reducer,
+    [leaderboard.reducerPath]: leaderboard.reducer,
   },
   devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) =>
@@ -27,7 +29,8 @@ export const store = configureStore({
       .concat(results.middleware)
       .concat(user.middleware)
       .concat(answers.middleware)
-      .concat(points.middleware),
+      .concat(points.middleware)
+      .concat(leaderboard.middleware),
 })
 
 setupListeners(store.dispatch)
