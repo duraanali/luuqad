@@ -20,9 +20,7 @@ import {
   LockedDumbbellSvg,
   LockedTreasureSvg,
   LockedTrophySvg,
-  PracticeExerciseSvg,
   StarSvg,
-  UpArrowSvg,
 } from "@/components/SVGs"
 import { BottomBar } from "@/components/learn/BottomBar"
 import { LeftBar } from "@/components/learn/LeftBar"
@@ -206,6 +204,7 @@ const getTileColors = ({
 const TileTooltip = ({
   selectedTile,
   index,
+  section_id,
   unitNumber,
   tilesLength,
   description,
@@ -214,6 +213,7 @@ const TileTooltip = ({
 }: {
   selectedTile: number | null
   index: number
+  section_id: number
   unitNumber: number
   tilesLength: number
   description: string
@@ -298,7 +298,7 @@ const TileTooltip = ({
           </button>
         ) : (
           <Link
-            href='/learn/quiz'
+            href={`/learn/section/${section_id}`}
             className='flex w-full items-center justify-center rounded-xl border-b-4 border-yellow-200 bg-white p-3 uppercase text-yellow-400'>
             Practice +5 XP
           </Link>
@@ -431,6 +431,7 @@ const UnitSection = ({ unit }: { unit: Unit }): React.ReactNode => {
               <TileTooltip
                 selectedTile={selectedTile}
                 index={i}
+                section_id={tile.id}
                 unitNumber={unit.unitNumber}
                 tilesLength={unit.sections.length}
                 description={(() => {
@@ -476,6 +477,7 @@ const Learn: NextPage = () => {
         const formattedSections = sections?.sections
           .filter((section: any) => section.unit_id === unit.id) // Assuming you have a way to link sections to units using an id
           .map((section: any) => ({
+            id: section.id,
             type: "star",
             title: section.title,
           }))

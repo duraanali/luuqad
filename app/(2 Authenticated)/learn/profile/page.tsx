@@ -13,6 +13,7 @@ type Props = {}
 
 const Profile: NextPage = (props: Props) => {
   const { data: user } = useGetCurrentUserQuery()
+
   return (
     <>
       {/* TopBar-Container Here Start */}

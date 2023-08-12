@@ -19,15 +19,15 @@ export async function GET() {
       )
     }
 
-    // Get all achievements
-    const achievements = await prisma.achievement.findMany({
+    // Get all results
+    const results = await prisma.result.findMany({
       orderBy: {
         id: "asc",
       },
     })
 
     return NextResponse.json({
-      achievements,
+      results,
     })
   } catch (error) {
     // You might want to return a proper response in case of an error

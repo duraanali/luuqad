@@ -40,7 +40,6 @@ const Login = () => {
     }).then((callback) => {
       if (callback?.ok) {
         toast.success("Login Successfully")
-        console.log(callback)
         router.push(callbackUrl)
       } else if (callback?.error) {
         toast.error("Something Went Wrong")
