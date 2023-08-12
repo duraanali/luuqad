@@ -2,7 +2,7 @@
 import Link from "next/link"
 import React from "react"
 import baseUrl from "@/utils/baseUrl"
-export default function Forget() {
+export default function PasswordReset() {
   const send = () => {
     const res = fetch(`${baseUrl}/api/sendEmail`, {
       method: "POST",
@@ -22,19 +22,16 @@ export default function Forget() {
       <div className='max-w-sm'>
         <div>
           <h1 className='mt-20 text-center text-3xl font-extrabold'>
-            Forget password
+            Reset Password
           </h1>
-          <p className='text-center mt-3 font-medium text-xl'>
-            We Will send you instructions on how to reset your password by email
-          </p>
         </div>
         <div className='items-center flex flex-col justify-center gap-3 mt-8'>
           <input
-            type='email'
+            type='password'
             autoComplete='none'
             required
             className='px-4 py-3 justify-center items-center appearance-none rounded-xl relative block w-96 px-3 py-2 border border-black-299 bg-gray-100 focus:outline-none ring-2 ring-gray-300'
-            placeholder='Email Or Username'
+            placeholder='New Password'
           />
         </div>
 

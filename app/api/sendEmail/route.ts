@@ -1,18 +1,18 @@
 import { NextRequest, NextResponse } from "next/server"
-import { options } from "@auth/[...nextauth]/options"
-import { getServerSession } from "next-auth/next"
 import { EmailProvider, Email } from "../../../lib/email/EmailProvider"
 import SendgridEmailProvider from "../../../lib/email/SendGridEmailProvider"
 import NodemailerEmailProvider from "../../../lib/email/NodemailerEmailProvider"
+import ForgetPasswordTemplate from "@/components/emails/ForgetPassword"
+import { render } from "@react-email/render"
 
 const DEFAULT_EMAIL_PROVIDER = process.env.DEFAULT_EMAIL_PROVIDER || "sendgrid"
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY || ""
 const NODEMAILER_CONFIG = {
-  host: process.env.NODEMAILER_HOST || "",
+  host: process.env.NODEMAILER_HOST || "smtp.sendgrid.net",
   port: parseInt(process.env.NODEMAILER_PORT || "587"),
   secure: process.env.NODEMAILER_SECURE === "true",
   auth: {
-    user: process.env.NODEMAILER_USER || "",
+    user: process.env.NODEMAILER_USER || "apikey",
     pass: process.env.NODEMAILER_PASSWORD || "",
   },
 }
@@ -24,41 +24,37 @@ const emailProviders: { [key: string]: EmailProvider } = {
 }
 
 export async function POST(req: NextRequest) {
-  const session = await getServerSession(options)
-
-  if (!session) {
-    return NextResponse.json(
-      {
-        error: "You're not authorized",
-      },
-      { status: 401 },
-    )
-  }
-
-  const { to, from, subject, body }: Email = await req.json()
-
-  const emailProvider = emailProviders[DEFAULT_EMAIL_PROVIDER]
-
-  if (!emailProvider) {
-    return NextResponse.json(
-      {
-        error: "Invalid email provider",
-      },
-      { status: 400 },
-    )
-  }
-  const email: Email = {
-    to,
-    from,
-    subject,
-    body,
-  }
-
   try {
+    const { to, from, subject, body }: Email = await req.json()
+
+    const emailProvider = emailProviders[DEFAULT_EMAIL_PROVIDER]
+
+    if (!emailProvider) {
+      return NextResponse.json(
+        {
+          error: "Invalid email provider",
+        },
+        { status: 400 },
+      )
+    }
+
+    const email: Email = {
+      to,
+      from,
+      subject,
+      body: render(
+        ForgetPasswordTemplate({
+          name: "John Doe",
+          resetLink: "https://example.com",
+        }),
+      ),
+    }
+
     await emailProvider.sendEmail(email)
+
     return NextResponse.json(
       {
-        error: "Email sent successfully",
+        message: "Email sent successfully",
       },
       { status: 200 },
     )
