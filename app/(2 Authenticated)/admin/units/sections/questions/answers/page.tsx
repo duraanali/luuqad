@@ -31,7 +31,7 @@ const AllAnswers = () => {
   const deleteAnswer = async (id: number) => {
     try {
       const res = await axios.delete(
-        `${baseUrl}/api/units/questions/answers/delete/${id}`,
+        `${baseUrl}/api/units/sections/questions/answers/delete/${id}`,
       )
       console.log(res)
       if (res.status == 200) {
