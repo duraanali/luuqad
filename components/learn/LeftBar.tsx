@@ -3,8 +3,6 @@ import type { ComponentProps } from "react"
 import { useState } from "react"
 import type { Tab } from "./BottomBar"
 import { useBottomBarItems } from "./BottomBar"
-
-import { GlobeIconSvg, PodcastIconSvg } from "@/components/SVGs"
 import { signOut } from "next-auth/react"
 
 const LeftBarMoreMenuSvg = (props: ComponentProps<"svg">) => {
@@ -26,10 +24,6 @@ const LeftBarMoreMenuSvg = (props: ComponentProps<"svg">) => {
 }
 
 export const LeftBar = ({ selectedTab }: { selectedTab: Tab | null }) => {
-  const logOut = false
-
-  const [moreMenuShown, setMoreMenuShown] = useState(false)
-
   const bottomBarItems = useBottomBarItems()
 
   return (
@@ -68,52 +62,13 @@ export const LeftBar = ({ selectedTab }: { selectedTab: Tab | null }) => {
           })}
           <div
             className='relative flex grow cursor-default items-center gap-3 rounded-xl py-1 px-2 font-bold uppercase text-gray-400 hover:bg-gray-100'
-            onClick={() => setMoreMenuShown((x) => !x)}
-            onMouseEnter={() => setMoreMenuShown(true)}
-            onMouseLeave={() => setMoreMenuShown(false)}
+            onClick={() => signOut()}
             role='button'
             tabIndex={0}>
             <LeftBarMoreMenuSvg />{" "}
-            <span className='hidden text-sm c-min-lg:inline'>More</span>
-            <div
-              className={[
-                "absolute left-full top-[-10px] min-w-[300px] rounded-2xl border-2 border-gray-300 bg-white text-left text-gray-400",
-                moreMenuShown ? "" : "hidden",
-              ].join(" ")}>
-              <div className='flex flex-col py-2'>
-                <Link
-                  className='flex items-center gap-4 py-2 px-5 text-left uppercase hover:bg-gray-100'
-                  href='https://schools.duolingo.com'
-                  target='_blank'
-                  rel='noopener noreferrer'>
-                  <GlobeIconSvg className='h-10 w-10' />
-                  Schools
-                </Link>
-                <Link
-                  className='flex items-center gap-4 py-2 px-5 text-left uppercase hover:bg-gray-100'
-                  href='https://podcast.duolingo.com'
-                  target='_blank'
-                  rel='noopener noreferrer'>
-                  <PodcastIconSvg className='h-10 w-10' />
-                  Podcast
-                </Link>
-              </div>
-              <div className='flex flex-col border-t-2 border-gray-300 py-2'>
-                <Link
-                  className='py-2 px-5 text-left uppercase hover:bg-gray-100'
-                  href='#'
-                  target='_blank'
-                  rel='noopener noreferrer'>
-                  Help
-                </Link>
-
-                <button
-                  className='py-2 px-5 text-left uppercase hover:bg-gray-100'
-                  onClick={() => signOut()}>
-                  Sign out
-                </button>
-              </div>
-            </div>
+            <button className=' text-left uppercase hover:bg-gray-100'>
+              Logout
+            </button>
           </div>
         </ul>
       </nav>
