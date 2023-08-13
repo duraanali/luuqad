@@ -6,7 +6,17 @@ const generateRandomColor = () => {
   return randomColor
 }
 
-const NameAvatar = ({ name }: { name: string }) => {
+const NameAvatar = ({
+  name,
+  width,
+  height,
+  fontSize,
+}: {
+  name: string
+  width: string
+  height: string
+  fontSize: string
+}) => {
   // Get the first letter of the name
   const initial = name.charAt(0).toUpperCase()
 
@@ -15,14 +25,15 @@ const NameAvatar = ({ name }: { name: string }) => {
 
   // Define a style for the circle
   const circleStyle = {
-    width: "48px",
-    height: "48px",
+    width,
+    height,
+    fontSize,
     backgroundColor,
     borderRadius: "50%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    color: "white", // Set the text color to white for better visibility
+    color: "white",
     fontWeight: "bold",
   }
 

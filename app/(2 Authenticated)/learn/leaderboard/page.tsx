@@ -58,7 +58,7 @@ const LeaderboardProfile = ({
             className='rounded-full'
           />
         ) : (
-          <NameAvatar name={name} />
+          <NameAvatar name={name} width='48px' height='48px' fontSize='1rem' />
         )}
       </div>
       <div className='grow overflow-hidden overflow-ellipsis font-bold'>

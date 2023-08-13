@@ -4,7 +4,7 @@ import LuuqadIconFollow from "../../icons/LuuqadIconFollow"
 import LuuqadIconPen from "../../icons/LuuqadIconPen"
 import LuuqadIconTime from "../../icons/LuuqadIconTime"
 import LuuqadIconUK from "../../icons/LuuqadIconUK"
-
+import NameAvatar from "@/utils/NameAvatar"
 type Props = {
   user: any
 }
@@ -59,15 +59,14 @@ const ProfileUser = (props: Props) => {
             alt='Picture of the author'
           />
         ) : (
-          <Image
-            className=' profile-avatar object-contain rounded-full max-w-none c-max-md:w-[77px] '
-            src='/images/Profile.png'
-            width={140}
-            height={140}
-            alt='Picture of the author'
+          <NameAvatar
+            name={name}
+            width='140px'
+            height='140px'
+            fontSize='3rem'
           />
         )}
-        <Link href={"/settings/acount"} className='user-setting'>
+        <Link href={"/settings/acount"}>
           <div className=' absolute bg-sky-400 p-0 rounded-[50%]  top-0  right-0 '>
             <LuuqadIconPen className=' text-primary-white-1 ' width={30} />
           </div>
