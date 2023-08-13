@@ -108,11 +108,13 @@ const Leaderboard: NextPage = () => {
         (a: { xp: number }, b: { xp: number }) => b.xp - a.xp,
       )
 
-      setLeaderboardUsers(sortedLeaderboardUsers)
+      // Limit to the top 20 users
+      const top20LeaderboardUsers = sortedLeaderboardUsers.slice(0, 20)
+
+      setLeaderboardUsers(top20LeaderboardUsers)
     }
   }, [leaders, currentUser, isLoading])
 
-  console.log(leaderboardUsers)
   const leaderboardLeague = "Bronze League"
 
   return (
