@@ -1,9 +1,8 @@
+import { signOut } from "next-auth/react"
 import Link from "next/link"
 import type { ComponentProps } from "react"
-import { useState } from "react"
 import type { Tab } from "./BottomBar"
 import { useBottomBarItems } from "./BottomBar"
-import { signOut } from "next-auth/react"
 
 const LeftBarMoreMenuSvg = (props: ComponentProps<"svg">) => {
   return (
@@ -66,7 +65,7 @@ export const LeftBar = ({ selectedTab }: { selectedTab: Tab | null }) => {
             role='button'
             tabIndex={0}>
             <LeftBarMoreMenuSvg />{" "}
-            <button className=' text-left uppercase hover:bg-gray-100'>
+            <button className=' hidden c-min-lg:inline text-left uppercase hover:bg-gray-100'>
               Logout
             </button>
           </div>
