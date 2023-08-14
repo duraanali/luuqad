@@ -13,16 +13,6 @@ import { Suspense, useEffect } from "react"
 const Profile: NextPage = () => {
   const { data: user } = useGetCurrentUserQuery()
 
-  useEffect(() => {
-    fetch("/api/users/current_user", {
-      method: "GET",
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then((res) => console.log("REZ", res))
-  }, [])
-
-
   return (
     <>
       <ProfileSettings />

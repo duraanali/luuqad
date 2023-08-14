@@ -6,7 +6,7 @@ import { addTokenToRequest } from "./Token"
 interface POINT {
   points: number
 }
-console.log("BASE_URL", BASE_URL)
+
 export const points = createApi({
   reducerPath: "pointApi",
   baseQuery: fetchBaseQuery({
