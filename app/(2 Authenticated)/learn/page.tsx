@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react"
 import { useGetUnitsQuery } from "@/store/slices/UnitSlice"
 import { useGetSectionsQuery } from "@/store/slices/SectionSlice"
 
+// This component displays the units and sections for the user to learn
 const Learn: NextPage = () => {
   const { data: unitz } = useGetUnitsQuery<any>()
   const { data: sections } = useGetSectionsQuery<any>()
