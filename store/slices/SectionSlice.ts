@@ -27,6 +27,7 @@ export const sections = createApi({
   reducerPath: "sectionApi",
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
+    credentials: "same-origin",
     prepareHeaders: (headers, { getState }: any) => {
       return addTokenToRequest(headers, { getState })
     },
