@@ -18,7 +18,6 @@ export const units = createApi({
     baseUrl: BASE_URL,
     credentials: "same-origin",
     prepareHeaders: (headers, { getState }: any) => {
-      console.log("getState", getState())
       console.log("headers", headers)
       return addTokenToRequest(headers, { getState })
     },
