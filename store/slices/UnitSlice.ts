@@ -16,7 +16,9 @@ export const units = createApi({
   reducerPath: "unitApi",
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
+    credentials: "same-origin",
     prepareHeaders: (headers, { getState }: any) => {
+      console.log("headers", headers)
       return addTokenToRequest(headers, { getState })
     },
   }),
