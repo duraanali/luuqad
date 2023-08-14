@@ -9,14 +9,6 @@ const nextConfig = {
   env: {
     JWT_SECRET: process.env.JWT_SECRET,
   },
-  async rewrites() {
-    return [
-      {
-        source: '/api/:path*',
-        destination: 'https://luuqad.com/api/:path*',
-      },
-    ]
-  },
 }
 
 module.exports = nextConfig
