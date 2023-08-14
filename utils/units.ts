@@ -4,17 +4,17 @@ export type Unit = {
   backgroundColor: `bg-${string}`
   textColor: `text-${string}`
   borderColor: `border-${string}`
-  sections: Tile[]
+  sections: Section[]
 }
 
-export type Tile =
+export type Section =
   | {
       type: "star" | "dumbbell" | "book" | "trophy" | "fast-forward"
       title: string
     }
   | { type: "treasure" }
 
-export type TileType = Tile["type"]
+export type SectionType = Section["type"]
 
 export const units: readonly Unit[] = [
   {

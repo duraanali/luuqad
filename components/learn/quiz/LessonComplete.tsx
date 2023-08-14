@@ -2,9 +2,10 @@ import React from "react"
 import Link from "next/link"
 import ReviewLesson from "./ReviewLesson"
 import { useAddPointsMutation } from "@/store/slices/PointSlice"
+import { useAddResultMutation } from "@/store/slices/SectionSlice"
 
 type QuestionResult = {
-  points(points: any): unknown
+  points: unknown
   question_id: number
   yourResponseAnswerIds: number
   correctResponseAnswerIds: number
@@ -48,21 +49,16 @@ const LessonComplete = ({
   }
 
   const [addPoints] = useAddPointsMutation()
+  const [addResult] = useAddResultMutation()
 
   const recordResults = async () => {
     let points = 0
     for (const questionResult of questionResults) {
-      const res = await fetch("/api/users/results/add_result", {
-        method: "POST",
-        body: JSON.stringify({
-          section_id: Number(section_id),
-          user_id,
-          question_id: questionResult.question_id,
-          answer_id: questionResult.yourResponseAnswerIds,
-        }),
-        headers: {
-          "Content-Type": "application/json", // Specify the content type
-        },
+      addResult({
+        section_id: Number(section_id),
+        user_id,
+        question_id: questionResult.question_id,
+        answer_id: questionResult.yourResponseAnswerIds,
       })
 
       addPoints({

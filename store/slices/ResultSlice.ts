@@ -30,6 +30,9 @@ export const results = createApi({
     getResults: builder.query<RESULT[], void>({
       query: () => `/api/users/results`,
     }),
+    getResultsByUser: builder.query<any, number>({
+      query: (user_id: number) => `/api/users/results/${user_id}`,
+    }),
 
     addResult: builder.mutation<RESULT, any>({
       query: (body) => ({
@@ -41,4 +44,8 @@ export const results = createApi({
   }),
 })
 
-export const { useGetResultsQuery, useAddResultMutation } = results
+export const {
+  useGetResultsQuery,
+  useAddResultMutation,
+  useGetResultsByUserQuery,
+} = results

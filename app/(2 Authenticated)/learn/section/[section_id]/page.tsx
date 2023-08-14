@@ -17,12 +17,6 @@ const numbersEqual = (a: readonly number[], b: readonly number[]): boolean => {
   return a.length === b.length && a.every((_, i) => a[i] === b[i])
 }
 
-type QuestionResult = {
-  question: string
-  yourResponse: string
-  correctResponse: string
-}
-
 const Question: NextPage = () => {
   const searchParams = useSearchParams()
   const params = useParams()
