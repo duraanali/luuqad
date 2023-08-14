@@ -17,20 +17,21 @@ const numbersEqual = (a: readonly number[], b: readonly number[]): boolean => {
   return a.length === b.length && a.every((_, i) => a[i] === b[i])
 }
 
-type QuestionResult = {
-  question: string
-  yourResponse: string
-  correctResponse: string
-}
-
+// This component displays the questions for a section
 const Question: NextPage = () => {
   const searchParams = useSearchParams()
   const params = useParams()
 
+  // This code gets the current user, and the questions for the section
   const { data: user } = useGetCurrentUserQuery<any>()
   const { data } = useGetQuestionsBySectionQuery<any>(Number(params.section_id))
+
+  // This code formats the questions for the section
   const [lessonProblems, setFormattedQuestions] = useState<any[]>([])
   const [totalCorrectAnswersNeeded, setTotalCorrectAnswersNeeded] = useState(0)
+
+
+  // This useEffect runs when the questions for the section are loaded and formats them
   useEffect(() => {
     if (data) {
       const formattedData = data.questions.map((question: any) => ({
@@ -52,6 +53,7 @@ const Question: NextPage = () => {
     }
   }, [data])
 
+  
   const [lessonProblem, setLessonProblem] = useState(0)
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0)
   const [incorrectAnswerCount, setIncorrectAnswerCount] = useState(0)

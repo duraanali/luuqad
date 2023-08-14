@@ -13,6 +13,16 @@ interface SECTION {
   updated_at: string
 }
 
+interface RESULT {
+  id: number
+  user_id: number
+  section_id: number
+  question_id: number
+  answer_id: number
+  created_at: string
+  updated_at: string
+}
+
 export const sections = createApi({
   reducerPath: "sectionApi",
   baseQuery: fetchBaseQuery({
@@ -26,11 +36,23 @@ export const sections = createApi({
       return action.payload[reducerPath]
     }
   },
+  tagTypes: ["SECTION"],
   endpoints: (builder) => ({
     getSections: builder.query<SECTION[], void>({
       query: () => `/api/units/sections`,
+      providesTags: ["SECTION"],
+    }),
+
+    addResult: builder.mutation<RESULT, any>({
+      query: (body) => ({
+        url: `/api/users/results/add_result`,
+        method: "POST",
+        body,
+      }),
+      // On success, fetch sections again to update the cache
+      invalidatesTags: ["SECTION"],
     }),
   }),
 })
 
-export const { useGetSectionsQuery } = sections
+export const { useGetSectionsQuery, useAddResultMutation } = sections
