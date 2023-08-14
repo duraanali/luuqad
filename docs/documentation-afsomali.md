@@ -6,7 +6,7 @@
 
 ![LUUQAD Logo](/public/luuqad.png)
 
-**LINK-GA AAD KA ARKI KARTO WEBSITE-KA:** [https://luuqad.vercel.app](https://luuqad.vercel.app)
+**LINK-GA AAD KA ARKI KARTO WEBSITE-KA:** [https://luuqad.com](https://luuqad.com)
 
 ## HORUDHAC
 

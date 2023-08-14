@@ -1,7 +1,7 @@
 # Luuqad
 
 ![LUUQAD Logo](/public/luuqad.png)
-**DEMO LINK:** [https://luuqad.vercel.app](https://luuqad.vercel.app)
+**DEMO LINK:** [https://luuqad.com](https://luuqad.com)
 
 ### READ THIS IN SOMALI LANGUAGE 👉 [SOMALI](/docs/documentation-afsomali.md)
 
