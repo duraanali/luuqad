@@ -17,6 +17,7 @@ export const units = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
     credentials: "same-origin",
+    mode: 'no-cors',
     prepareHeaders: (headers, { getState }: any) => {
       return addTokenToRequest(headers, { getState })
     },
