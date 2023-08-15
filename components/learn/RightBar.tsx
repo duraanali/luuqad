@@ -4,10 +4,10 @@ import {
   LightningProgressSvg,
   TreasureProgressSvg,
 } from "@/components/SVGs"
-import languages from "@/utils/languages"
-import type { ComponentProps } from "react"
-import { Flag } from "./Flag"
 import { useGetPointsQuery } from "@/store/slices/PointSlice"
+import languages from "@/utils/languages"
+import { Flag } from "./Flag"
+import ProfileFriendFollow from "./profile/ProfileFriendFollow"
 
 export const RightBar = () => {
   const { data: points } = useGetPointsQuery<any>()
@@ -53,6 +53,7 @@ export const RightBar = () => {
               }}></div>
           </span> */}
         </article>
+        <ProfileFriendFollow />
         <DailyQuestsSection />
         {/* <XpProgressSection /> */}
       </aside>
@@ -394,4 +395,3 @@ const DailyQuestsSection = () => {
 //     </svg>
 //   )
 // }
-
