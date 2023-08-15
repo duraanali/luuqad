@@ -20,17 +20,16 @@ export async function PUT(req: NextRequest) {
       )
     }
 
-   
     const userId = Number(session.user?.id)
     // If no existing result found, create a new result
     const newResult = await prisma.user.update({
-        where: {
-            id: userId,
-        },
-        data: {
-            name,
-            email,
-        },
+      where: {
+        id: userId,
+      },
+      data: {
+        name,
+        email,
+      },
     })
 
     return NextResponse.json({

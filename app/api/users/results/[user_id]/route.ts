@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth/next"
 import { prisma } from "@/lib/prisma"
 
 export async function GET(
-   req: NextRequest,
+  req: NextRequest,
   { params: { user_id } }: { params: { user_id: number } },
 ) {
   try {

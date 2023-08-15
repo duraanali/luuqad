@@ -29,7 +29,6 @@ export const user = createApi({
   },
   tagTypes: ["USER"],
   endpoints: (builder) => ({
-
     getCurrentUser: builder.query<USER[], void>({
       query: () => `/api/users/current_user`,
       providesTags: ["USER"],
@@ -43,7 +42,6 @@ export const user = createApi({
       }),
       invalidatesTags: ["USER"],
     }),
-
   }),
 })
 

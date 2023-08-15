@@ -64,12 +64,16 @@ const DailyQuestsSection = () => {
   const { data: points } = useGetPointsQuery<any>()
 
   const calculateTotalPoints = () => {
-    const currentDate = new Date().toISOString().split('T')[0]; // Get current date in 'YYYY-MM-DD' format
-    const currentDayData = points?.points.filter((entry:any) => entry.created_at.startsWith(currentDate));
-    const totalPoints = currentDayData?.reduce((total:any, entry:any) => total + entry.points, 0);
-    return totalPoints;
-  };
-
+    const currentDate = new Date().toISOString().split("T")[0] // Get current date in 'YYYY-MM-DD' format
+    const currentDayData = points?.points.filter((entry: any) =>
+      entry.created_at.startsWith(currentDate),
+    )
+    const totalPoints = currentDayData?.reduce(
+      (total: any, entry: any) => total + entry.points,
+      0,
+    )
+    return totalPoints
+  }
 
   const xpToday = calculateTotalPoints() ? calculateTotalPoints() : 0
   const goalXp = 50
