@@ -1,8 +1,6 @@
 import {
   EmptyFireSvg,
-  EmptyGemSvg,
   FireSvg,
-  GemSvg,
   LightningProgressSvg,
   TreasureProgressSvg,
 } from "@/components/SVGs"
@@ -19,7 +17,6 @@ export const RightBar = () => {
     },
     0,
   )
-  const lingots = 20
   const streak = totalPoints || 0
   const language = languages.filter((lang) => lang.code === "en")[0]
 
@@ -57,38 +54,24 @@ export const RightBar = () => {
           </span> */}
         </article>
         <DailyQuestsSection />
-        <XpProgressSection />
+        {/* <XpProgressSection /> */}
       </aside>
     </>
   )
 }
 
-const UnlockLeaderboardsSection = () => {
-  const lessonsCompleted = 2
-
-  if (lessonsCompleted >= 10) {
-    return null
-  }
-
-  const lessonsNeededToUnlockLeaderboards = 10 - lessonsCompleted
-
-  return (
-    <article className='flex flex-col gap-5 rounded-2xl border-2 border-gray-200 p-6 text-gray-700'>
-      <h2 className='text-xl font-bold'>Unlock Leaderboards!</h2>
-      <div className='flex items-center gap-6'>
-        <LockedLeaderboardsSvg />
-        <p className='text-sm leading-6 text-gray-500'>
-          Complete {lessonsNeededToUnlockLeaderboards} more lesson
-          {lessonsNeededToUnlockLeaderboards === 1 ? "" : "s"} to start
-          competing
-        </p>
-      </div>
-    </article>
-  )
-}
-
 const DailyQuestsSection = () => {
-  const xpToday = 20
+  const { data: points } = useGetPointsQuery<any>()
+
+  const calculateTotalPoints = () => {
+    const currentDate = new Date().toISOString().split('T')[0]; // Get current date in 'YYYY-MM-DD' format
+    const currentDayData = points?.points.filter((entry:any) => entry.created_at.startsWith(currentDate));
+    const totalPoints = currentDayData?.reduce((total:any, entry:any) => total + entry.points, 0);
+    return totalPoints;
+  };
+
+
+  const xpToday = calculateTotalPoints() ? calculateTotalPoints() : 0
   const goalXp = 50
   return (
     <article className='flex flex-col gap-5 rounded-2xl border-2 border-gray-200 p-6 font-bold text-gray-700'>
@@ -113,43 +96,6 @@ const DailyQuestsSection = () => {
         </div>
       </div>
     </article>
-  )
-}
-
-const LockedLeaderboardsSvg = () => {
-  return (
-    <svg width='40' height='46' viewBox='0 0 40 46' fill='none'>
-      <path
-        d='M6.82875 3.41476L33.1701 3.41476C36.9418 3.41476 39.9993 6.47231 39.9993 10.244V26.3415C39.9993 36.8483 31.4819 45.3658 20.975 45.3658H19.0238C8.51698 45.3658 -0.000488281 36.8483 -0.000488281 26.3415L-0.000488281 10.244C-0.000488281 6.47231 3.05707 3.41476 6.82875 3.41476Z'
-        fill='#AAC1D4'
-      />
-      <path
-        d='M23.544 3.41476L33.1698 3.41476C36.9415 3.41476 39.9991 6.47231 39.9991 10.244V14.554L10.9707 43.5824C4.66224 40.6308 0.240328 34.3187 0.00878906 26.95L23.544 3.41476Z'
-        fill='#C2D1DD'
-      />
-      <path
-        d='M6.82875 -1.52588e-05L33.1701 -1.52588e-05C36.9418 -1.52588e-05 39.9993 3.05754 39.9993 6.82922V23.9023C39.9993 33.8703 31.9187 41.951 21.9506 41.951H18.0482C8.08019 41.951 -0.000488281 33.8703 -0.000488281 23.9023L-0.000488281 6.82922C-0.000488281 3.05754 3.05707 -1.52588e-05 6.82875 -1.52588e-05Z'
-        fill='#C2D1DD'
-      />
-      <path
-        d='M6.82875 4.39021C5.48172 4.39021 4.38974 5.48219 4.38974 6.82922L4.38974 23.9023C4.38974 31.4457 10.5048 37.5608 18.0482 37.5608H21.9506C29.494 37.5608 35.6091 31.4457 35.6091 23.9023V6.82922C35.6091 5.48219 34.5171 4.39021 33.1701 4.39021L6.82875 4.39021ZM6.82875 -1.52588e-05L33.1701 -1.52588e-05C36.9418 -1.52588e-05 39.9993 3.05754 39.9993 6.82922V23.9023C39.9993 33.8703 31.9187 41.951 21.9506 41.951H18.0482C8.08019 41.951 -0.000488281 33.8703 -0.000488281 23.9023L-0.000488281 6.82922C-0.000488281 3.05754 3.05707 -1.52588e-05 6.82875 -1.52588e-05Z'
-        fill='#D6E4EF'
-      />
-      <path
-        d='M26.9597 -1.52588e-05L33.1709 -1.52588e-05C36.9426 -1.52588e-05 40.0002 3.05754 40.0002 6.82922V14.5539L13.2484 41.3056C6.49782 39.4476 1.33102 33.7672 0.221802 26.7379L26.9597 -1.52588e-05Z'
-        fill='#D1DCE5'
-      />
-      <path
-        d='M4.39056 22.5692V23.9023C4.39056 31.1031 9.96287 37.0024 17.0306 37.5234L13.2484 41.3056C6.49782 39.4476 1.33102 33.7672 0.221802 26.7379L4.39056 22.5692ZM35.6099 18.9441V6.82922C35.6099 5.48219 34.518 4.39021 33.1709 4.39021L22.5695 4.39021L26.9597 -1.52588e-05L33.1709 -1.52588e-05C36.9426 -1.52588e-05 40.0002 3.05754 40.0002 6.82922V14.5539L35.6099 18.9441Z'
-        fill='#E0EAF3'
-      />
-      <path
-        fillRule='evenodd'
-        clipRule='evenodd'
-        d='M17.0277 22.1682C15.8255 21.312 15.0474 19.9455 15.0474 18.4059C15.0474 15.813 17.2544 13.7111 19.9769 13.7111C22.6994 13.7111 24.9064 15.813 24.9064 18.4059C24.9064 19.9765 24.0966 21.3669 22.853 22.2192L24.1155 25.5237C24.4553 26.4131 23.9457 27.3871 22.9772 27.6992C22.7794 27.7629 22.5714 27.7954 22.3619 27.7954H17.4994C16.473 27.7954 15.6409 27.0313 15.6409 26.0887C15.6409 25.8963 15.6764 25.7053 15.7458 25.5237L17.0277 22.1682Z'
-        fill='#8097AA'
-      />
-    </svg>
   )
 }
 
