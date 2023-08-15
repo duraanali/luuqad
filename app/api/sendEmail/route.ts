@@ -25,7 +25,7 @@ const emailProviders: { [key: string]: EmailProvider } = {
 
 export async function POST(req: NextRequest) {
   try {
-    const { to, from, subject, body }: Email = await req.json()
+    const { to, from, subject }: Email = await req.json()
 
     const emailProvider = emailProviders[DEFAULT_EMAIL_PROVIDER]
 

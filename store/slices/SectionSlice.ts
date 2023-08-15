@@ -28,7 +28,7 @@ export const sections = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
     credentials: "same-origin",
-    mode: 'no-cors',
+    mode: "no-cors",
     prepareHeaders: (headers, { getState }: any) => {
       return addTokenToRequest(headers, { getState })
     },

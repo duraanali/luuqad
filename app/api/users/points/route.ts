@@ -27,6 +27,7 @@ export async function GET() {
       },
       select: {
         points: true,
+        created_at: true,
       },
     })
 

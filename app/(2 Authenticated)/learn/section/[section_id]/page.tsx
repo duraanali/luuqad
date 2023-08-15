@@ -30,7 +30,6 @@ const Question: NextPage = () => {
   const [lessonProblems, setFormattedQuestions] = useState<any[]>([])
   const [totalCorrectAnswersNeeded, setTotalCorrectAnswersNeeded] = useState(0)
 
-
   // This useEffect runs when the questions for the section are loaded and formats them
   useEffect(() => {
     if (data) {
@@ -53,7 +52,6 @@ const Question: NextPage = () => {
     }
   }, [data])
 
-  
   const [lessonProblem, setLessonProblem] = useState(0)
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0)
   const [incorrectAnswerCount, setIncorrectAnswerCount] = useState(0)

@@ -2,16 +2,17 @@
 import { BottomBar } from "@/components/learn/BottomBar"
 import { LeftBar } from "@/components/learn/LeftBar"
 import { RightBar } from "@/components/learn/RightBar"
-import ProfileAchievements from "@/components/learn/profile/ProfileAchievements"
 import ProfileSettings from "@/components/learn/profile/ProfileSettings"
 import ProfileStatistics from "@/components/learn/profile/ProfileStatistics"
 import ProfileUser from "@/components/learn/profile/ProfileUser"
 import { useGetCurrentUserQuery } from "@store/slices/UserSlice"
+import { useGetPointsQuery } from "@/store/slices/PointSlice"
 import { NextPage } from "next"
-import { Suspense, useEffect } from "react"
+import { Suspense } from "react"
 
 const Profile: NextPage = () => {
   const { data: user } = useGetCurrentUserQuery()
+  const { data: points } = useGetPointsQuery()
 
   return (
     <>
@@ -24,8 +25,8 @@ const Profile: NextPage = () => {
               <ProfileUser user={user} />
             </Suspense>
           )}
-          <ProfileStatistics />
-          <ProfileAchievements />
+          <ProfileStatistics points={points} />
+          {/* <ProfileAchievements /> */}
         </div>
         <RightBar />
       </div>

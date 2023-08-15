@@ -2,9 +2,7 @@ import Link from "next/link"
 import LuuqadIconBook from "../icons/LuuqadIconBook"
 import UnitTimeLine_1 from "./UnitTimeLine_1"
 
-type Props = {}
-
-const UnitSection_1 = (props: Props) => {
+const UnitSection_1 = () => {
   return (
     <>
       <section className=' unit-section ' data-test='skill-path-unit-1'>

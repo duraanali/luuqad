@@ -27,11 +27,22 @@ export const user = createApi({
       return action.payload[reducerPath]
     }
   },
+  tagTypes: ["USER"],
   endpoints: (builder) => ({
     getCurrentUser: builder.query<USER[], void>({
       query: () => `/api/users/current_user`,
+      providesTags: ["USER"],
+    }),
+
+    updateUser: builder.mutation<USER, Partial<USER>>({
+      query: (body) => ({
+        url: `/api/users/update`,
+        method: "PUT",
+        body,
+      }),
+      invalidatesTags: ["USER"],
     }),
   }),
 })
 
-export const { useGetCurrentUserQuery } = user
+export const { useGetCurrentUserQuery, useUpdateUserMutation } = user
