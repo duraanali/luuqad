@@ -65,12 +65,10 @@ const ProfileFriendFollow = (props: Props) => {
             className={`${activeFollowing} " content items-center text-[18px] flex-col p-[40px_30px_30px] "`}>
             <Image
               className=' profile-avatar object-contain  max-w-none c-max-md:w-[77px] '
-              src={
-                "https://d35aaqx5ub95lt.cloudfront.net/images/profile/a925a18c6be921a81bf0e13102983168.svg"
-              }
+              src={"/svg/follow.svg"}
               width={304}
               height={141}
-              alt='Picture of the author'
+              alt='Follow Friends'
             />
             <div className='text-center text-slate-500'>
               Learning is more fun and effective when you connect with others.
