@@ -11,7 +11,7 @@ const ProfileSettings = (props: Props) => {
         Profile
       </div>
       <div className='settings-gear text-gray-300 '>
-        <Link href={"/settings"}>
+        <Link href={"/learn/profile/edit"}>
           <LuuqadIconGear width={30} />
         </Link>
       </div>
