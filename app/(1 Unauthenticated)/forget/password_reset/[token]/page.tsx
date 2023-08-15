@@ -1,20 +1,20 @@
 "use client"
 import Link from "next/link"
 import React from "react"
-import baseUrl from "@/utils/baseUrl"
+// import baseUrl from "@/utils/baseUrl"
 export default function PasswordReset() {
   const send = () => {
-    const res = fetch(`${baseUrl}/api/sendEmail`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        to: "duraan522@gmail.com",
-        from: "Luuqad <info@alifcloud.com>",
-        subject: "Forget Password",
-      }),
-    })
+    // const res = fetch(`${baseUrl}/api/sendEmail`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     to: "duraan522@gmail.com",
+    //     from: "Luuqad <info@alifcloud.com>",
+    //     subject: "Forget Password",
+    //   }),
+    // })
   }
 
   return (
@@ -30,7 +30,7 @@ export default function PasswordReset() {
             type='password'
             autoComplete='none'
             required
-            className='px-4 py-3 justify-center items-center appearance-none rounded-xl relative block w-96 px-3 py-2 border border-black-299 bg-gray-100 focus:outline-none ring-2 ring-gray-300'
+            className='px-4 justify-center items-center appearance-none rounded-xl relative block w-96 py-2 border border-black-299 bg-gray-100 focus:outline-none ring-2 ring-gray-300'
             placeholder='New Password'
           />
         </div>

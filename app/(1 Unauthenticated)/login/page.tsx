@@ -64,7 +64,7 @@ const Login = () => {
                 name='email'
                 autoComplete='none'
                 required
-                className='relative items-center justify-center block px-3 px-4 py-2 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
+                className='relative items-center justify-center block px-3 py-2 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
                 placeholder='Email Or Username'
               />
               <div className='relative mt-2'>
@@ -73,7 +73,7 @@ const Login = () => {
                   name='password'
                   autoComplete='none'
                   required
-                  className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
+                  className='relative items-center justify-center block px-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
                   placeholder='Password'
                 />
                 {/* forget password link */}
