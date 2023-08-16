@@ -46,6 +46,7 @@ module.exports = {
         border_2: "0px 0px 0px 2px",
         border_3: "0px 0px 0px 3px",
         border_4: "0px 0px 0px 4px",
+        border_b: "0px 2px 0px",
       },
       screens: {
         "c-sm": {
