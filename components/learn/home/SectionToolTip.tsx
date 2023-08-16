@@ -120,7 +120,7 @@ const SectionToolTip = ({
               "flex w-full items-center justify-center rounded-xl border-b-4 border-gray-200 bg-white p-3 uppercase",
               activeTextColor,
             ].join(" ")}>
-            Start +2 XP
+            Start {tilesLength} XP
           </Link>
         ) : status === "LOCKED" ? (
           <button
@@ -132,7 +132,7 @@ const SectionToolTip = ({
           <Link
             href={`/learn/section/${section_id}`}
             className='flex w-full items-center justify-center rounded-xl border-b-4 border-yellow-200 bg-white p-3 uppercase text-yellow-400'>
-            Practice +2 XP
+            START
           </Link>
         )}
       </div>
