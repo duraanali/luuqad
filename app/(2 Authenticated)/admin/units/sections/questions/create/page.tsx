@@ -47,7 +47,7 @@ const CreateQuestion = () => {
     question: "",
     avatar: "",
     audio: "",
-    points: 0,
+    points: 2,
     status: 1,
   }
 
@@ -112,7 +112,7 @@ const CreateQuestion = () => {
                   name='title'
                   autoComplete='none'
                   required
-                  className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
+                  className='relative items-center justify-center block px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
                   placeholder='title'
                 />
                 <div className='mt-5'></div>
@@ -121,7 +121,7 @@ const CreateQuestion = () => {
                   name='question'
                   autoComplete='none'
                   required
-                  className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
+                  className='relative items-center justify-center block px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
                   placeholder='Question'
                 />
                 <div className='mt-5 relative'>
@@ -129,7 +129,7 @@ const CreateQuestion = () => {
                     as='select'
                     required
                     name='section_id'
-                    className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'>
+                    className='relative items-center justify-center block  px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'>
                     <option value='' disabled selected>
                       Select Section
                     </option>
@@ -145,7 +145,7 @@ const CreateQuestion = () => {
                     as='select'
                     required
                     name='question_type_id'
-                    className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'>
+                    className='relative items-center justify-center block px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'>
                     <option value='' disabled selected>
                       Select Question Type
                     </option>
@@ -161,15 +161,16 @@ const CreateQuestion = () => {
                   type='text'
                   name='avatar'
                   autoComplete='none'
-                  className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
+                  className='relative items-center justify-center block px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
                   placeholder='Avatar'
                 />
                 <div className='mt-5'></div>
                 <Field
                   type='text'
+                  disabled
                   name='points'
                   autoComplete='none'
-                  className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
+                  className='relative items-center justify-center block px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
                   placeholder='Points'
                 />
                 <div className='mt-5'></div>
@@ -177,7 +178,7 @@ const CreateQuestion = () => {
                   type='text'
                   name='audio'
                   autoComplete='none'
-                  className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
+                  className='relative items-center justify-center block px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'
                   placeholder='Audio'
                 />
                 <div className='mt-5'></div>
@@ -186,7 +187,7 @@ const CreateQuestion = () => {
                     as='select'
                     required
                     name='status'
-                    className='relative items-center justify-center block px-3 px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'>
+                    className='relative items-center justify-center block px-4 py-3 bg-gray-100 border appearance-none rounded-xl w-96 border-black-299 focus:outline-none ring-2 ring-gray-300'>
                     <option value='' disabled selected>
                       Select status
                     </option>

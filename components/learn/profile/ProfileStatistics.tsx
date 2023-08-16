@@ -39,7 +39,7 @@ const ProfileStatistics = ({ points }: Props) => {
             <span className='staticstics-number text-gray-400 text-xl font-bold'>
               {calculateTotalPoints()}
             </span>
-            <div className='staticstics-text'>Day Streak</div>
+            <div className='staticstics-text'>Today&apos;s Total XP</div>
           </div>
         </div>
         {/* End statistics-score */}

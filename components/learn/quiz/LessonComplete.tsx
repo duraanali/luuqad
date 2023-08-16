@@ -52,7 +52,6 @@ const LessonComplete = ({
   const [addResult] = useAddResultMutation()
 
   const recordResults = async () => {
-    let points = 0
     for (const questionResult of questionResults) {
       addResult({
         section_id: Number(section_id),
@@ -61,10 +60,11 @@ const LessonComplete = ({
         answer_id: questionResult.yourResponseAnswerIds,
       })
 
-      addPoints({
-        points: points + Number(questionResult.points),
-      })
     }
+
+    addPoints({
+      points: correctAnswerCount * 2,
+    })
   }
 
   return (
@@ -78,6 +78,12 @@ const LessonComplete = ({
             <h2 className='py-1 text-center text-white'>Corrected</h2>
             <div className='flex justify-center rounded-xl bg-white py-4 text-yellow-400'>
               {correctAnswerCount}
+            </div>
+          </div>
+          <div className='min-w-[110px] rounded-xl border-2 border-slate-400 bg-slate-400'>
+            <h2 className='py-1 text-center text-white'>Points Gained</h2>
+            <div className='flex justify-center rounded-xl bg-white py-4 text-slate-400'>
+              {correctAnswerCount * 2}
             </div>
           </div>
           <div className='min-w-[110px] rounded-xl border-2 border-blue-400 bg-blue-400'>
