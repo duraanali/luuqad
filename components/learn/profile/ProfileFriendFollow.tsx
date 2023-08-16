@@ -56,7 +56,7 @@ const ProfileFriendFollow = (props: Props) => {
               data-follow='followers'
               className={`'${activeFollowers} ' flex-1 pt-4 cursor-pointer relative align-middle'`}>
               <span
-                className={` ${activeBorderFollowers} ' block  text-slate-500 text-base last:pr-[10px] pb-3 border-b-2 bg-transparent mb-[-2px] text-center hover:border-b-sky-500 hover:text-sky-500'`}>
+                className={` ${activeBorderFollowers} ' block text-base first:pl-[10px] pb-3 border-b-2 bg-transparent mb-[-2px] text-center hover:border-b-sky-500 hover:text-sky-500   '`}>
                 <span data-test='friend-followers-list'>Followers</span>
               </span>
             </li>
