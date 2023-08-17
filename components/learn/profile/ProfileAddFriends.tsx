@@ -5,6 +5,7 @@ import Image from "next/image"
 type Props = {}
 
 const ProfileAddFriends = (props: Props) => {
+  const isTrue = true
   return (
     <div className='border-2 rounded-2xl'>
       <div className='text-xl font-bold p-[20px_20px_16px] leading-7 '>
@@ -54,7 +55,7 @@ const ProfileAddFriends = (props: Props) => {
         <div className='flex-push'>
           <div className='text-base font-bold '>Connect to Facebook</div>
         </div>
-        {true ? (
+        {isTrue ? (
           <LuuqadIconRightchevron width={10} />
         ) : (
           <LuuqadIconWarning width={28} />
