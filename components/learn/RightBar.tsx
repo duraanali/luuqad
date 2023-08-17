@@ -7,6 +7,7 @@ import {
 import { useGetPointsQuery } from "@/store/slices/PointSlice"
 import languages from "@/utils/languages"
 import { Flag } from "./Flag"
+import ProfileAddFriends from "./profile/ProfileAddFriends"
 import ProfileFriendFollow from "./profile/ProfileFriendFollow"
 
 export const RightBar = () => {
@@ -54,6 +55,7 @@ export const RightBar = () => {
           </span> */}
         </article>
         <ProfileFriendFollow />
+        <ProfileAddFriends />
         <DailyQuestsSection />
         {/* <XpProgressSection /> */}
       </aside>
@@ -65,21 +67,21 @@ const DailyQuestsSection = () => {
   const { data: points } = useGetPointsQuery<any>()
 
   const calculateTotalPoints = () => {
-    const currentDate = new Date().toISOString().split("T")[0]; // Get current date in 'YYYY-MM-DD' format
+    const currentDate = new Date().toISOString().split("T")[0] // Get current date in 'YYYY-MM-DD' format
     const currentDayData = points?.points.filter((entry: any) =>
-      entry.created_at.startsWith(currentDate)
-    );
+      entry.created_at.startsWith(currentDate),
+    )
     const totalPoints = currentDayData?.reduce(
       (total: any, entry: any) => total + entry.points,
-      0
-    );
-    return totalPoints;
-  };
-  
-  const xpToday = calculateTotalPoints() ? calculateTotalPoints() : 0;
-    const goalXp = 50
+      0,
+    )
+    return totalPoints
+  }
 
-    const adjustedXpToday = xpToday > goalXp ? goalXp : xpToday;
+  const xpToday = calculateTotalPoints() ? calculateTotalPoints() : 0
+  const goalXp = 50
+
+  const adjustedXpToday = xpToday > goalXp ? goalXp : xpToday
 
   return (
     <article className='flex flex-col gap-5 rounded-2xl border-2 border-gray-200 p-6 font-bold text-gray-700'>
@@ -92,7 +94,9 @@ const DailyQuestsSection = () => {
             <div className='relative h-5 w-52 rounded-l-full bg-gray-200'>
               <div
                 className={"relative h-full rounded-l-full bg-yellow-400 px-2"}
-                style={{ width: `${Math.min(1, adjustedXpToday / goalXp) * 100}%` }}>
+                style={{
+                  width: `${Math.min(1, adjustedXpToday / goalXp) * 100}%`,
+                }}>
                 <div className='absolute top-1 left-2 right-0 h-2 rounded-l-full bg-yellow-300'></div>
               </div>
               <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center text-sm text-gray-400'>

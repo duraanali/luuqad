@@ -59,7 +59,6 @@ const LessonComplete = ({
         question_id: questionResult.question_id,
         answer_id: questionResult.yourResponseAnswerIds,
       })
-
     }
 
     addPoints({
