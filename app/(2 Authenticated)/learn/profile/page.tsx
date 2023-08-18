@@ -2,17 +2,19 @@
 import { BottomBar } from "@/components/learn/BottomBar"
 import { LeftBar } from "@/components/learn/LeftBar"
 import { RightBar } from "@/components/learn/RightBar"
+import ProfileInviteFriendModal from "@/components/learn/profile/ProfileInviteFriendModal"
 import ProfileSettings from "@/components/learn/profile/ProfileSettings"
 import ProfileStatistics from "@/components/learn/profile/ProfileStatistics"
 import ProfileUser from "@/components/learn/profile/ProfileUser"
-import { useGetCurrentUserQuery } from "@store/slices/UserSlice"
 import { useGetPointsQuery } from "@/store/slices/PointSlice"
+import { useGetCurrentUserQuery } from "@store/slices/UserSlice"
 import { NextPage } from "next"
-import { Suspense } from "react"
+import { Suspense, useState } from "react"
 
 const Profile: NextPage = () => {
   const { data: user } = useGetCurrentUserQuery()
   const { data: points } = useGetPointsQuery()
+  const [ModelIsOpen, SetModelIsOpen] = useState(false)
 
   return (
     <>
@@ -26,9 +28,14 @@ const Profile: NextPage = () => {
             </Suspense>
           )}
           <ProfileStatistics points={points} />
+          {ModelIsOpen ? (
+            <ProfileInviteFriendModal SetModelIsOpen={SetModelIsOpen} />
+          ) : (
+            ""
+          )}
           {/* <ProfileAchievements /> */}
         </div>
-        <RightBar />
+        <RightBar SetModelIsOpen={SetModelIsOpen} />
       </div>
       <BottomBar selectedTab='Profile' />
     </>
