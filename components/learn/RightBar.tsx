@@ -6,11 +6,15 @@ import {
 } from "@/components/SVGs"
 import { useGetPointsQuery } from "@/store/slices/PointSlice"
 import languages from "@/utils/languages"
+import { SetStateAction } from "react"
 import { Flag } from "./Flag"
 import ProfileAddFriends from "./profile/ProfileAddFriends"
 import ProfileFriendFollow from "./profile/ProfileFriendFollow"
 
-export const RightBar = () => {
+type Props = {
+  SetModelIsOpen: React.Dispatch<SetStateAction<boolean>>
+}
+export const RightBar = (props: Props) => {
   const { data: points } = useGetPointsQuery<any>()
   const totalPoints = points?.points.reduce(
     (accumulator: any, currentValue: any) => {
@@ -55,7 +59,7 @@ export const RightBar = () => {
           </span> */}
         </article>
         <ProfileFriendFollow />
-        <ProfileAddFriends />
+        <ProfileAddFriends SetModelIsOpen={props.SetModelIsOpen} />
         <DailyQuestsSection />
         {/* <XpProgressSection /> */}
       </aside>
