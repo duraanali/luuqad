@@ -12,7 +12,7 @@ import ProfileAddFriends from "./profile/ProfileAddFriends"
 import ProfileFriendFollow from "./profile/ProfileFriendFollow"
 
 type Props = {
-  SetModelIsOpen: React.Dispatch<SetStateAction<boolean>>
+  SetModelIsOpen?: React.Dispatch<SetStateAction<boolean>> | any
 }
 export const RightBar = (props: Props) => {
   const { data: points } = useGetPointsQuery<any>()
@@ -59,7 +59,7 @@ export const RightBar = (props: Props) => {
           </span> */}
         </article>
         <ProfileFriendFollow />
-        <ProfileAddFriends SetModelIsOpen={props.SetModelIsOpen} />
+        <ProfileAddFriends SetModelIsOpen={props?.SetModelIsOpen} />
         <DailyQuestsSection />
         {/* <XpProgressSection /> */}
       </aside>
