@@ -12,6 +12,7 @@ import {
 import * as Yup from "yup"
 import { Formik, Form, Field } from "formik"
 import { toast } from "react-toastify"
+import Link from "next/link"
 
 interface MyFormValues {
   name: string
@@ -67,14 +68,14 @@ const EditProfile: NextPage = () => {
       <LeftBar selectedTab={null} />
       <BottomBar selectedTab={null} />
       <div className='mx-auto flex flex-row gap-5 py-20 px-4 sm:py-10 md:pl-28 lg:pl-72'>
-        <div className='w-full flex flex-col items-center justify-center gap-12 '>
+        <div className='w-full flex flex-col items-center gap-12 '>
           <div className='mx-auto flex w-full max-w-xl items-center justify-between lg:max-w-4xl'>
             <h1 className='text-lg font-bold text-gray-800 sm:text-2xl'>
               Edit Profile
             </h1>
           </div>
           <div className='flex w-full max-w-xl flex-col gap-8 px-16'>
-            <div className='flex flex-col items-stretch justify-between gap-2 sm:flex-row sm:items-center sm:justify-center sm:gap-10 sm:pl-10'>
+            <div className='flex flex-col justify-between gap-2 sm:flex-col sm:justify-center sm:gap-10'>
               <Formik
                 enableReinitialize
                 initialValues={initialValues}
@@ -100,6 +101,11 @@ const EditProfile: NextPage = () => {
                   </button>
                 </Form>
               </Formik>
+              <Link
+                href={"/learn/profile/edit/delete"}
+                className='rounded-2xl w-60 border-b-4 border-red-600 bg-red-500 py-3 text-center	font-bold uppercase text-white transition hover:brightness-110 disabled:border-b-0 disabled:bg-gray-200 disabled:text-gray-400 disabled:hover:brightness-100'>
+                Delete account
+              </Link>
             </div>
           </div>
         </div>
