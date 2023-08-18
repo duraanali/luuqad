@@ -6,12 +6,16 @@ import LessonComplete from "@/components/learn/quiz/LessonComplete"
 import LessonFastForwardEndFail from "@/components/learn/quiz/LessonFastForwardEndFail"
 import LessonFastForwardEndPass from "@/components/learn/quiz/LessonFastForwardEndPass"
 import LessonFastForwardStart from "@/components/learn/quiz/LessonFastForwardStart"
-import { MULTIPLE_CHOICE } from "@/components/learn/quiz/QuestionFakeData"
+import {
+  MULTIPLE_CHOICE,
+  WORD_BUBBLE,
+} from "@/components/learn/quiz/QuestionFakeData"
 import Image from "next/image"
 import MultipleChoiceQuestion from "@/components/learn/quiz/MultipleChoiceQuestion"
 import { useParams } from "next/navigation"
 import { useGetQuestionsBySectionQuery } from "@/store/slices/QuestionSlice"
 import { useGetCurrentUserQuery } from "@/store/slices/UserSlice"
+import QuestionWordBubble from "@/components/learn/quiz/QuestionWordBubble"
 
 const numbersEqual = (a: readonly number[], b: readonly number[]): boolean => {
   return a.length === b.length && a.every((_, i) => a[i] === b[i])
@@ -33,21 +37,44 @@ const Question: NextPage = () => {
   // This useEffect runs when the questions for the section are loaded and formats them
   useEffect(() => {
     if (data) {
-      const formattedData = data.questions.map((question: any) => ({
-        type: "MULTIPLE_CHOICE",
-        id: question.id,
-        points: question.points,
-        question: question.question,
-        answers: question.answers.map((answer: any) => ({
-          id: answer.id,
-          name: answer.answer,
-        })),
-        correctAnswer: question.answers.findIndex(
-          (answer: any) => answer.is_correct,
-        ),
-      }))
+      const formattedData = data.questions.map((question: any) => {
+        if (question.question_type_id === 1) {
+          return {
+            type: "MULTIPLE_CHOICE",
+            id: question.id,
+            points: question.points,
+            question: question.question,
+            answers: question.answers.map((answer: any) => ({
+              id: answer.id,
+              name: answer.answer,
+            })),
+            correctAnswer: question.answers.findIndex(
+              (answer: any) => answer.is_correct,
+            ),
+          }
+        } else if (question.question_type_id === 3) {
+          const correctAnswerIndices: number[] = []
+          question.answers.forEach((answer: any, index: number) => {
+            if (answer.is_correct) {
+              correctAnswerIndices.push(index)
+            }
+          })
 
-      setFormattedQuestions(formattedData)
+          return {
+            type: "WORD_BUBBLE",
+            question_id: question.id,
+            points: question.points,
+            question: question.question,
+            answerTiles: question.answers.map((answer: any) => answer.answer),
+            correctAnswer: correctAnswerIndices,
+          }
+        }
+        return null // Added to handle scenarios where question_type_id is not 1 or 3
+      })
+
+      setFormattedQuestions(
+        formattedData.filter((question: any) => question !== null),
+      ) // Filter out null values
       setTotalCorrectAnswersNeeded(formattedData.length)
     }
   }, [data])
@@ -194,7 +221,7 @@ const Question: NextPage = () => {
     return (
       <LessonComplete
         section_id={params.section_id}
-        user_id={user?.user.id}
+        user_id={user?.user?.id}
         correctAnswerCount={correctAnswerCount}
         incorrectAnswerCount={incorrectAnswerCount}
         startTime={startTime}
@@ -206,58 +233,77 @@ const Question: NextPage = () => {
     )
   }
 
-  return (
-    <>
-      {problem ? (
-        <MultipleChoiceQuestion
-          problem={problem}
-          correctAnswerCount={correctAnswerCount}
-          totalCorrectAnswersNeeded={totalCorrectAnswersNeeded}
-          selectedAnswer={selectedAnswer}
-          setSelectedAnswer={setSelectedAnswer}
-          quitMessageShown={quitMessageShown}
-          correctAnswerShown={correctAnswerShown}
-          setQuitMessageShown={setQuitMessageShown}
-          isAnswerCorrect={isAnswerCorrect}
-          onCheckAnswer={onCheckAnswer}
-          onFinish={onFinish}
-          onSkip={onSkip}
-          hearts={hearts}
-        />
-      ) : (
-        <div className='flex min-h-screen items-center'>
-          <div className='flex grow flex-col items-center gap-5'>
-            <Image
-              src='/images/world-book-day.gif'
-              width={100}
-              height={100}
-              alt='Picture of the author'
+  switch (problem?.type) {
+    case MULTIPLE_CHOICE: {
+      return (
+        <>
+          {problem ? (
+            <MultipleChoiceQuestion
+              problem={problem}
+              correctAnswerCount={correctAnswerCount}
+              totalCorrectAnswersNeeded={totalCorrectAnswersNeeded}
+              selectedAnswer={selectedAnswer}
+              setSelectedAnswer={setSelectedAnswer}
+              quitMessageShown={quitMessageShown}
+              correctAnswerShown={correctAnswerShown}
+              setQuitMessageShown={setQuitMessageShown}
+              isAnswerCorrect={isAnswerCorrect}
+              onCheckAnswer={onCheckAnswer}
+              onFinish={onFinish}
+              onSkip={onSkip}
+              hearts={hearts}
             />
-          </div>
-        </div>
-      )}
-    </>
-  )
+          ) : (
+            <div className='flex min-h-screen items-center'>
+              <div className='flex grow flex-col items-center gap-5'>
+                <Image
+                  src='/images/world-book-day.gif'
+                  width={100}
+                  height={100}
+                  alt='Picture of the author'
+                />
+              </div>
+            </div>
+          )}
+        </>
+      )
+    }
 
-  // case WORD_BUBBLE: {
-  //   return (
-  //     <QuestionWordBubble
-  //       problem={problem}
-  //       correctAnswerCount={correctAnswerCount}
-  //       totalCorrectAnswersNeeded={totalCorrectAnswersNeeded}
-  //       selectedAnswers={selectedAnswers}
-  //       setSelectedAnswers={setSelectedAnswers}
-  //       quitMessageShown={quitMessageShown}
-  //       correctAnswerShown={correctAnswerShown}
-  //       setQuitMessageShown={setQuitMessageShown}
-  //       isAnswerCorrect={isAnswerCorrect}
-  //       onCheckAnswer={onCheckAnswer}
-  //       onFinish={onFinish}
-  //       onSkip={onSkip}
-  //       hearts={hearts}
-  //     />
-  //   )
-  // }
+    case WORD_BUBBLE: {
+      return (
+        <>
+          {problem ? (
+            <QuestionWordBubble
+              problem={problem}
+              correctAnswerCount={correctAnswerCount}
+              totalCorrectAnswersNeeded={totalCorrectAnswersNeeded}
+              selectedAnswers={selectedAnswers}
+              setSelectedAnswers={setSelectedAnswers}
+              quitMessageShown={quitMessageShown}
+              correctAnswerShown={correctAnswerShown}
+              setQuitMessageShown={setQuitMessageShown}
+              isAnswerCorrect={isAnswerCorrect}
+              onCheckAnswer={onCheckAnswer}
+              onFinish={onFinish}
+              onSkip={onSkip}
+              hearts={hearts}
+            />
+          ) : (
+            <div className='flex min-h-screen items-center'>
+              <div className='flex grow flex-col items-center gap-5'>
+                <Image
+                  src='/images/world-book-day.gif'
+                  width={100}
+                  height={100}
+                  alt='Picture of the author'
+                />
+              </div>
+            </div>
+          )}
+        </>
+      )
+    }
+  }
 }
 
 export default Question
