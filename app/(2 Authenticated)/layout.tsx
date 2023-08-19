@@ -1,6 +1,6 @@
 import Providers from "@/components/Providers"
 import ToastContainerBar from "@/components/ToastContainerBar"
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react"
 import type { Metadata } from "next"
 import { Dosis } from "next/font/google"
 import { redirect } from "next/navigation"

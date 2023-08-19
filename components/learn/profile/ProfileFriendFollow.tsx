@@ -64,6 +64,7 @@ const ProfileFriendFollow = (props: Props) => {
           <div
             className={`${activeFollowing} " content items-center text-[18px] flex-col p-[40px_30px_30px] "`}>
             <Image
+              priority
               className=' profile-avatar object-contain  max-w-none c-max-md:w-[77px] '
               src={"/svg/follow.svg"}
               width={304}
