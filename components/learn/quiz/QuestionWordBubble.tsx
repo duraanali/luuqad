@@ -48,7 +48,7 @@ const QuestionWordBubble = ({
             hearts={hearts}
           />
         </div>
-        <section className='flex max-w-2xl grow flex-col gap-5 self-center sm:items-center sm:justify-center sm:gap-24'>
+        <section className='flex max-w-2xl grow flex-col gap-4 self-center sm:items-center sm:justify-center sm:gap-6'>
           <h1 className='mb-2 text-2xl font-bold sm:text-3xl'>
             Write this in English
           </h1>
