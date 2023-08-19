@@ -121,7 +121,7 @@ model Result {
   answer_id    Int
   created_at   DateTime   @default(now())
   updated_at   DateTime   @updatedAt
-  user         User       @relation(fields: [user_id], references: [id])
+  user         User       @relation(fields: [user_id], references: [id], onDelete: Cascade)
   section      Section    @relation(fields: [section_id], references: [id])
   question     Question   @relation(fields: [question_id], references: [id])
   answer       Answer     @relation(fields: [answer_id], references: [id])
@@ -139,7 +139,7 @@ model Point {
   points       Int
   created_at   DateTime   @default(now())
   updated_at   DateTime   @updatedAt
-  user         User       @relation(fields: [user_id], references: [id])
+  user         User       @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@index([user_id])
 }
@@ -152,7 +152,7 @@ model UserSection {
   completed    Boolean    @default(false)
   created_at   DateTime   @default(now())
   updated_at   DateTime   @updatedAt
-  user         User       @relation(fields: [user_id], references: [id])
+  user         User       @relation(fields: [user_id], references: [id], onDelete: Cascade)
   section      Section    @relation(fields: [section_id], references: [id])
 
   @@index([user_id])
