@@ -4,7 +4,7 @@ import { HYDRATE } from "next-redux-wrapper"
 import { addTokenToRequest } from "./Token"
 
 interface POINT {
-  points: number
+  pointsSubmitted: number
 }
 
 export const points = createApi({
