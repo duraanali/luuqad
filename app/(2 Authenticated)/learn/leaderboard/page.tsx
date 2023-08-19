@@ -75,7 +75,6 @@ const Leaderboard: NextPage = () => {
 
   const [leaderboardUsers, setLeaderboardUsers] = useState([])
   const [currentUserHasPoints, setCurrentUserHasPoints] = useState(false)
-
   useEffect(() => {
     if (leaders?.usersWithPoints && currentUser?.user && !isLoading) {
       const mappedLeaderboardUsers = leaders?.usersWithPoints.map(

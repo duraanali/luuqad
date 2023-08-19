@@ -1,5 +1,6 @@
 import Providers from "@/components/Providers"
 import ToastContainerBar from "@/components/ToastContainerBar"
+import { Analytics } from "@vercel/analytics/react"
 import type { Metadata } from "next"
 import { Dosis } from "next/font/google"
 import { redirect } from "next/navigation"
@@ -32,6 +33,7 @@ export default async function RootLayout({
         <body className={"flex flex-col justify-between"}>
           <ToastContainerBar />
           {children}
+          <Analytics />
         </body>
       </Providers>
     </html>

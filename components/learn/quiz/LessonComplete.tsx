@@ -62,7 +62,7 @@ const LessonComplete = ({
     }
 
     addPoints({
-      points: correctAnswerCount * 2,
+      pointsSubmitted: correctAnswerCount * 2,
     })
   }
 
