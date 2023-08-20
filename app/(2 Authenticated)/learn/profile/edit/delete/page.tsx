@@ -1,6 +1,5 @@
 "use client"
 import type { NextPage } from "next"
-import React, { useEffect, useState } from "react"
 import { BottomBar } from "@/components/learn/BottomBar"
 import { LeftBar } from "@/components/learn/LeftBar"
 import { RightBar } from "@/components/learn/RightBar"
