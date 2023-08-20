@@ -6,6 +6,7 @@ import LessonComplete from "@/components/learn/quiz/LessonComplete"
 import LessonFastForwardEndFail from "@/components/learn/quiz/LessonFastForwardEndFail"
 import LessonFastForwardEndPass from "@/components/learn/quiz/LessonFastForwardEndPass"
 import LessonFastForwardStart from "@/components/learn/quiz/LessonFastForwardStart"
+import arrayShuffle from "array-shuffle"
 import {
   MULTIPLE_CHOICE,
   WORD_BUBBLE,
@@ -37,48 +38,57 @@ const Question: NextPage = () => {
   // This useEffect runs when the questions for the section are loaded and formats them
   useEffect(() => {
     if (data) {
-      const formattedData = data.questions.map((question: any) => {
-        if (question.question_type_id === 1) {
-          return {
-            type: "MULTIPLE_CHOICE",
-            id: question.id,
-            points: question.points,
-            question: question.question,
-            answers: question.answers.map((answer: any) => ({
-              id: answer.id,
-              name: answer.answer,
-            })),
-            correctAnswer: question.answers.findIndex(
-              (answer: any) => answer.is_correct,
-            ),
-          }
-        } else if (question.question_type_id === 3) {
-          const correctAnswerIndices: number[] = []
-          question.answers.forEach((answer: any, index: number) => {
-            if (answer.is_correct) {
-              correctAnswerIndices.push(index)
+      const randomized = arrayShuffle(data.questions)
+      if (randomized) {
+        const formattedData = randomized.map((question: any) => {
+          if (question.question_type_id === 1) {
+            const answers = arrayShuffle(
+              question.answers.map((answer: any) => ({
+                id: answer.id,
+                name: answer.answer,
+                is_correct: answer.is_correct,
+              })),
+            )
+            return {
+              type: "MULTIPLE_CHOICE",
+              id: question.id,
+              points: question.points,
+              question: question.question,
+              answers: answers,
+              // correct answer is the index of "is_correct" is true
+              correctAnswer: answers.findIndex(
+                (answer: any) => answer.is_correct,
+              ),
             }
-          })
+          } else if (question.question_type_id === 3) {
+            const correctAnswerIndices: number[] = []
+            question.answers.forEach((answer: any, index: number) => {
+              if (answer.is_correct) {
+                correctAnswerIndices.push(index)
+              }
+            })
 
-          return {
-            type: "WORD_BUBBLE",
-            question_id: question.id,
-            points: question.points,
-            question: question.question,
-            answerTiles: question.answers.map((answer: any) => answer.answer),
-            correctAnswer: correctAnswerIndices,
+            return {
+              type: "WORD_BUBBLE",
+              question_id: question.id,
+              points: question.points,
+              question: question.question,
+              answerTiles: question.answers.map((answer: any) => answer.answer),
+              correctAnswer: correctAnswerIndices,
+            }
           }
-        }
-        return null // Added to handle scenarios where question_type_id is not 1 or 3
-      })
+          return null // Added to handle scenarios where question_type_id is not 1 or 3
+        })
 
-      setFormattedQuestions(
-        formattedData.filter((question: any) => question !== null),
-      ) // Filter out null values
-      setTotalCorrectAnswersNeeded(formattedData.length)
+        setFormattedQuestions(
+          formattedData.filter((question: any) => question !== null),
+        ) // Filter out null values
+        setTotalCorrectAnswersNeeded(formattedData.length)
+      }
     }
   }, [data])
 
+  console.log("lessonProblems", lessonProblems)
   const [lessonProblem, setLessonProblem] = useState(0)
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0)
   const [incorrectAnswerCount, setIncorrectAnswerCount] = useState(0)
