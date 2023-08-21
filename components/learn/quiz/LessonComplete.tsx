@@ -1,8 +1,9 @@
 import { useAddPointsMutation } from "@/store/slices/PointSlice"
 import { useAddResultMutation } from "@/store/slices/SectionSlice"
+import { deleteCookie, getCookie, setCookie } from "cookies-next"
 import Link from "next/link"
 import React from "react"
-import useCookie from "react-use-cookie"
+
 import ReviewLesson from "./ReviewLesson"
 
 type QuestionResult = {
@@ -51,11 +52,10 @@ const LessonComplete = ({
 
   const [addPoints] = useAddPointsMutation()
   const [addResult] = useAddResultMutation()
-  const [userToken, setUserToken] = useCookie("token", new Date().toString())
 
   const recordResults = async () => {
+    setCookie("key", new Date().getTime())
     for (const questionResult of questionResults) {
-      setUserToken(userToken)
       addResult({
         section_id: Number(section_id),
         user_id,
@@ -64,13 +64,13 @@ const LessonComplete = ({
       })
     }
     addPoints({
-      time: userToken,
+      time: getCookie("key"),
       pointsSubmitted: correctAnswerCount * 2,
     })
     const times = setTimeout(() => {
-      setUserToken("")
+      deleteCookie("key")
       clearTimeout(times)
-    }, 500)
+    }, 1800)
   }
 
   return (

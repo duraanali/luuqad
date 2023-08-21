@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth/next"
 import { NextRequest, NextResponse } from "next/server"
 
 import { prisma } from "@/lib/prisma"
+import { deleteCookie } from "cookies-next"
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,12 +11,17 @@ export async function POST(req: NextRequest) {
     const { pointsSubmitted, time } = await req.json()
 
     const session = await getServerSession(options)
-
+    const checkTime = new Date().getTime().toString().slice(0, 8)
+    const checkDataTime = new Date(+time).getTime().toString().slice(0, 8)
+    if (checkTime !== checkDataTime) {
+      // this condition will delete if the hacker still use fake cookies data
+      deleteCookie("key")
+    }
     let getTimeFromCookies = []
-    getTimeFromCookies.push(req.cookies.get("token")?.value)
+    getTimeFromCookies.push(req.cookies.get("key")?.value)
 
     const isRightPoint = getTimeFromCookies[0]
-      ? getTimeFromCookies[0] === time
+      ? checkTime === checkDataTime
       : false
 
     if (!session) {

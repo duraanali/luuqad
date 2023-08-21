@@ -4,7 +4,7 @@ import { HYDRATE } from "next-redux-wrapper"
 import { addTokenToRequest } from "./Token"
 
 interface POINT {
-  time: string
+  time: any
   pointsSubmitted: number
 }
 
