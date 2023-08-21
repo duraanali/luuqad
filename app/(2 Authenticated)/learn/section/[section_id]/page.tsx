@@ -1,22 +1,21 @@
 "use client"
-import type { NextPage } from "next"
-import React, { useEffect, useRef, useState } from "react"
-import { useSearchParams } from "next/navigation"
 import LessonComplete from "@/components/learn/quiz/LessonComplete"
 import LessonFastForwardEndFail from "@/components/learn/quiz/LessonFastForwardEndFail"
 import LessonFastForwardEndPass from "@/components/learn/quiz/LessonFastForwardEndPass"
 import LessonFastForwardStart from "@/components/learn/quiz/LessonFastForwardStart"
-import arrayShuffle from "array-shuffle"
+import MultipleChoiceQuestion from "@/components/learn/quiz/MultipleChoiceQuestion"
 import {
   MULTIPLE_CHOICE,
   WORD_BUBBLE,
 } from "@/components/learn/quiz/QuestionFakeData"
-import Image from "next/image"
-import MultipleChoiceQuestion from "@/components/learn/quiz/MultipleChoiceQuestion"
-import { useParams } from "next/navigation"
+import QuestionWordBubble from "@/components/learn/quiz/QuestionWordBubble"
 import { useGetQuestionsBySectionQuery } from "@/store/slices/QuestionSlice"
 import { useGetCurrentUserQuery } from "@/store/slices/UserSlice"
-import QuestionWordBubble from "@/components/learn/quiz/QuestionWordBubble"
+import arrayShuffle from "array-shuffle"
+import type { NextPage } from "next"
+import Image from "next/image"
+import { useParams, useSearchParams } from "next/navigation"
+import { useEffect, useRef, useState } from "react"
 
 const numbersEqual = (a: readonly number[], b: readonly number[]): boolean => {
   return a.length === b.length && a.every((_, i) => a[i] === b[i])
@@ -88,7 +87,6 @@ const Question: NextPage = () => {
     }
   }, [data])
 
-  console.log("lessonProblems", lessonProblems)
   const [lessonProblem, setLessonProblem] = useState(0)
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0)
   const [incorrectAnswerCount, setIncorrectAnswerCount] = useState(0)
