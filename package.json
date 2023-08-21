@@ -30,6 +30,7 @@
         "autoprefixer": "10.4.14",
         "axios": "^1.4.0",
         "bcrypt": "^5.1.0",
+        "cookies-next": "^2.1.2",
         "env-cmd": "^10.1.0",
         "eslint": "8.47.0",
         "eslint-config-next": "13.4.13",

@@ -1,15 +1,28 @@
-import { NextRequest, NextResponse } from "next/server"
 import { options } from "@auth/[...nextauth]/options"
 import { getServerSession } from "next-auth/next"
+import { NextRequest, NextResponse } from "next/server"
 
 import { prisma } from "@/lib/prisma"
+import { deleteCookie } from "cookies-next"
 
 export async function POST(req: NextRequest) {
   try {
     // Parse the request body
-    const { pointsSubmitted } = await req.json()
+    const { pointsSubmitted, time } = await req.json()
 
     const session = await getServerSession(options)
+    const checkTime = new Date().getTime().toString().slice(0, 8)
+    const checkDataTime = new Date(+time).getTime().toString().slice(0, 8)
+    if (checkTime !== checkDataTime) {
+      // this condition will delete if the hacker still use fake cookies data
+      deleteCookie("key")
+    }
+    let getTimeFromCookies = []
+    getTimeFromCookies.push(req.cookies.get("key")?.value)
+
+    const isRightPoint = getTimeFromCookies[0]
+      ? checkTime === checkDataTime
+      : false
 
     if (!session) {
       return NextResponse.json(
@@ -62,17 +75,19 @@ export async function POST(req: NextRequest) {
 
     const userId = Number(session.user?.id)
     // If no existing result found, create a new result
-    const newResult = await prisma.point.create({
-      data: {
-        user_id: userId,
-        points: allPoints,
-      },
-    })
+    if (isRightPoint === true) {
+      const newResult = await prisma.point.create({
+        data: {
+          user_id: userId,
+          points: allPoints,
+        },
+      })
 
-    return NextResponse.json({
-      message: "Points created successfully",
-      newResult,
-    })
+      return NextResponse.json({
+        message: "Points created successfully",
+        newResult,
+      })
+    }
   } catch (error) {
     // Log the error for debugging purposes
     console.error("Error:", error)
