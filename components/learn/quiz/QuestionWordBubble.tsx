@@ -1,10 +1,16 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { lessonProblem2 } from "./QuestionFakeData"
 import ProgressBar from "./ProgressBar"
 import CheckAnswer from "./CheckAnswer"
 import QuitMessage from "./QuitMessage"
-import womanPng from "../../../public/images/woman.png"
+import avatar1 from "../../../public/images/avatar1.png"
+import avatar2 from "../../../public/images/avatar2.png"
+import avatar3 from "../../../public/images/avatar3.png"
+import avatar4 from "../../../public/images/avatar4.png"
+import avatar5 from "../../../public/images/avatar5.png"
+import avatar6 from "../../../public/images/avatar6.png"
 import Image from "next/image"
+import arrayShuffle from "array-shuffle"
 
 const QuestionWordBubble = ({
   problem,
@@ -37,6 +43,20 @@ const QuestionWordBubble = ({
 }) => {
   const { question, correctAnswer, answerTiles } = problem
 
+  const [avatarImage, setAvatarImage] = useState<string[]>([])
+  useEffect(() => {
+    const avatarImage: any = arrayShuffle([
+      avatar1,
+      avatar2,
+      avatar3,
+      avatar4,
+      avatar5,
+      avatar6,
+    ])
+
+    setAvatarImage(avatarImage)
+  }, [])
+
   return (
     <div className='flex min-h-screen flex-col gap-5 px-4 py-5 sm:px-0 sm:py-0'>
       <div className='flex grow flex-col items-center gap-5'>
@@ -48,14 +68,14 @@ const QuestionWordBubble = ({
             hearts={hearts}
           />
         </div>
-        <section className='flex max-w-2xl grow flex-col gap-5 self-center sm:items-center sm:justify-center sm:gap-24'>
+        <section className='flex max-w-2xl grow flex-col gap-4 self-center sm:items-center sm:justify-center sm:gap-6'>
           <h1 className='mb-2 text-2xl font-bold sm:text-3xl'>
-            Write this in English
+            English Ku Qor
           </h1>
 
           <div className='w-full'>
             <div className='flex items-center gap-2 px-2'>
-              <Image src={womanPng} alt='' width={92} height={115} />
+              <Image src={avatarImage[0]} alt='' width={92} height={115} />
               <div className='relative ml-2 w-fit rounded-2xl border-2 border-gray-200 p-4'>
                 {question}
                 <div

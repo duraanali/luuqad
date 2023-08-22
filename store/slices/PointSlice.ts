@@ -1,10 +1,11 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import BASE_URL from "@/utils/baseUrl"
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import { HYDRATE } from "next-redux-wrapper"
 import { addTokenToRequest } from "./Token"
 
 interface POINT {
-  points: number
+  time: any
+  pointsSubmitted: number
 }
 
 export const points = createApi({

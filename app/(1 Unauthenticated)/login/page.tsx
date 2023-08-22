@@ -33,18 +33,21 @@ const Login = () => {
   const callbackUrl = searchParams?.get("callbackUrl") || "/learn"
 
   const onSubmit = async (values: MyFormValues) => {
-    // try {
-    await signIn("credentials", {
-      ...values,
-      redirect: false,
-    }).then((callback) => {
-      if (callback?.ok) {
-        toast.success("Login Successfully")
-        router.push(callbackUrl)
-      } else if (callback?.error) {
-        toast.error("Something Went Wrong")
-      }
-    })
+    try {
+      await signIn("credentials", {
+        ...values,
+        redirect: false,
+      }).then((callback) => {
+        if (callback?.ok) {
+          toast.success("Login Successfully")
+          router.push(callbackUrl)
+        } else if (callback?.error) {
+          toast.error("Something Went Wrong")
+        }
+      })
+    } catch (error) {
+      toast.error("Email or Password is incorrect")
+    }
   }
 
   return (
