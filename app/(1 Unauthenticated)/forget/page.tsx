@@ -1,6 +1,7 @@
 "use client"
 import Alert from "@/components/frequentlyused/Alert";
 import Formchallenge from "@/components/security/Formchallenge";
+import { User } from "next-auth/core/types";
 import Link from "next/link"
 import React, { useState } from "react"
 // import baseUrl from "@/utils/baseUrl"
@@ -13,7 +14,7 @@ export default function Forget() {
     type: "",
   });
 
-  const send = () => {
+  const send = async() => {
     // check here if the captcha is solved , always validate the captcha before sending the email
 
     //example
@@ -38,6 +39,7 @@ export default function Forget() {
         return;
       }
       else{
+      
         alert("this feature is not available yet luuqad.com is still under development")
 
       }

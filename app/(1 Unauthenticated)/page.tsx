@@ -2,8 +2,14 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import config from "../config/config.json";
+
+const { hero_title } = config.site;
+
 export default function Home() {
+  //@ts-ignore
   return (
+    
     <div>
       {/* Hero start */}
       <div className='flex flex-col items-center justify-center sm:flex-row'>
@@ -17,7 +23,9 @@ export default function Home() {
         </div>
         <div className='text-center sm:w-1/2'>
           <h3 className='text-4xl font-bold text-gray-600'>
-            The free, fun, and effective way to learn a language!
+            {
+              hero_title
+            }
           </h3>
           <div className='flex flex-col items-center justify-center mt-8 space-y-4'>
             <Link

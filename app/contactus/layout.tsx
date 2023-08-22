@@ -7,15 +7,16 @@ import { Dosis } from "next/font/google"
 import React from "react"
 import "../../globals.css"
 
+
 const dosis = Dosis({
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "500", "600", "700"],
   style: "normal",
   subsets: ["latin-ext"],
 })
 
 export const metadata: Metadata = {
-  title: "LUUQAD",
+  title: "contact us",
   description: "Next Generation Language Learning Platform",
 }
 
@@ -25,9 +26,9 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='en' className={dosis.className}>
+    <html lang='en' >
       <Providers>
-        <body className={"flex flex-col justify-between min-h-screen"}>
+        <body className={"flex flex-col justify-between max-h-screen"}>
           <ToastContainerBar />
           <Navbar />
           {children}

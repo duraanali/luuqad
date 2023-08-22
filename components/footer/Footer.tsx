@@ -12,7 +12,9 @@ const Footer = () => {
           <ul className='mt-3 font-semibold text-white tracking-wider'>
             <li>Who We Are</li>
             <li>Mission</li>
-            <li>Contact us</li>
+            <li  >
+            <Link href='/contactus'>Contact us</Link>
+            </li>
             <li>Approach</li>
           </ul>
         </div>
