@@ -12,7 +12,7 @@ export default function Contact() {
     email: "",
     message: "",
   });
-
+// @ts-ignore
   const handleSubmit = (event) => {
     event.preventDefault();
     // save or send this data to the admin 
@@ -56,7 +56,7 @@ export default function Contact() {
 
    
   };
-
+//@ts-ignore
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
@@ -110,7 +110,7 @@ export default function Contact() {
             className="w-full px-3 py-2 mb-4 leading-tight border rounded-lg shadow-sm focus:outline-none focus:shadow-outline"
             id="message"
             name="message"
-            rows="4"
+            rows={4}
             placeholder="Your message here..."
             value={formData.message}
             onChange={handleChange}
