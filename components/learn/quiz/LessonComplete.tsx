@@ -54,7 +54,8 @@ const LessonComplete = ({
   const [addResult] = useAddResultMutation()
 
   const recordResults = async () => {
-    setCookie("key", new Date().getTime())
+    const keyCookie = (new Date().getTime() + 1).toString()
+    setCookie(keyCookie, new Date().getTime())
     for (const questionResult of questionResults) {
       addResult({
         section_id: Number(section_id),
@@ -64,11 +65,11 @@ const LessonComplete = ({
       })
     }
     addPoints({
-      time: getCookie("key"),
+      time: getCookie(keyCookie),
       pointsSubmitted: correctAnswerCount * 2,
     })
     const times = setTimeout(() => {
-      deleteCookie("key")
+      deleteCookie(keyCookie)
       clearTimeout(times)
     }, 1800)
   }
