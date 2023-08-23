@@ -1,4 +1,3 @@
-import React from "react"
 import Link from "next/link"
 
 const Footer = () => {
@@ -12,8 +11,8 @@ const Footer = () => {
           <ul className='mt-3 font-semibold text-white tracking-wider'>
             <li>Who We Are</li>
             <li>Mission</li>
-            <li  >
-            <Link href='/contactus'>Contact us</Link>
+            <li>
+              <Link href='/contactus'>Contact us</Link>
             </li>
             <li>Approach</li>
           </ul>
@@ -25,7 +24,9 @@ const Footer = () => {
           </h3>
           <ul className='mt-3 font-semibold text-white tracking-wider'>
             <li>Forum</li>
-            <li>Luuqad FAQs</li>
+            <li>
+              <Link href='/faq'> Luuqad FAQ</Link>
+            </li>
             <li>Join Our Discord</li>
           </ul>
         </div>
