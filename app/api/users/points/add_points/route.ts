@@ -11,14 +11,16 @@ export async function POST(req: NextRequest) {
     const { pointsSubmitted, time } = await req.json()
 
     const session = await getServerSession(options)
-    const checkTime = new Date().getTime().toString().slice(0, 8)
+    const checkTime = (new Date().getTime() + 1).toString().slice(0, 8)
+
     const checkDataTime = new Date(+time).getTime().toString().slice(0, 8)
+
     if (checkTime !== checkDataTime) {
       // this condition will delete if the hacker still use fake cookies data
-      deleteCookie("key")
+      deleteCookie(`${+time + 1}`)
     }
     let getTimeFromCookies = []
-    getTimeFromCookies.push(req.cookies.get("key")?.value)
+    getTimeFromCookies.push(req.cookies.get(`${+time + 1}`)?.value)
 
     const isRightPoint = getTimeFromCookies[0]
       ? checkTime === checkDataTime
