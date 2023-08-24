@@ -39,7 +39,7 @@ export const TopBar = ({
   const params = useParams()
 
   return (
-    <header className='fixed h-[58px] w-full'>
+    <header className='fixed z-20 h-[58px] w-full sm:z-0'>
       <div
         className={`relative flex h-full w-full items-center justify-between border-b-2 px-[10px] transition duration-500 md:hidden ${borderColor} ${backgroundColor}`}>
         {params.locale == "so" ? (
