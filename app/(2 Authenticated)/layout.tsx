@@ -1,6 +1,5 @@
 import Providers from "@/components/Providers"
 import ToastContainerBar from "@/components/ToastContainerBar"
-import SideBar from "@/components/sidebar/SideBar"
 import type { Metadata } from "next"
 import { Dosis } from "next/font/google"
 import { redirect } from "next/navigation"

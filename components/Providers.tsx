@@ -1,22 +1,31 @@
 "use client"
-import React from "react"
-import { store } from "@/store"
-import { SessionProvider } from "next-auth/react"
-import { FC, ReactNode } from "react"
-import { Provider } from "react-redux"
+import { store } from "@/store";
+import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "next-themes";
+import { FC, ReactNode } from "react";
+import { Provider } from "react-redux";
 
 interface LayoutProps {
-  children: ReactNode
+  children: ReactNode;
 }
-
-// const queryClient = new QueryClient()
 
 const Providers: FC<LayoutProps> = ({ children }) => {
-  return (
-    <Provider store={store}>
-      <SessionProvider>{children}</SessionProvider>
-    </Provider>
-  )
-}
+  // Ensure that any state changes or initialization happen on the client side
 
-export default Providers
+
+  return (
+    <ThemeProvider attribute="class" defaultTheme="light">
+
+      <Provider store={store}>
+        <SessionProvider>
+          {children}
+        </SessionProvider>
+
+
+      </Provider>
+    </ThemeProvider>
+
+  );
+};
+
+export default Providers;

@@ -1,11 +1,15 @@
 "use client"
-import React from "react"
-import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
-
+import {
+  MoonIcon,
+  SunIcon
+} from "@heroicons/react/24/outline";
+import { useTheme } from "next-themes";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 const Navbar = () => {
   const path = usePathname()
   const router = useRouter()
+  const { theme, setTheme } = useTheme();
 
   const handleButtonClick = () => {
     if (path === "/login") {
@@ -22,10 +26,24 @@ const Navbar = () => {
       <div className='container flex flex-row items-center justify-between px-12 mb-12 mx-auto py-6'>
         <Logo />
         {/* Btn */}
-        <Button
-          text={path === "/login" ? "Sign Up" : "Login"}
-          onClick={handleButtonClick}
-        />
+
+        <div className="flex items-center space-x-3">
+          <div
+            className={`w-7 cursor-pointer transform transition-transform duration-300 ${theme === "dark" ? "rotate-0" : "rotate-180"
+              }`}
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          >
+            {theme === "dark" ? (
+              <MoonIcon className="w-7" />
+            ) : (
+              <SunIcon className="w-7" />
+            )}
+          </div> <Button
+            text={path === "/login" ? "Sign Up" : "Login"}
+            onClick={handleButtonClick}
+          />
+        </div>
+
       </div>
     </header>
   )

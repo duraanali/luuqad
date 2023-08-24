@@ -26,14 +26,16 @@ export default async function RootLayout({
 }) {
   return (
     <html lang='en' className={dosis.className}>
-      <Providers>
-        <body className={"flex flex-col justify-between min-h-screen"}>
+
+      <body className={"flex flex-col justify-between min-h-screen"}>
+        <Providers>
           <ToastContainerBar />
           <Navbar />
           {children}
           <Footer />
-        </body>
-      </Providers>
+        </Providers>
+      </body>
+
     </html>
   )
 }

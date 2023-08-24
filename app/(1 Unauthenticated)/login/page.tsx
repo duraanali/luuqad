@@ -1,13 +1,12 @@
 "use client"
 
-import React from "react"
-import Link from "next/link"
-import Image from "next/image"
+import { Field, Form, Formik } from "formik"
 import { signIn } from "next-auth/react"
-import { useSearchParams, useRouter } from "next/navigation"
-import * as Yup from "yup"
-import { Formik, Form, Field } from "formik"
+import Image from "next/image"
+import Link from "next/link"
+import { useRouter, useSearchParams } from "next/navigation"
 import { toast } from "react-toastify"
+import * as Yup from "yup"
 
 interface MyFormValues {
   email: string
