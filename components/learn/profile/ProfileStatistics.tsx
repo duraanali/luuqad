@@ -1,6 +1,6 @@
 import LuuqadIconFire from "@/components/icons/LuuqadIconFire"
 import LuuqadIconLightning from "@/components/icons/LuuqadIconLightning"
-
+import { useTranslations } from "next-intl"
 type Props = {
   points: any
 }
@@ -25,10 +25,11 @@ const ProfileStatistics = ({ points }: Props) => {
     return totalPoints
   }
 
+  const t = useTranslations("Profile")
   return (
     <div className='statistics-container text-gray-500 '>
       <h2 className='statistics-title text-2xl text-gray-800 font-bold mb-3 '>
-        Statistics
+        {t("statistics")}
       </h2>
       <div className='statistics-score-wrapper grid grid-cols-2 gap-3  '>
         <div className='statistics-score flex justify-evenly items-start gap-3 border rounded-2 border-gray-200 py-4 px-6 '>
@@ -39,7 +40,7 @@ const ProfileStatistics = ({ points }: Props) => {
             <span className='staticstics-number text-gray-400 text-xl font-bold'>
               {calculateTotalPoints()}
             </span>
-            <div className='staticstics-text'>Today&apos;s Total XP</div>
+            <div className='staticstics-text'>{t("today_total_xp")}</div>
           </div>
         </div>
         {/* End statistics-score */}
@@ -51,7 +52,7 @@ const ProfileStatistics = ({ points }: Props) => {
             <span className='staticstics-number text-gray-400 text-xl font-bold'>
               {totalPoints}
             </span>
-            <div className='staticstics-text'>Total XP</div>
+            <div className='staticstics-text'>{t("total_xp")}</div>
           </div>
         </div>
         {/* End statistics-score */}

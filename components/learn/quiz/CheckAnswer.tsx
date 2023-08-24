@@ -1,6 +1,6 @@
 import React from "react"
 import { BigCloseSvg, DoneSvg } from "@/components/SVGs"
-
+import { useTranslations } from "next-intl"
 const CheckAnswer = ({
   isAnswerSelected,
   isAnswerCorrect,
@@ -18,6 +18,7 @@ const CheckAnswer = ({
   onFinish: () => void
   onSkip: () => void
 }) => {
+  const t = useTranslations("Quiz")
   return (
     <>
       <section className='border-gray-200 sm:border-t-2 sm:p-10'>
@@ -25,19 +26,19 @@ const CheckAnswer = ({
           <button
             className='hidden rounded-2xl border-2 border-b-4 border-gray-200 bg-white p-3 font-bold uppercase text-gray-400 transition hover:border-gray-300 hover:bg-gray-200 sm:block sm:min-w-[150px] sm:max-w-fit'
             onClick={onSkip}>
-            Skip
+            {t("skip")}
           </button>
           {!isAnswerSelected ? (
             <button
               className='grow rounded-2xl bg-gray-200 p-3 font-bold uppercase text-gray-400 sm:min-w-[150px] sm:max-w-fit sm:grow-0'
               disabled>
-              Check
+              {t("check")}
             </button>
           ) : (
             <button
               onClick={onCheckAnswer}
               className='grow rounded-2xl border-b-4 border-green-600 bg-green-500 p-3 font-bold uppercase text-white sm:min-w-[150px] sm:max-w-fit sm:grow-0'>
-              Check
+              {t("check")}
             </button>
           )}
         </div>
@@ -58,7 +59,7 @@ const CheckAnswer = ({
                 <div className='hidden rounded-full bg-white p-5 text-green-500 sm:block'>
                   <DoneSvg />
                 </div>
-                <div className='text-2xl'>Good job!</div>
+                <div className='text-2xl'>{t("good_job")}</div>
               </div>
             ) : (
               <div className='mb-2 flex flex-col gap-5 sm:flex-row sm:items-center'>
@@ -66,7 +67,7 @@ const CheckAnswer = ({
                   <BigCloseSvg />
                 </div>
                 <div className='flex flex-col gap-2'>
-                  <div className='text-2xl'>Correct solution:</div>{" "}
+                  <div className='text-2xl'>{t("correct_solution")}:</div>{" "}
                   <div className='text-sm font-normal'>{correctAnswer}</div>
                 </div>
               </div>
@@ -79,7 +80,7 @@ const CheckAnswer = ({
                 ? "w-full rounded-2xl border-b-4 border-green-600 bg-green-500 p-3 font-bold uppercase text-white transition hover:brightness-105 sm:min-w-[150px] sm:max-w-fit"
                 : "w-full rounded-2xl border-b-4 border-red-600 bg-red-500 p-3 font-bold uppercase text-white transition hover:brightness-105 sm:min-w-[150px] sm:max-w-fit"
             }>
-            Continue
+            {t("continue")}
           </button>
         </div>
       </div>

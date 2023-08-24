@@ -15,6 +15,11 @@ const Users = (props: UsersProps) => {
                   <th
                     scope='col'
                     className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                    ID
+                  </th>
+                  <th
+                    scope='col'
+                    className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
                     Name
                   </th>
                   <th
@@ -37,6 +42,15 @@ const Users = (props: UsersProps) => {
               <tbody className='bg-white divide-y divide-gray-200'>
                 {props.users.map((user: any) => (
                   <tr key={user.id}>
+                    <td className='px-6 py-4 whitespace-nowrap'>
+                      <div className='flex items-center'>
+                        <div className='ml-4'>
+                          <div className='text-sm font-medium text-gray-900'>
+                            {user.id}
+                          </div>
+                        </div>
+                      </div>
+                    </td>
                     <td className='px-6 py-4 whitespace-nowrap'>
                       <div className='flex items-center'>
                         <div className='ml-4'>

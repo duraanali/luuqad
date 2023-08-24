@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react"
 import { BottomBar } from "@/components/learn/BottomBar"
 import { LeftBar } from "@/components/learn/LeftBar"
 import { RightBar } from "@/components/learn/RightBar"
+import { useTranslations } from "next-intl"
+import { useParams } from "next/navigation"
 import { useSearchParams, useRouter } from "next/navigation"
 import {
   useGetCurrentUserQuery,
@@ -63,15 +65,23 @@ const EditProfile: NextPage = () => {
     }
   }
 
+  const t = useTranslations("Profile")
+  const { locale } = useParams()
+
+  let profileName: any = "Profile"
+  if (locale == "so") {
+    profileName = "Bogaada"
+  }
+
   return (
     <div>
-      <LeftBar selectedTab={null} />
-      <BottomBar selectedTab={null} />
+      <LeftBar selectedTab={profileName} />
+      <BottomBar selectedTab={profileName} />
       <div className='mx-auto flex flex-row gap-5 py-20 px-4 sm:py-10 md:pl-28 lg:pl-72'>
         <div className='w-full flex flex-col items-center gap-12 '>
           <div className='mx-auto flex w-full max-w-xl items-center justify-between lg:max-w-4xl'>
             <h1 className='text-lg font-bold text-gray-800 sm:text-2xl'>
-              Edit Profile
+              {t("edit_profile")}
             </h1>
           </div>
           <div className='flex w-full max-w-xl flex-col gap-8 px-16'>
@@ -97,14 +107,14 @@ const EditProfile: NextPage = () => {
                   <button
                     type='submit'
                     className='rounded-2xl w-60 border-b-4 border-green-600 bg-green-500 py-3 px-5 font-bold uppercase text-white transition hover:brightness-110 disabled:border-b-0 disabled:bg-gray-200 disabled:text-gray-400 disabled:hover:brightness-100'>
-                    Save changes
+                    {t("save_changes")}
                   </button>
                 </Form>
               </Formik>
               <Link
-                href={"/learn/profile/edit/delete"}
+                href={`/${locale}/learn/profile/edit/delete`}
                 className='rounded-2xl w-60 border-b-4 border-red-600 bg-red-500 py-3 text-center	font-bold uppercase text-white transition hover:brightness-110 disabled:border-b-0 disabled:bg-gray-200 disabled:text-gray-400 disabled:hover:brightness-100'>
-                Delete account
+                {t("delete_account")}
               </Link>
             </div>
           </div>

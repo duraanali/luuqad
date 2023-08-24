@@ -1,7 +1,7 @@
 "use client"
 import React from "react"
 import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname, useRouter, useParams } from "next/navigation"
 
 const Navbar = () => {
   const path = usePathname()
@@ -34,11 +34,13 @@ const Navbar = () => {
 export default Navbar
 
 const Logo = () => {
+  const { locale } = useParams()
+
   return (
     <>
       {/* logo icon .....*/}
       <Link
-        href='/'
+        href={`/${locale}`}
         className='text-2xl font-bold tracking-wider lowercase sm:text-3xl md:text-4xl text-primary-green-1'>
         Luuqad
       </Link>

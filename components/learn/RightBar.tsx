@@ -7,14 +7,18 @@ import {
 import { useGetPointsQuery } from "@/store/slices/PointSlice"
 import languages from "@/utils/languages"
 import { SetStateAction } from "react"
+import { useTranslations } from "next-intl"
 import { Flag } from "./Flag"
 import ProfileAddFriends from "./profile/ProfileAddFriends"
 import ProfileFriendFollow from "./profile/ProfileFriendFollow"
+import Link from "next-intl/link"
+import { useParams, useRouter } from "next/navigation"
 
 type Props = {
   SetModelIsOpen?: React.Dispatch<SetStateAction<boolean>> | any
 }
 export const RightBar = (props: Props) => {
+  const params = useParams()
   const { data: points } = useGetPointsQuery<any>()
   const totalPoints = points?.points.reduce(
     (accumulator: any, currentValue: any) => {
@@ -23,40 +27,33 @@ export const RightBar = (props: Props) => {
     0,
   )
   const streak = totalPoints || 0
-  const language = languages.filter((lang) => lang.code === "en")[0]
-
   return (
     <>
       <aside className='main-middle-right sticky top-0 hidden w-[368px] flex-col gap-6 self-start md:flex'>
-        <article className='flex justify-between gap-4'>
-          <div
-            className='relative flex cursor-default items-center gap-2 rounded-xl p-3 font-bold uppercase text-gray-500 hover:bg-gray-100'
-            role='button'
-            tabIndex={0}>
-            <Flag language={language} width={45} />
-            <div>{language.name}</div>
-          </div>
+        <article className='flex justify-between items-center gap-4'>
+          {params.locale == "so" ? (
+            <Link
+              href='/learn'
+              locale='en'
+              className='relative flex cursor-pointer bg-blue-400 items-center gap-2 rounded-xl px-6 py-2 font-bold uppercase text-white hover:bg-blue-600'>
+              {/* <Flag language={language} width={45} /> */}
+              <div>EN</div>
+            </Link>
+          ) : (
+            <Link
+              href='/learn'
+              locale='so'
+              className='relative flex cursor-pointer bg-blue-300 items-center gap-2 rounded-xl px-6 py-2 font-bold uppercase text-white hover:bg-blue-400'>
+              {/* <Flag language={language} width={45} /> */}
+              <div>SO</div>
+            </Link>
+          )}
           <span className='relative flex cursor-pointer items-center gap-2 rounded-xl p-3 font-bold text-orange-500 hover:bg-gray-100'>
             <div>{streak > 0 ? <FireSvg /> : <EmptyFireSvg />}</div>
             <span className={streak > 0 ? "text-orange-500" : "text-gray-300"}>
               {streak}
             </span>
           </span>
-          {/* <span
-            className='relative flex items-center gap-2 rounded-xl p-3 font-bold text-red-500 hover:bg-gray-100'
-            role='button'
-            tabIndex={0}>
-            {lingots > 0 ? <GemSvg /> : <EmptyGemSvg />}
-            <span className={lingots > 0 ? "text-red-500" : "text-gray-300"}>
-              {lingots}
-            </span>
-            <div
-              className='absolute top-full z-10 flex w-72 items-center gap-3 rounded-2xl border-2 border-gray-300 bg-white p-5'
-              style={{
-                left: "calc(50% - 150px)",
-                display: "none",
-              }}></div>
-          </span> */}
         </article>
         <ProfileFriendFollow />
         <ProfileAddFriends SetModelIsOpen={props?.SetModelIsOpen} />
@@ -69,7 +66,7 @@ export const RightBar = (props: Props) => {
 
 const DailyQuestsSection = () => {
   const { data: points } = useGetPointsQuery<any>()
-
+  const t = useTranslations("Index")
   const calculateTotalPoints = () => {
     const currentDate = new Date().toISOString().split("T")[0] // Get current date in 'YYYY-MM-DD' format
     const currentDayData = points?.points.filter((entry: any) =>
@@ -89,11 +86,13 @@ const DailyQuestsSection = () => {
 
   return (
     <article className='flex flex-col gap-5 rounded-2xl border-2 border-gray-200 p-6 font-bold text-gray-700'>
-      <h2 className='text-xl'>Daily Quests</h2>
+      <h2 className='text-xl'>{t("daily_quests")}</h2>
       <div className='flex items-center gap-4'>
         <LightningProgressSvg />
         <div className='flex flex-col gap-2'>
-          <h3>Earn {goalXp} XP</h3>
+          <h3>
+            {t("earn")} {goalXp} XP
+          </h3>
           <div className='flex items-center'>
             <div className='relative h-5 w-52 rounded-l-full bg-gray-200'>
               <div

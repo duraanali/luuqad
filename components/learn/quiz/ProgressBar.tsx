@@ -1,5 +1,7 @@
 import React from "react"
 import Link from "next/link"
+import { useParams } from "next/navigation"
+import { useTranslations } from "next-intl"
 import {
   CloseSvg,
   LessonTopBarEmptyHeart,
@@ -17,19 +19,21 @@ const ProgressBar = ({
   setQuitMessageShown: React.Dispatch<React.SetStateAction<boolean>>
   hearts: null | number
 }) => {
+  const t = useTranslations("Quiz")
+  const { locale } = useParams()
   return (
     <header className='flex items-center gap-4'>
       {correctAnswerCount === 0 ? (
-        <Link href='/learn' className='text-gray-400'>
+        <Link href={`/${locale}/learn`} className='text-gray-400'>
           <CloseSvg />
-          <span className='sr-only'>Exit lesson</span>
+          <span className='sr-only'>{t("exit_section")}</span>
         </Link>
       ) : (
         <button
           className='text-gray-400'
           onClick={() => setQuitMessageShown(true)}>
           <CloseSvg />
-          <span className='sr-only'>Exit lesson</span>
+          <span className='sr-only'>{t("exit_section")}</span>
         </button>
       )}
       <div

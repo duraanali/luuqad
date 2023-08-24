@@ -2,6 +2,8 @@ import React from "react"
 import Link from "next/link"
 import languages from "@/utils/languages"
 import { GuidebookSvg } from "@/components/SVGs"
+import { useParams } from "next/navigation"
+import { useTranslations } from "next-intl"
 
 const UnitHeader = ({
   unitNumber,
@@ -14,7 +16,9 @@ const UnitHeader = ({
   backgroundColor: `bg-${string}`
   borderColor: `border-${string}`
 }) => {
+  const { locale } = useParams()
   const language = languages.filter((lang) => lang.code === "en")[0]
+  const t = useTranslations("Index")
   return (
     <article
       className={[
@@ -23,11 +27,14 @@ const UnitHeader = ({
       ].join(" ")}>
       <header className='flex items-center justify-between gap-4 p-4'>
         <div className='flex flex-col gap-1'>
-          <h2 className='text-2xl font-bold'>Unit {unitNumber}</h2>
+          <h2 className='text-2xl font-bold'>
+            {t("unit")} {unitNumber}
+            {locale === "so" ? "aad" : ""}
+          </h2>
           <p className='text-lg'>{description}</p>
         </div>
         <Link
-          href={`learn/guidebook/${language.code}/${unitNumber}`}
+          href={`/${locale}/learn/guidebook`}
           className={[
             "flex items-center gap-3 rounded-2xl border-2 border-b-4 p-3 transition hover:text-gray-100",
             borderColor,

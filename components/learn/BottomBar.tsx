@@ -2,22 +2,26 @@ import React from "react"
 import Link from "next/link"
 import { useGetCurrentUserQuery } from "@store/slices/UserSlice"
 import Image from "next/image"
+import { useTranslations } from "next-intl"
+import { useParams } from "next/navigation"
 
 type BottomBarItem = {
-  name: Tab
+  name: Tab | string
   href: string
   icon: React.ReactNode
 }
 
-export type Tab = "Learn" | "Profile" | "leaderboard"
+export type Tab = "Learn" | "Profile" | "Leaderboard"
 
 export const useBottomBarItems = () => {
+  const { locale } = useParams()
   const { data: user } = useGetCurrentUserQuery<any>()
+  const t = useTranslations("Index")
 
   const bottomBarItems: BottomBarItem[] = [
     {
-      name: "Learn",
-      href: "/learn",
+      name: t("Learn"),
+      href: `/${locale}/learn`,
       icon: (
         <svg
           width='32'
@@ -48,8 +52,8 @@ export const useBottomBarItems = () => {
       ),
     },
     {
-      name: "Profile",
-      href: "/learn/profile",
+      name: t("Profile"),
+      href: `/${locale}/learn/profile`,
       icon: (
         <>
           {user && user.user?.image ? (
@@ -78,8 +82,8 @@ export const useBottomBarItems = () => {
   ]
 
   bottomBarItems.splice(1, 0, {
-    name: "leaderboard",
-    href: "/learn/leaderboard",
+    name: t("Leaderboard"),
+    href: `/${locale}/learn/leaderboard`,
     icon: (
       <svg width='46' height='46' viewBox='0 0 46 46' fill='none'>
         <path

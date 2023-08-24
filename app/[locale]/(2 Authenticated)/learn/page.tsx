@@ -8,12 +8,13 @@ import { type NextPage } from "next"
 import React, { useEffect, useState } from "react"
 import { useGetUnitsQuery } from "@/store/slices/UnitSlice"
 import { useGetSectionsQuery } from "@/store/slices/SectionSlice"
+import { useParams } from "next/navigation"
 
 // This component displays the units and sections for the user to learn
 const Learn: NextPage = () => {
   const { data: unitz } = useGetUnitsQuery<any>()
   const { data: sections } = useGetSectionsQuery<any>()
-
+  const { locale } = useParams()
   // TODO: Send "sectionCompletedStatus" to unitSection component, it could be "LOCKED" or "COMPLETE". Show "ACTIVE" only when the user hasn't started anything, only on the first one
 
   const [formattedData, setFormattedData] = useState<any>([])
@@ -49,10 +50,15 @@ const Learn: NextPage = () => {
     }
   }, [unitz, sections])
 
+  let learnName: any = "Learn"
+  if (locale == "so") {
+    learnName = "Baro"
+  }
+
   return (
     <>
       <TopBar backgroundColor='bg-[#58cc02]' borderColor='border-[#46a302]' />
-      <LeftBar selectedTab='Learn' />
+      <LeftBar selectedTab={learnName} />
 
       <div className='main-right flex justify-center gap-3 pt-14 sm:p-6 sm:pt-6 md:ml-24 c-max-tm:w-[100%] c-max-td:w-[812px]   c-min-lg:ml-64 c-min-lg:gap-12'>
         <div className='flex max-w-[592px] grow flex-col'>
@@ -75,7 +81,7 @@ const Learn: NextPage = () => {
       </div>
 
       <div className='pt-[90px]'></div>
-      <BottomBar selectedTab='Learn' />
+      <BottomBar selectedTab={learnName} />
     </>
   )
 }

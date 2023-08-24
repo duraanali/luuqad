@@ -6,6 +6,8 @@ import type { Metadata } from "next"
 import { Dosis } from "next/font/google"
 import React from "react"
 import "./globals.css"
+import { NextIntlClientProvider } from "next-intl"
+import { notFound } from "next/navigation"
 
 const dosis = Dosis({
   display: "swap",
@@ -19,19 +21,33 @@ export const metadata: Metadata = {
   description: "Next Generation Language Learning Platform",
 }
 
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "so" }]
+}
+
 export default async function RootLayout({
   children,
+  params: { locale },
 }: {
   children: React.ReactNode
+  params: { locale: string }
 }) {
+  let messages
+  try {
+    messages = (await import(`@/messages/${locale}.json`)).default
+  } catch (error) {
+    notFound()
+  }
   return (
-    <html lang='en' className={dosis.className}>
+    <html lang={locale} className={dosis.className}>
       <Providers>
         <body className={"flex flex-col justify-between min-h-screen"}>
-          <ToastContainerBar />
-          <Navbar />
-          {children}
-          <Footer />
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <ToastContainerBar />
+            <Navbar />
+            {children}
+            <Footer />
+          </NextIntlClientProvider>
         </body>
       </Providers>
     </html>
