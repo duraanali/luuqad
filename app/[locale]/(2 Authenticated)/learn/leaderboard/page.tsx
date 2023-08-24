@@ -191,7 +191,7 @@ const Leaderboard: NextPage = () => {
         </div>
         <RightBar />
       </div>
-      <BottomBar selectedTab='leaderboard' />
+      <BottomBar selectedTab={leaderboardName} />
     </div>
   )
 }

@@ -43,7 +43,7 @@ const Profile: NextPage = () => {
         </div>
         <RightBar SetModelIsOpen={SetModelIsOpen} />
       </div>
-      <BottomBar selectedTab='Profile' />
+      <BottomBar selectedTab={profileName} />
     </>
   )
 }

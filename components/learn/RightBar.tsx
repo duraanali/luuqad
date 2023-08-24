@@ -27,7 +27,6 @@ export const RightBar = (props: Props) => {
     0,
   )
   const streak = totalPoints || 0
-  const language = languages.filter((lang) => lang.code === "en")[0]
   return (
     <>
       <aside className='main-middle-right sticky top-0 hidden w-[368px] flex-col gap-6 self-start md:flex'>

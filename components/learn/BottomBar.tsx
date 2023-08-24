@@ -11,7 +11,7 @@ type BottomBarItem = {
   icon: React.ReactNode
 }
 
-export type Tab = "Learn" | "Profile" | "leaderboard"
+export type Tab = "Learn" | "Profile" | "Leaderboard"
 
 export const useBottomBarItems = () => {
   const { locale } = useParams()
