@@ -1,9 +1,25 @@
 import Image from "next/image"
+import { useParams } from "next/navigation"
 import { useState } from "react"
 
 type Props = {}
 
 const ProfileFriendFollow = (props: Props) => {
+  const { locale } = useParams()
+
+  let profileFollowing: string = "Following"
+  let profileFollowers: string = "Followers"
+  let ProfileFollowersBio: string = "No followers yet"
+  let profileFollowingBio: string =
+    "Learning is more fun and effective when you connect with others."
+
+  if (locale === "so") {
+    profileFollowing = "Daba Gal"
+    profileFollowers = "Raacayaasha"
+    ProfileFollowersBio = "Wali ma jiro cid raacsan"
+    profileFollowingBio =
+      "Waxbarashadu aad bay u xiiso badan tahay oo waxtar u leedahay markaad dadka kale la xiriirto."
+  }
   const [activeFollowing, setActiveFollowing] = useState<string>("flex")
 
   const [activeBorderFollowing, setActiveBorderFollowing] = useState<string>(
@@ -18,6 +34,7 @@ const ProfileFriendFollow = (props: Props) => {
 
   const clickHandleFollow = (event: React.MouseEvent<HTMLElement>) => {
     const checkFollow = event.currentTarget.dataset.follow
+
     if (checkFollow === "following") {
       setActiveFollowing("flex ")
       setActiveBorderFollowing(
@@ -48,7 +65,9 @@ const ProfileFriendFollow = (props: Props) => {
               className={`'${activeFollowing} flex-1 pt-4 text-slate-500 cursor-pointer relative align-middle'`}>
               <span
                 className={` ${activeBorderFollowing} ' block text-base first:pl-[10px] pb-3 border-b-2 bg-transparent mb-[-2px] text-center hover:border-b-sky-500 hover:text-sky-500 '`}>
-                <span data-test='friend-following-list'>Following</span>
+                <span data-test='friend-following-list'>
+                  {profileFollowing}
+                </span>
               </span>
             </li>
             <li
@@ -57,7 +76,9 @@ const ProfileFriendFollow = (props: Props) => {
               className={`'${activeFollowers} ' flex-1 pt-4 cursor-pointer relative align-middle'`}>
               <span
                 className={` ${activeBorderFollowers} ' block text-base first:pl-[10px] pb-3 border-b-2 bg-transparent mb-[-2px] text-center hover:border-b-sky-500 hover:text-sky-500   '`}>
-                <span data-test='friend-followers-list'>Followers</span>
+                <span data-test='friend-followers-list'>
+                  {profileFollowers}
+                </span>
               </span>
             </li>
           </ul>
@@ -72,12 +93,14 @@ const ProfileFriendFollow = (props: Props) => {
               alt='Follow Friends'
             />
             <div className='text-center text-slate-500'>
-              Learning is more fun and effective when you connect with others.
+              {profileFollowingBio}
             </div>
           </div>
           <div
             className={` ${activeFollowers} '  items-center flex-col p-[40px_30px_30px] '`}>
-            <div className='text-center text-slate-500'>No followers yet</div>
+            <div className='text-center text-slate-500'>
+              {ProfileFollowersBio}
+            </div>
           </div>
         </div>
       </div>

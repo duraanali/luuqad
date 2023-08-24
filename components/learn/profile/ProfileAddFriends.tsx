@@ -1,7 +1,7 @@
 import LuuqadIconRightchevron from "@/components/icons/LuuqadIconRightchevron"
 import LuuqadIconWarning from "@/components/icons/LuuqadIconWarning"
 import Image from "next/image"
-import { usePathname } from "next/navigation"
+import { useParams, usePathname } from "next/navigation"
 import { SetStateAction } from "react"
 
 type Props = {
@@ -13,22 +13,36 @@ const ProfileAddFriends = (props: Props) => {
   // other wise it will throw error becuase ProfileAddFriends Component is every where ...
   // I only Allowed the functionality of invite friend works when you are in profile page
   const pathname = usePathname()
+  const { locale } = useParams()
+
   const handleAddFriend = (event: React.MouseEvent<HTMLElement>) => {
     const checkSocial = event.currentTarget.dataset.social
-
     if (
-      checkSocial === "social-panel-invite-friends" &&
-      pathname === "/learn/profile"
+      (checkSocial === "social-panel-invite-friends" &&
+        pathname === "/learn/profile") ||
+      pathname === "/so/learn/profile"
     ) {
       props?.SetModelIsOpen(true)
     }
   }
-
   const isTrue = true
+
+  let profileAddFriendTitle: string = "Add Friends "
+  let ProfileFindfriends: string = "Find friends"
+  let ProfileInvitefriends: string = "Invite Friends"
+  let profileConnectFacebook: string = "Connect to Facebook"
+
+  if (locale === "so") {
+    profileAddFriendTitle = "Kudar Asxaabta"
+    ProfileFindfriends = "Raadi Saaxiibo"
+    ProfileInvitefriends = "Casuum Asxaabta"
+    profileConnectFacebook = "Ku Xidhnow Facebook-ga"
+  }
+
   return (
     <div className='border-2 rounded-2xl'>
       <div className='text-xl font-bold p-[20px_20px_16px] leading-7 '>
-        Add friends
+        {profileAddFriendTitle}
       </div>
       <div
         onClick={handleAddFriend}
@@ -42,7 +56,7 @@ const ProfileAddFriends = (props: Props) => {
           src='/svg/search.svg'
         />
         <div className='flex-push'>
-          <div className='text-base font-bold'>Find friends</div>
+          <div className='text-base font-bold'>{ProfileFindfriends}</div>
         </div>
 
         <LuuqadIconRightchevron width={10} />
@@ -59,7 +73,7 @@ const ProfileAddFriends = (props: Props) => {
           src='/svg/invitefriend.svg'
         />
         <div className='flex-push'>
-          <div className='text-base font-bold'>Invite friends</div>
+          <div className='text-base font-bold'>{ProfileInvitefriends}</div>
         </div>
         <LuuqadIconRightchevron width={10} />
       </div>
@@ -75,7 +89,7 @@ const ProfileAddFriends = (props: Props) => {
           src='/svg/connectfacebook.svg'
         />
         <div className='flex-push'>
-          <div className='text-base font-bold '>Connect to Facebook</div>
+          <div className='text-base font-bold '>{profileConnectFacebook}</div>
         </div>
         {isTrue ? (
           <LuuqadIconRightchevron width={10} />
