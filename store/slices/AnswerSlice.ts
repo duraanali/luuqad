@@ -24,6 +24,7 @@ export const answers = createApi({
       return addTokenToRequest(headers, { getState })
     },
   }),
+  keepUnusedDataFor: 30,
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
       return action.payload[reducerPath]

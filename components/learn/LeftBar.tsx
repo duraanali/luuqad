@@ -3,6 +3,8 @@ import Link from "next/link"
 import type { ComponentProps } from "react"
 import type { Tab } from "./BottomBar"
 import { useBottomBarItems } from "./BottomBar"
+import { useTranslations } from "next-intl"
+import { useParams } from "next/navigation"
 
 const LeftBarMoreMenuSvg = (props: ComponentProps<"svg">) => {
   return (
@@ -24,12 +26,14 @@ const LeftBarMoreMenuSvg = (props: ComponentProps<"svg">) => {
 
 export const LeftBar = ({ selectedTab }: { selectedTab: Tab | null }) => {
   const bottomBarItems = useBottomBarItems()
+  const t = useTranslations("Index")
+  const { locale } = useParams()
 
   return (
     <>
       <nav className=' left-bar fixed left-0 top-0 bottom-0 hidden flex-col gap-5 border-r-2 border-[#e5e5e5] bg-white p-3 md:flex c-min-lg:w-64 c-min-lg:p-5'>
         <Link
-          href='/learn'
+          href={`/${locale}/learn`}
           className='ml-5 mb-5 mt-5 hidden text-4xl font-bold text-[#58CC02] c-min-lg:block'>
           luuqad
         </Link>
@@ -61,12 +65,12 @@ export const LeftBar = ({ selectedTab }: { selectedTab: Tab | null }) => {
           })}
           <div
             className='relative flex grow cursor-default items-center gap-3 rounded-xl py-1 px-2 font-bold uppercase text-gray-400 hover:bg-gray-100'
-            onClick={() => signOut()}
+            onClick={() => signOut({ callbackUrl: "/" })}
             role='button'
             tabIndex={0}>
             <LeftBarMoreMenuSvg />{" "}
             <button className=' hidden c-min-lg:inline text-left uppercase hover:bg-gray-100'>
-              Logout
+              {t("logout")}
             </button>
           </div>
         </ul>

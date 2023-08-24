@@ -1,0 +1,56 @@
+{
+  "Index": {
+    "title": "Hello world!",
+    "logout": "Logout",
+    "Learn": "Learn",
+    "Profile": "Profile",
+    "Leaderboard": "Leaderboard",
+    "daily_quests": "Daily Quests",
+    "earn": "Earn",
+    "xp": "XP",
+    "unit": "Unit"
+  },
+  "Quiz": {
+    "check": "Check",
+    "skip": "Skip",
+    "continue": "Continue",
+    "good_job": "Good job!",
+    "section_completed": "Section Completed",
+    "corrected": "Corrected",
+    "points_gained": "Points Gained",
+    "committed": "Committed",
+    "review_section": "Review Section",
+    "amazing": "Amazing!",
+    "good": "Good!",
+    "try_again": "Try again!",
+    "check_your_scoreboard": "Check out your scorecard!",
+    "check_tiles_below": "Click the tiles below to reveal the solutions",
+    "your_response": "Your Response",
+    "correct_response": "Correct Response",
+    "correct_solution": "Correct Solution",
+    "are_you_sure_quit": "Are you sure you want to quit?",
+    "progress_will_be_lost": "All progress for this lesson will be lost.",
+    "quit": "Quit",
+    "stay": "Stay",
+    "start": "Start",
+    "exit_section": "Exit Section"
+  },
+  "Leaderboard": {
+    "bronze_league": "Bronze League",
+    "top_20": "Top 20 in this league",
+    "unlock_leaderboard": "Unlock Leaderboard",
+    "complete_at_least_one_section": "Complete at least one section to unlock the leaderboard.",
+    "start_learning": "Start Learning"
+  },
+  "Profile": {
+    "statistics": "Statistics",
+    "today_total_xp": "Today's Total XP",
+    "total_xp": "Total XP",
+    "joined": "Joined",
+    "edit_profile": "Edit Profile",
+    "save_changes": "Save Changes",
+    "delete_account": "Delete Account",
+    "are_you_sure_delete": "Are you sure you want to delete your account?",
+    "nevermind": "Nevermind"
+  }
+}

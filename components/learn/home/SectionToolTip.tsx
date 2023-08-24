@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react"
 import Link from "next/link"
-
+import { useParams } from "next/navigation"
+import { useTranslations } from "next-intl"
 const tileTooltipLeftOffsets = [140, 95, 70, 95, 140, 185, 210, 185] as const
 
 type TileTooltipLeftOffset = (typeof tileTooltipLeftOffsets)[number]
@@ -53,7 +54,8 @@ const SectionToolTip = ({
   units: any
 }) => {
   const tileTooltipRef = useRef<HTMLDivElement | null>(null)
-
+  const { locale } = useParams()
+  const t = useTranslations("Quiz")
   useEffect(() => {
     const containsTileTooltip = (event: MouseEvent) => {
       if (selectedTile !== index) return
@@ -130,9 +132,9 @@ const SectionToolTip = ({
           </button>
         ) : (
           <Link
-            href={`/learn/section/${section_id}`}
+            href={`/${locale}/learn/section/${section_id}`}
             className='flex w-full items-center justify-center rounded-xl border-b-4 border-yellow-200 bg-white p-3 uppercase text-yellow-400'>
-            START
+            {t("start")}
           </Link>
         )}
       </div>

@@ -66,12 +66,11 @@ export const TopBar = ({
   const language = languages.filter((lang) => lang.code === "en")[0]
 
   return (
-    <header className='fixed z-20 h-[58px] w-full'>
+    <header className='fixed h-[58px] w-full'>
       <div
         className={`relative flex h-full w-full items-center justify-between border-b-2 px-[10px] transition duration-500 md:hidden ${borderColor} ${backgroundColor}`}>
         <button>
           <Flag language={language} width={45} />
-          <span className='sr-only'>See languages</span>
         </button>
 
         <button

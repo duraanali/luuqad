@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { BigCloseSvg, DoneSvg } from "@/components/SVGs"
-
+import { useTranslations } from "next-intl"
 type QuestionResult = {
   question: string
   yourResponse: string
@@ -18,6 +18,7 @@ const ReviewLesson = ({
 }) => {
   const [selectedQuestionResult, setSelectedQuestionResult] =
     useState<null | QuestionResult>(null)
+  const t = useTranslations("Quiz")
   return (
     <div
       className={[
@@ -37,9 +38,9 @@ const ReviewLesson = ({
           <BigCloseSvg className='h-8 w-8' />
           <span className='sr-only'>Close</span>
         </button>
-        <h2 className='text-center text-3xl'>Check out your scorecard!</h2>
+        <h2 className='text-center text-3xl'>{t("check_your_scoreboard")}</h2>
         <p className='text-center text-xl text-gray-400'>
-          Click the tiles below to reveal the solutions
+          {t("check_tiles_below")}
         </p>
         <div className='grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           {questionResults.map((questionResult, i) => {
@@ -77,13 +78,13 @@ const ReviewLesson = ({
                       className='absolute -top-2 h-3 w-3 rotate-45 border-l-2 border-t-2 border-gray-200 bg-white'
                       style={{ left: "calc(50% - 6px)" }}></div>
                     <div className='font-bold uppercase text-gray-400'>
-                      Your response:
+                      {t("your_response")}:
                     </div>
                     <div className='mb-3 text-gray-700'>
                       {questionResult.yourResponse}
                     </div>
                     <div className='font-bold uppercase text-gray-400'>
-                      Correct response:
+                      {t("correct_response")}:
                     </div>
                     <div className='text-gray-700'>
                       {questionResult.correctResponse}

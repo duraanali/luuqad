@@ -5,6 +5,8 @@ import { LeftBar } from "@/components/learn/LeftBar"
 import { BottomBar } from "@/components/learn/BottomBar"
 import { RightBar } from "@/components/learn/RightBar"
 import Link from "next/link"
+import { useTranslations } from "next-intl"
+import { useParams } from "next/navigation"
 import {
   BronzeLeagueSvg,
   FirstPlaceSvg,
@@ -114,11 +116,16 @@ const Leaderboard: NextPage = () => {
     }
   }, [leaders, currentUser, isLoading])
 
-  const leaderboardLeague = "Bronze League"
+  const { locale } = useParams()
+  const t = useTranslations("Leaderboard")
 
+  let leaderboardName: any = "Leaderboard"
+  if (locale == "so") {
+    leaderboardName = "Hogaamiyaha"
+  }
   return (
     <div>
-      <LeftBar selectedTab='leaderboard' />
+      <LeftBar selectedTab={leaderboardName} />
       <div className='flex justify-center gap-3 pt-14 md:ml-24 md:p-6 md:pt-10 lg:ml-64 lg:gap-12'>
         <div className='flex w-full max-w-xl flex-col items-center gap-5 pb-28 md:px-5'>
           {!leaders && (
@@ -135,15 +142,15 @@ const Leaderboard: NextPage = () => {
             <>
               <LeaderboardBannerSvg />
               <h1 className='text-center text-2xl font-bold text-gray-700'>
-                Unlock Leaderboards!
+                {t("unlock_leaderboard")}
               </h1>
               <p className='text-center text-lg text-gray-500'>
-                Complete at least one section to view the leaderboard!
+                {t("complete_at_least_one_section")}
               </p>
               <Link
-                href='/learn'
+                href={`${locale}/learn`}
                 className='w-fit rounded-2xl border-2 border-b-4 border-gray-200 px-16 py-2 text-center font-bold uppercase text-blue-400 transition hover:bg-gray-50 hover:brightness-90'>
-                Start Learning
+                {t("start_learning")}
               </Link>
               <div className='h-5'></div>
               <LockedLeaderboardSvg />
@@ -159,9 +166,9 @@ const Leaderboard: NextPage = () => {
                   <LockedLeagueSvg />
                   <LockedLeagueSvg />
                 </div>
-                <h1 className='text-2xl font-bold'>{leaderboardLeague}</h1>
+                <h1 className='text-2xl font-bold'>{t("bronze_league")}</h1>
                 <div className='flex w-full flex-col items-center gap-1 pb-5'>
-                  <p className='text-lg text-gray-500'>Top 20 in this league</p>
+                  <p className='text-lg text-gray-500'>{t("top_20")}</p>
                 </div>
                 <div className='w-full border-b-2 border-gray-200'></div>
               </div>

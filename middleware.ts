@@ -1,60 +1,62 @@
-import { getToken } from "next-auth/jwt"
 import { NextRequest, NextResponse } from "next/server"
+import { withAuth } from "next-auth/middleware"
+import createIntlMiddleware from "next-intl/middleware"
 
-export default async function middleware(req: NextRequest) {
+const locales = ["en", "so"]
+const publicPages = ["/", "/login", "/signup"]
+
+const intlMiddleware = createIntlMiddleware({
+  locales,
+  defaultLocale: "en",
+})
+
+const authMiddleware = withAuth((req) => intlMiddleware(req), {
+  callbacks: {
+    authorized: ({ req, token }) => {
+      const path = req.nextUrl.pathname
+
+      // if user is logged in, redirect to /learn
+
+      if (path.startsWith("/admin")) {
+        return token?.role === "admin"
+      }
+
+      if (path.startsWith("/learn")) {
+        return token !== null
+      }
+
+      // By default return true only if the token is not null
+      // (this forces the users to be signed in to access the page)
+      return token !== null
+    },
+  },
+  pages: {
+    signIn: "/login",
+  },
+})
+
+export default function middleware(req: NextRequest) {
   const { origin } = req.nextUrl
-  const token = await getToken({ req })
-  const role = token?.role
-  const isAuthenticated = !!token
+  const publicPathnameRegex = RegExp(
+    `^(/(${locales.join("|")}))?(${publicPages.join("|")})?/?$`,
+    "i",
+  )
+  const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname)
 
-  // Check if the token is null (not authenticated)
-  if (!isAuthenticated) {
-    // Allow access to signup and "/" pages
-    if (
-      req.nextUrl.pathname.startsWith("/signup") ||
-      req.nextUrl.pathname === "/"
-    ) {
-      return NextResponse.next()
+  if (isPublicPage) {
+    // if trying to access public page and user is logged in, redirect to /learn
+    if (req.cookies.has("next-auth.session-token")) {
+      // redirect to /learn
+      return NextResponse.rewrite(`${origin}/en/learn`)
     }
-    // Redirect to the login page for other pages
-    return NextResponse.rewrite(`${origin}/login`)
-  }
 
-  // If the user is authenticated and is an admin
-  if (isAuthenticated && role === "admin") {
-    // Allow access to "/learn" and "/admin"
-    if (
-      req.nextUrl.pathname.startsWith("/learn") ||
-      req.nextUrl.pathname.startsWith("/admin")
-    ) {
-      return NextResponse.next()
-    }
-    // Redirect to "/admin" for other pages
-    return NextResponse.rewrite(`${origin}/admin`)
+    return intlMiddleware(req)
+  } else {
+    return (authMiddleware as any)(req)
   }
-
-  // If the user is authenticated but not an admin
-  if (isAuthenticated && role !== "admin") {
-    // Allow access to "/learn" only
-    if (req.nextUrl.pathname.startsWith("/learn")) {
-      return NextResponse.next()
-    }
-    // Redirect to "/learn" for other pages
-    return NextResponse.rewrite(`${origin}/learn`)
-  }
-
-  // For any other case (e.g., unexpected conditions), redirect to "/learn"
-  return NextResponse.rewrite(`${origin}/learn`)
 }
 
 export const config = {
-  // Update the matcher to only include "/learn" and its subpaths
-  matcher: [
-    "/",
-    "/login",
-    "/signup",
-    "/learn",
-    "/learn/:path*",
-    "/admin/:path*",
-  ],
+  // Skip all paths that should not be internationalized
+  matcher: ["/((?!api|_next|.*\\..*).*)"],
 }

@@ -3,6 +3,8 @@ import Link from "next/link"
 import LuuqadIconPen from "../../icons/LuuqadIconPen"
 import LuuqadIconTime from "../../icons/LuuqadIconTime"
 import NameAvatar from "@/utils/NameAvatar"
+import { useTranslations } from "next-intl"
+import { useParams } from "next/navigation"
 
 type Props = {
   user: any
@@ -10,7 +12,8 @@ type Props = {
 
 const ProfileUser = (props: Props) => {
   const { name, email, image, created_at } = props.user.user
-
+  const t = useTranslations("Profile")
+  const { locale } = useParams()
   const parts = created_at.split("T")[0].split("-")
   const americanStyleDate = `${parts[1]}/${parts[2]}/${parts[0]}`
   return (
@@ -29,7 +32,7 @@ const ProfileUser = (props: Props) => {
             <LuuqadIconTime className='text-gray-300' width={20} />
           </span>
           <span className='text-lg text-gray-500'>
-            Joined: <span> {americanStyleDate}</span>
+            {t("joined")}: <span> {americanStyleDate}</span>
           </span>
         </div>
 
@@ -68,7 +71,7 @@ const ProfileUser = (props: Props) => {
             fontSize='3rem'
           />
         )}
-        <Link href={"/learn/profile/edit"}>
+        <Link href={`/${locale}/learn/profile/edit`}>
           <div className=' absolute bg-sky-400 p-0 rounded-[50%]  top-0  right-0 '>
             <LuuqadIconPen className=' text-primary-white-1 ' width={30} />
           </div>

@@ -6,6 +6,8 @@ import { RightBar } from "@/components/learn/RightBar"
 import { signOut } from "next-auth/react"
 import { useDeleteMyAccountMutation } from "@store/slices/UserSlice"
 import { toast } from "react-toastify"
+import { useTranslations } from "next-intl"
+import { useParams } from "next/navigation"
 import Link from "next/link"
 
 const DeleteProfile: NextPage = () => {
@@ -23,25 +25,33 @@ const DeleteProfile: NextPage = () => {
     }
   }
 
+  const t = useTranslations("Profile")
+  const { locale } = useParams()
+
+  let profileName: any = "Profile"
+  if (locale == "so") {
+    profileName = "Bogaada"
+  }
+
   return (
     <div>
-      <LeftBar selectedTab={null} />
-      <BottomBar selectedTab={null} />
+      <LeftBar selectedTab={profileName} />
+      <BottomBar selectedTab={profileName} />
       <div className='mx-auto flex flex-row gap-5 py-20 px-4 sm:py-10 md:pl-28 lg:pl-72'>
         <div className='flex w-full mt-32 max-w-xl flex-col gap-8 px-8'>
           <p className='text-2xl font-bold text-center'>
-            Are you sure you want to delete your account?
+            {t("are_you_sure_delete")}
           </p>
           <div className='flex flex-col items-center justify-between gap-2 sm:flex-row sm:justify-center'>
             <Link
               href='/learn/profile'
               className='rounded-2xl w-60 border-b-4 border-green-600 bg-green-500 py-3 text-center font-bold uppercase text-white transition hover:brightness-110 disabled:border-b-0 disabled:bg-gray-200 disabled:text-gray-400 disabled:hover:brightness-100'>
-              Nevermind
+              {t("nevermind")}
             </Link>
             <button
               onClick={onDeleteAccount}
               className='rounded-2xl w-60 border-b-4 border-red-600 bg-red-500 py-3 font-bold uppercase text-white transition hover:brightness-110 disabled:border-b-0 disabled:bg-gray-200 disabled:text-gray-400 disabled:hover:brightness-100'>
-              Delete account
+              {t("delete_account")}
             </button>
           </div>
         </div>
