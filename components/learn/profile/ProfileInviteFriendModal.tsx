@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { useParams } from "next/navigation"
 import { MutableRefObject, SetStateAction, useRef, useState } from "react"
 
 type Props = {
@@ -6,22 +7,40 @@ type Props = {
 }
 
 const ProfileInviteFriendModal = (props: Props) => {
-  const [copyed, SetCopyed] = useState("Copy link")
   const inPutValue = useRef() as MutableRefObject<HTMLInputElement>
+  const { locale } = useParams()
+
+  let profileCopyLink: string = "Copy link"
+  let ProfileCopiedLink: string = "copied"
+  let profileShare: string = "Or share on"
+  let ProfileInvitefriends: string = "Invite Friends"
+  let profileInvitefriendsBio: string =
+    "Tell your friends it’s free and fun to learn a language on Luuqad.com!"
+
+  if (locale === "so") {
+    profileCopyLink = "koobi iskuxiraha"
+    profileShare = "Ama la Wadaag"
+    ProfileCopiedLink = "Koobiyay"
+    ProfileInvitefriends = "Casuum Asxaabta"
+    profileInvitefriendsBio =
+      "U sheeg asxaabtaada inay bilaash iyo madadaalo ku tahay inay luqad ku bartaan Luuqad.com!"
+  }
+  const [copyed, SetCopyed] = useState(profileCopyLink)
   const handleModal = (
     event: React.MouseEvent<HTMLInputElement, MouseEvent>,
   ) => {
     const checkCloseBtn = event.currentTarget.dataset.close
+
     // referece input
     if (inPutValue) {
       // const inputLink = event?.currentTarget?.value
       const copyLink = inPutValue?.current?.value
       navigator.clipboard.writeText(copyLink)
-      SetCopyed("Copied")
+      SetCopyed(ProfileCopiedLink)
     }
 
     if (checkCloseBtn === "close-button") {
-      SetCopyed("Copy link")
+      SetCopyed(profileCopyLink)
       props?.SetModelIsOpen(false)
     }
   }
@@ -47,10 +66,10 @@ const ProfileInviteFriendModal = (props: Props) => {
           src='/svg/invietEnvelope.svg'
         />
         <h2 className='text-center font-bold text-2xl m-[0_0_25px]'>
-          Invite friends
+          {ProfileInvitefriends}
         </h2>
         <p className=' text-center text-lg mb-4 mx-auto max-w-[420px]'>
-          Tell your friends it’s free and fun to learn a language on Duolingo!
+          {profileInvitefriendsBio}
         </p>
         <div className=' mt-6 w-full inline-flex items-center bg-white border-2 rounded-2xl min-h-[48px] py-1 px-3 overflow-hidden'>
           <input
@@ -69,7 +88,7 @@ const ProfileInviteFriendModal = (props: Props) => {
           </span>
         </div>
         <p className=' text-lg text-slate-500 m-[25px_0_15px]'>
-          Or share on...
+          {profileShare}...
         </p>
         <div className=' grid grid-cols-2 gap-7'>
           <button className='relative  uppercase  h-[33px] w-full active:translate-y-[2px] active:translate-z-0 before:active:shadow-none before:content-[""] before:absolute before:shadow-border_b before:shadow-slate-200 before:border-2 before:-left-0 before:-right-0 before:-top-2 before:-bottom-2 before:rounded-2xl '>
