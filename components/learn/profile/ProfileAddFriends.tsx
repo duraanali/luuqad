@@ -10,10 +10,10 @@ type Props = {
 
 const ProfileAddFriends = (props: Props) => {
   // i must use pathname to check if i am in profile page ...
-  // other wise it will throw error becuase ProfileAddFriends Component is every where ...
+  // other wise it will throw error because ProfileAddFriends Component is every where ...
   // I only Allowed the functionality of invite friend works when you are in profile page
   const pathname = usePathname()
-  const { locale } = useParams()
+  const { locale } = useParams() || "test"
 
   const handleAddFriend = (event: React.MouseEvent<HTMLElement>) => {
     const checkSocial = event.currentTarget.dataset.social
@@ -41,7 +41,9 @@ const ProfileAddFriends = (props: Props) => {
 
   return (
     <div className='border-2 rounded-2xl'>
-      <div className='text-xl font-bold p-[20px_20px_16px] leading-7 '>
+      <div
+        data-testid={"add-title"}
+        className='text-xl font-bold p-[20px_20px_16px] leading-7 '>
         {profileAddFriendTitle}
       </div>
       <div
