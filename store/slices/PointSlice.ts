@@ -17,12 +17,12 @@ export const points = createApi({
       return addTokenToRequest(headers, { getState })
     },
   }),
-  keepUnusedDataFor: 30,
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
       return action.payload[reducerPath]
     }
   },
+  refetchOnFocus: true,
   tagTypes: ["POINT"],
   endpoints: (builder) => ({
     getPoints: builder.query<any, void>({

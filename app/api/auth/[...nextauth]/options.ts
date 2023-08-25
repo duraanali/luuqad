@@ -47,9 +47,6 @@ export const options: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
-        // This is where you need to retrieve user data
-        // to verify with credentials
-        // Docs: https://next-auth.js.org/configuration/providers/credentials
         if (!isEmail(credentials?.email as string)) {
           return {
             error: "Email must be a valid email address",
