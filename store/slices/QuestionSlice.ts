@@ -26,6 +26,7 @@ export const questions = createApi({
       return addTokenToRequest(headers, { getState })
     },
   }),
+  refetchOnFocus: true,
   keepUnusedDataFor: 30,
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {

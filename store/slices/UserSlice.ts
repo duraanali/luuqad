@@ -22,7 +22,7 @@ export const user = createApi({
       return addTokenToRequest(headers, { getState })
     },
   }),
-  keepUnusedDataFor: 30,
+  refetchOnFocus: true,
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
       return action.payload[reducerPath]
