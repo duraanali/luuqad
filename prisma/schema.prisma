@@ -129,6 +129,36 @@ model Result {
   @@index([section_id])
   @@index([question_id])
   @@index([answer_id])
+<<<<<<< HEAD
+}
+
+// Points
+model Point {
+  id           Int        @id @default(autoincrement())
+  user_id      Int
+  points       Int
+  created_at   DateTime   @default(now())
+  updated_at   DateTime   @updatedAt
+  user         User       @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id])
+}
+
+// Keep track of user and section, if completed section
+model UserSection {
+  id           Int        @id @default(autoincrement())
+  user_id      Int
+  section_id   Int
+  completed    Boolean    @default(false)
+  created_at   DateTime   @default(now())
+  updated_at   DateTime   @updatedAt
+  user         User       @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  section      Section    @relation(fields: [section_id], references: [id])
+
+  @@index([user_id])
+  @@index([section_id])
+=======
+>>>>>>> 8cebe70 (prisma file fix)
 }
 
 // Points
