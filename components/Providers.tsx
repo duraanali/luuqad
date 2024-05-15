@@ -14,12 +14,7 @@ interface LayoutProps {
 // const queryClient = new QueryClient()
 
 const Providers: FC<LayoutProps> = ({ children }) => {
-  const siteId = 3618197
-  const hotjarVersion = 6
-
-  useEffect(() => {
-    hotjar.initialize(siteId, hotjarVersion)
-  }, [])
+ 
   return (
     <Provider store={store}>
       <SessionProvider>{children}</SessionProvider>
