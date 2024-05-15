@@ -1,6 +1,6 @@
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
+  provider    = "postgresql"
+  url         = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
@@ -8,7 +8,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// Authentication
 model User {
   id             Int        @id @default(autoincrement())
   role           Role       @default(user) 
@@ -16,7 +15,7 @@ model User {
   email          String     @unique
   password       String
   oauth_id       String?    @unique
-  image          String?    // Optional fields
+  image          String?    @db.VarChar(255)
   oauth_provider String?    // Optional fields
   location       String?    // Optional fields
   created_at     DateTime   @default(now())
@@ -99,7 +98,7 @@ model Answer {
   id          Int      @id @default(autoincrement())
   question_id Int
   answer      String
-  is_correct  Boolean
+  is_correct  Int
   avatar      String?
   audio       String?
   status      Int  @default(0) // 0 = draft, 1 = published
@@ -158,4 +157,3 @@ model UserSection {
   @@index([user_id])
   @@index([section_id])
 }
-
