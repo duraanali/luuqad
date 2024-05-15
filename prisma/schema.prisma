@@ -1,6 +1,6 @@
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
+  provider    = "postgresql"
+  url         = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
@@ -8,64 +8,89 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// Authentication
 model User {
-  id         Int      @id @default(autoincrement())
-  name       String
-  email      String   @unique
-  password   String
-  oauth_id   String?  @unique
-  image      String?  // Optional fields
-  oauth_provider String? // Optional fields
-  location   String? // Optional fields
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  lessons    Lesson[] @relation("UserLessons")
+  id             Int        @id @default(autoincrement())
+  role           Role       @default(user) 
+  name           String
+  email          String     @unique
+  password       String
+  oauth_id       String?    @unique
+  image          String?    @db.VarChar(255)
+  oauth_provider String?    // Optional fields
+  location       String?    // Optional fields
+  created_at     DateTime   @default(now())
+  updated_at     DateTime   @updatedAt
 
-  UserLessons UserLessons[]
+  UserSection    UserSection[]
+  Point        Point[]
+  Result         Result[]
 }
 
-// Lessons
-model Lesson {
-  id          Int           @id @default(autoincrement())
-  title       String
-  description String?
-  slug        String?    @unique
-  level       String?
-  status      Int       @default(0) // 0 = draft, 1 = published
-  created_at  DateTime      @default(now())
-  updated_at  DateTime      @updatedAt
-  units       Unit[]
-  users       User[]        @relation("UserLessons")
-  UserLessons UserLessons[]
+// Role enum with @@map attribute
+enum Role {
+  admin
+  user
 }
 
 // Units
 model Unit {
   id          Int        @id @default(autoincrement())
-  lesson_id   Int
   title       String
   description String?
-  slug        String  @unique
   status      Int    @default(0) // 0 = draft, 1 = published
   created_at  DateTime   @default(now())
   updated_at  DateTime   @updatedAt
-  lesson      Lesson     @relation(fields: [lesson_id], references: [id])
+  sections    Section[]
+  
+
+}
+
+// Sections
+model Section {
+  id          Int      @id @default(autoincrement())
+  unit_id     Int
+  title       String
+  avatar      String?
+  status      Int  @default(0) // 0 = draft, 1 = published
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
   questions   Question[]
+  UserSection UserSection[]
+  Results     Result[]
+  unit        Unit     @relation(fields: [unit_id], references: [id])
+
+  @@index([unit_id])
 }
 
 // Questions
 model Question {
+  id                  Int      @id @default(autoincrement())
+  section_id          Int
+  question_type_id    Int
+  title               String
+  question            String
+  avatar              String?
+  points              Int
+  audio               String?
+  status              Int  @default(0) // 0 = draft, 1 = published
+  created_at          DateTime @default(now())
+  updated_at          DateTime @updatedAt
+  section             Section @relation(fields: [section_id], references: [id])
+  answers             Answer[]
+  results             Result[]
+  question_type       QuestionType @relation(fields: [question_type_id], references: [id])
+
+  @@index([section_id])
+  @@index([question_type_id])
+}
+
+// question types
+model QuestionType {
   id          Int      @id @default(autoincrement())
-  unit_id     Int
   title       String
-  description String?
-  slug        String  @unique
-  status      Int  @default(0) // 0 = draft, 1 = published
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
-  unit        Unit     @relation(fields: [unit_id], references: [id])
-  answers     Answer[]
+  questions   Question[]
 }
 
 // Answers
@@ -73,20 +98,62 @@ model Answer {
   id          Int      @id @default(autoincrement())
   question_id Int
   answer      String
-  is_correct  Boolean
+  is_correct  Int
+  avatar      String?
+  audio       String?
   status      Int  @default(0) // 0 = draft, 1 = published
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
   question    Question @relation(fields: [question_id], references: [id])
+
+  answers    Result[]
+
+  @@index([question_id])
 }
 
-// User and Lessons
-model UserLessons {
-  id         Int      @id @default(autoincrement())
-  user_id    Int
-  lesson_id  Int
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  user       User     @relation(fields: [user_id], references: [id])
-  lesson     Lesson   @relation(fields: [lesson_id], references: [id])
+// Results
+model Result {
+  id           Int        @id @default(autoincrement())
+  user_id      Int
+  section_id   Int
+  question_id  Int
+  answer_id    Int
+  created_at   DateTime   @default(now())
+  updated_at   DateTime   @updatedAt
+  user         User       @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  section      Section    @relation(fields: [section_id], references: [id])
+  question     Question   @relation(fields: [question_id], references: [id])
+  answer       Answer     @relation(fields: [answer_id], references: [id])
+
+  @@index([user_id])
+  @@index([section_id])
+  @@index([question_id])
+  @@index([answer_id])
+}
+
+// Points
+model Point {
+  id           Int        @id @default(autoincrement())
+  user_id      Int
+  points       Int
+  created_at   DateTime   @default(now())
+  updated_at   DateTime   @updatedAt
+  user         User       @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id])
+}
+
+// Keep track of user and section, if completed section
+model UserSection {
+  id           Int        @id @default(autoincrement())
+  user_id      Int
+  section_id   Int
+  completed    Boolean    @default(false)
+  created_at   DateTime   @default(now())
+  updated_at   DateTime   @updatedAt
+  user         User       @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  section      Section    @relation(fields: [section_id], references: [id])
+
+  @@index([user_id])
+  @@index([section_id])
 }
