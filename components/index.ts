@@ -1,3 +1,5 @@
-export { default as Lessons } from "./learn/Lessons"
 export { default as SideBar } from "./learn/SideBar"
 export { default as Navbar } from "./navbar/Navbar"
+export { default as ForgetPassword } from "./emails/ForgetPassword"
+export { default as VerifyEmail } from "./emails/VerifyEmail"
+export { default as Welcome } from "./emails/Welcome"

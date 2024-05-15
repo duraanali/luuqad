@@ -1,45 +1,69 @@
-import { getToken } from "next-auth/jwt"
+import { NextRequest, NextResponse } from "next/server"
 import { withAuth } from "next-auth/middleware"
-import { NextFetchEvent, NextRequest, NextResponse } from "next/server"
+import createIntlMiddleware from "next-intl/middleware"
 
-export default async function middleware(
-  req: NextRequest,
-  event: NextFetchEvent,
-) {
-  const { origin } = req.nextUrl
+const locales = ["en", "so"]
+const publicPages = [
+  "/",
+  "/login",
+  "/signup",
+  "/forget",
+  "/policies/terms_of_use",
+  "/policies/privacy_policy",
+]
 
-  const token = await getToken({ req })
-  const isAuthenticated = !!token
+const intlMiddleware = createIntlMiddleware({
+  locales,
+  defaultLocale: "en",
+})
 
-  if (isAuthenticated) {
-    if (
-      req.nextUrl.pathname.startsWith("/login") ||
-      req.nextUrl.pathname.startsWith("/signup") ||
-      req.nextUrl.pathname.startsWith("/")
-    ) {
-      return NextResponse.rewrite(`${origin}/learn`)
-    }
-  }
+const authMiddleware = withAuth((req) => intlMiddleware(req), {
+  callbacks: {
+    authorized: ({ req, token }) => {
+      const path = req.nextUrl.pathname
 
-  // if user is not authenticated, allow access to login and signup pages and "/" page
-  if (!isAuthenticated) {
-    if (
-      req.nextUrl.pathname.startsWith("/login") ||
-      req.nextUrl.pathname.startsWith("/signup") ||
-      req.nextUrl.pathname.startsWith("/")
-    ) {
-      return NextResponse.next()
-    }
-  }
+      // if user is logged in, redirect to /learn
 
-  const authMiddleware = withAuth({
-    pages: {
-      signIn: `/login`,
+      if (path.startsWith("/admin")) {
+        return token?.role === "admin"
+      }
+
+      if (path.startsWith("/learn")) {
+        return token !== null
+      }
+
+      // By default return true only if the token is not null
+      // (this forces the users to be signed in to access the page)
+      return token !== null
     },
-  })
+  },
+  pages: {
+    signIn: "/login",
+  },
+})
 
-  // @ts-expect-error
-  return authMiddleware(req, event)
+export default function middleware(req: NextRequest) {
+  const { origin } = req.nextUrl
+  const publicPathnameRegex = RegExp(
+    `^(/(${locales.join("|")}))?(${publicPages.join("|")})?/?$`,
+    "i",
+  )
+  const isPublicPage = publicPathnameRegex.test(req.nextUrl.pathname)
+
+  if (isPublicPage) {
+    // if trying to access public page and user is logged in, redirect to /learn
+    if (req.cookies.has("next-auth.session-token")) {
+      // redirect to /learn
+      return NextResponse.rewrite(`${origin}/en/learn`)
+    }
+
+    return intlMiddleware(req)
+  } else {
+    return (authMiddleware as any)(req)
+  }
 }
 
-export const config = { matcher: ["/", "/login", "/signup", "/learn"] }
+export const config = {
+  // Skip all paths that should not be internationalized
+  matcher: ["/((?!api|_next|.*\\..*).*)"],
+}

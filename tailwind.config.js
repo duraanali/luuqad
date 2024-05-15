@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  mode: "jit",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -37,45 +38,60 @@ module.exports = {
       boxShadow: {
         1: "rgba(0, 0, 0, 0.2) 0px 0px 18px",
         2: "rgba(56, 161, 105, 1)0px 4px 0px 0px",
-      },
-    },
-    screens: {
-      "c-sm": {
-        max: "767px",
-      },
-      "c-md": {
-        max: "991px",
-      },
-      "c-lg": {
-        max: "1199px",
-      },
-      "c-xl": {
-        max: "1200px",
-      },
-      sm: "640px",
-      // => @media (min-width: 640px) { ... }
 
-      md: "768px",
-      // => @media (min-width: 768px) { ... }
-
-      lg: "1024px",
-      // => @media (min-width: 1024px) { ... }
-
-      xl: "1280px",
-      // => @media (min-width: 1280px) { ... }
-    },
-    // fontSize: {
-    //   'large': '25px',
-    //   'base': '24.7px',
-    //   'medium': '20px',
-    //   'small': '18px',
-    //   'xsmall': '16px',
-    // },
-    lineHeight: {
-      10: "10px",
-      17: "17px",
-      16: "16px",
-      15: "15px",
+        unit: "inset 0 -10px 0px #28282830,inset 0 -9px 10px rgb(20 16 35 / 12%)",
+        inset: "inset 0px -1px 0px 3px #27492b66",
+        unit_btn: "0px 8px 0px 0px",
+        border_1: "0px 0px 0px 1px",
+        border_2: "0px 0px 0px 2px",
+        border_3: "0px 0px 0px 3px",
+        border_4: "0px 0px 0px 4px",
+        border_b: "0px 2px 0px",
+      },
+      screens: {
+        "c-sm": {
+          max: "767px",
+        },
+        "c-min-sm": {
+          min: "767px",
+        },
+        "c-md": {
+          max: "991px",
+        },
+        "c-lg": {
+          max: "1199px",
+        },
+        "c-xl": {
+          max: "1200px",
+        },
+        "c-max-lg": {
+          max: "1159.9999px",
+        },
+        "c-max-td": {
+          max: "919.9998px",
+        },
+        "c-max-tm": {
+          max: "740.9999px",
+        },
+        "c-min-lg": {
+          min: "1160.9999px",
+        },
+        "c-max-md": {
+          max: "699.9999px",
+        },
+        "c-min-md": {
+          min: "700.9999px",
+        },
+      },
+      lineHeight: {
+        10: "10px",
+        17: "17px",
+        16: "16px",
+        15: "15px",
+      },
+      flex: {
+        push: "1 0 auto",
+      },
     },
   },
   plugins: [],

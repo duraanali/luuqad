@@ -16,6 +16,14 @@ Waanu ka mahadcelinaynaa wakhtigaaga iyo dadaalkaaga si aad project-gan u hagaaj
 
 Kahor intaadan bilaabin wax ku biirinta, fadlan qaado wakhti aad akhrido oo aad fahanto hagahan. Waxay gacan ka geysan doontaa hagaajinta habka wax ku biirinta waxayna hubin doontaa in qof kastaa uu ku jiro isku bog.
 
+## Ka Hor Wax Ku biirinta Code-ka
+
+Ka hor intaadan wax ku biirin code-ka ugu horreyn waa inaad
+
+1. Hubisaa arrimihii (issues) horey loo abuuray oo aad akhrisaa
+2. Weydiiso in laguu ogolaado inaad xalliso arrin horey u jiray ama abuur arrin cusub (new issue)
+3. Kadib marka laguu ogolaado inaad arrinka xalliso raac tallaabooyinka hoose si aad code-ka wax ugu biiriso.
+
 ## Wax Ku biirinta Code-ka
 
 Haddii aad rabto inaad wax ku biiriso koodka mashruuca, fadlan raac talaabooyinkan:

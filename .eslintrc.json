@@ -1,5 +1,11 @@
 {
-  "extends": ["next/core-web-vitals", "eslint:recommended"],
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "next/core-web-vitals",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended"
+  ],
   "globals": {
     "React": "readonly" //React will always be defined even if we don't specifically import it,
   },

@@ -1,7 +1,7 @@
 # Luuqad
 
 ![LUUQAD Logo](/public/luuqad.png)
-**DEMO LINK:** [https://luuqad.vercel.app](https://luuqad.vercel.app)
+**DEMO LINK:** [https://luuqad.com](https://luuqad.com)
 
 ### READ THIS IN SOMALI LANGUAGE 👉 [SOMALI](/docs/documentation-afsomali.md)
 
@@ -39,11 +39,22 @@ git clone https://github.com/{username}/luuqad.git
 npm install
 ```
 
+- Start the project:
+
+```bash
+npm run dev
+```
+
+- You also need to create .env.local file in the root directory of the project
+- Go to our Whatsapp group and ask the content for .env.local
+
 ## Code of Conduct
 
 Please read and adhere to our [Code of Conduct](docs/CODE_OF_CONDUCT.md) to ensure a respectful and inclusive community for everyone.
 
 ## Contributing Guidelines
+
+[![luuqad](https://img.youtube.com/vi/1kymX200Mp8/0.jpg)](https://www.youtube.com/watch?v=1kymX200Mp8)
 
 If you wish to contribute to Luuqad, please review our [Contributing Guidelines](docs/CONTRIBUTING.md) for more information on how to get involved.
 

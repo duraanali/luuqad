@@ -1,0 +1,55 @@
+{
+  "Index": {
+    "title": "Salaan",
+    "logout": "Ka Bax",
+    "Learn": "Baro",
+    "Profile": "Bogaada",
+    "Leaderboard": "Hogaamiyaha",
+    "daily_quests": "Shaqada Maalinlaha",
+    "earn": "Shaqeyso",
+    "unit": "Cutubka"
+  },
+  "Quiz": {
+    "check": "Hubi",
+    "skip": "Ka Gudub",
+    "continue": "Horay U Soco",
+    "good_job": "Dadaal Wacan!",
+    "section_completed": "Qaybtaan Waa dhameysay",
+    "corrected": "Inta Saxda",
+    "points_gained": "Dhibcaha",
+    "committed": "Waqtiga",
+    "review_section": "Dib u fiiri",
+    "amazing": "Cajiib!",
+    "good": "Shaqo Fiican!",
+    "try_again": "Ku Celi",
+    "check_your_scoreboard": "Waakan waxaa ka shaqeysay!",
+    "check_tiles_below": "Hoos dhag sii saa u aragto natiijadaada",
+    "your_response": "Jawaabtaada",
+    "correct_response": "Jawaabta Saxda ah",
+    "correct_solution": "Jawaabta Saxda ah",
+    "are_you_sure_quit": "Ma hubtad inaa joojiso?",
+    "progress_will_be_lost": "Dhamaan wixii aad ka jawaabtay way kaa qasaarayaan.",
+    "quit": "Ka Bax",
+    "stay": "Joog",
+    "start": "Bilow",
+    "exit_section": "Ka Bax Qaybtaan"
+  },
+  "Leaderboard": {
+    "bronze_league": "Horyaalka Bronze",
+    "top_20": "20 ka qof ee ugu sareeyo",
+    "unlock_leaderboard": "Daaha Ka Qaad",
+    "complete_at_least_one_section": "Waa inaa hal qayb dhameyso si aad u aragto hogaamiyaha.",
+    "start_learning": "Hada Bilow"
+  },
+  "Profile": {
+    "statistics": "Tirakoobka",
+    "today_total_xp": "Dhibcaha Maanta",
+    "total_xp": "Dhibcaha Guud",
+    "joined": "Ku Soo Biirtay",
+    "edit_profile": "Badal Bogaada",
+    "save_changes": "Duub Is Badalka",
+    "delete_account": "Tirtir Bogaada",
+    "are_you_sure_delete": "Ma hubtaa inaad tirtirto bogaada?",
+    "nevermind": "Maya, Iska dhaaf"
+  }
+}
