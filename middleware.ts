@@ -5,6 +5,7 @@ import createIntlMiddleware from "next-intl/middleware"
 const locales = ["en", "so"]
 const publicPages = [
   "/",
+  "/about/who_we_are",
   "/login",
   "/signup",
   "/forget",
