@@ -1,0 +1,15 @@
+[
+    {
+      "relation": [
+        "delegate_permission/common.handle_all_urls",
+        "delegate_permission/common.get_login_creds"
+      ],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.luuqad.app",
+        "sha256_cert_fingerprints": [
+          "4C:3D:E5:4C:F8:03:EC:70:75:17:77:34:A2:01:C0:C9:C8:B3:5C:51:3A:09:FD:9A:35:B2:84:21:FE:CB:5B:0E"
+        ]
+      }
+    }
+  ]
