@@ -10,6 +10,7 @@ const publicPages = [
   "/forget",
   "/policies/terms_of_use",
   "/policies/privacy_policy",
+  "/.well-known/assetlinks.json"
 ]
 
 const intlMiddleware = createIntlMiddleware({
